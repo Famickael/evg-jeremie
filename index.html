@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadbook EVG Jérémie — 25-27 septembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F5F0;
+  --ink:#15181E;
+  --route:#0F3D91;      /* bleu autoroute */
+  --sign:#00744B;       /* vert routes nationales */
+  --borne:#D0342C;      /* rouge borne kilométrique */
+  --amber:#E8A200;      /* signalisation temporaire */
+  --line:#D8D7D0;
+  --card:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.45}
+a{color:var(--route)}
+
+/* ---------- Header panneau autoroute ---------- */
+header{background:var(--route);color:#fff;padding:22px 18px 24px;border-bottom:6px solid #fff;box-shadow:inset 0 0 0 4px var(--route),inset 0 0 0 7px #fff}
+.hd-eyebrow{font-family:'Barlow Condensed';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;opacity:.85}
+header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-height:1.05;text-transform:uppercase;margin:.3rem 0 .4rem}
+.hd-route{display:flex;align-items:center;gap:.5rem;font-family:'Barlow Condensed';font-weight:700;font-size:1.05rem;text-transform:uppercase;flex-wrap:wrap}
+.hd-route .arrow{font-size:1.2rem}
+.hd-badge{display:inline-block;margin-top:.7rem;background:#fff;color:var(--route);font-family:'Barlow Condensed';font-weight:800;padding:.15rem .6rem;font-size:.95rem;letter-spacing:.05em;border-radius:3px}
+
+/* ---------- Météo ---------- */
+.wx{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 14px;background:#E9E8E1}
+.wxcard{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.55rem .6rem;text-align:center}
+.wxcard .wxday{font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;text-transform:uppercase;color:#4a4e56}
+.wxcard .wxmain{font-size:.85rem;font-weight:700;margin:.2rem 0;min-height:2.2em;display:flex;align-items:center;justify-content:center}
+.wxcard .wxtemp{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem}
+.wxcard .wxrain{font-size:.75rem;color:#4a4e56}
+.wxcard a{font-size:.72rem;font-weight:700;display:inline-block;margin-top:.25rem}
+
+/* ---------- Nav sticky cliquable ---------- */
+nav{position:sticky;top:0;z-index:50;background:var(--ink);display:flex}
+nav button{flex:1;text-align:center;color:#fff;background:none;border:none;border-right:1px solid rgba(255,255,255,.15);font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;padding:.8rem .2rem;cursor:pointer}
+nav button:last-child{border-right:none}
+nav button:active{background:var(--route)}
+
+/* ---------- Sections jour : panneau vert ---------- */
+section{padding:0 0 8px;scroll-margin-top:52px}
+.day-sign{margin:22px 14px 6px;background:var(--sign);color:#fff;border-radius:8px;padding:14px 16px;box-shadow:inset 0 0 0 3px var(--sign),inset 0 0 0 5px #fff}
+.day-sign .etape{font-family:'Barlow Condensed';font-weight:600;letter-spacing:.15em;font-size:.78rem;text-transform:uppercase;opacity:.9}
+.day-sign h2{font-family:'Barlow Condensed';font-weight:800;font-size:1.5rem;text-transform:uppercase;line-height:1.1}
+.day-sign .sub{font-size:.88rem;margin-top:.2rem;opacity:.95}
+
+/* ---------- Timeline route ---------- */
+.road{position:relative;margin:10px 14px 4px;padding-left:34px}
+.road::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:6px;background:var(--ink);border-radius:3px}
+.road::after{content:"";position:absolute;left:14.5px;top:6px;bottom:6px;width:1px;background:repeating-linear-gradient(to bottom,#fff 0 14px,transparent 14px 26px)}
+
+/* ---------- Cartes étapes ---------- */
+.stop{position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 12px 12px 14px;margin:0 0 12px}
+.stop::before{content:"";position:absolute;left:-28px;top:18px;width:16px;height:16px;background:#fff;border:4px solid var(--ink);border-radius:50%}
+.stop.key::before{border-color:var(--borne)}
+.stop.pool::before{border-color:#1D9BD8}
+.time{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;color:#fff;background:var(--ink);display:inline-block;padding:.05rem .5rem;border-radius:3px;border-top:4px solid var(--borne)}
+.drive{display:inline-block;margin-left:.4rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#fff;background:var(--route);padding:.15rem .5rem;border-radius:3px}
+.stop h3{font-family:'Barlow Condensed';font-weight:700;font-size:1.2rem;text-transform:uppercase;margin:.35rem 0 .15rem;line-height:1.1}
+.stop p{font-size:.92rem;margin:.25rem 0;color:#3a3e46}
+.meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.55rem}
+.meta a,.meta button{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;font-family:'Barlow',sans-serif;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;border:1.5px solid var(--route);color:var(--route);background:#fff;cursor:pointer}
+.meta a.call{border-color:var(--sign);color:var(--sign)}
+.meta a.book{background:var(--borne);border-color:var(--borne);color:#fff}
+.meta a.waze{background:#33CCFF;border-color:#33CCFF;color:#062A3A}
+.meta button.food{background:var(--amber);border-color:var(--amber);color:#231a00}
+.tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
+.tag{font-family:'Barlow Condensed';font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;background:#ECEBE4;color:#4a4e56}
+.tag.warn{background:var(--amber);color:#231a00}
+.tag.euro{background:var(--ink);color:#fff}
+
+/* ---------- Bloc résas ---------- */
+.resas{margin:26px 14px 10px;background:var(--ink);color:#fff;border-radius:10px;padding:16px 14px 8px;border-top:8px solid var(--borne)}
+.resas h2{font-family:'Barlow Condensed';font-weight:800;font-size:1.4rem;text-transform:uppercase;margin-bottom:.6rem}
+.resa{display:flex;gap:.7rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.resa:last-child{border-bottom:none}
+.resa input{width:22px;height:22px;accent-color:var(--borne);flex:0 0 auto;margin-top:.1rem}
+.resa .txt{font-size:.92rem}
+.resa .txt strong{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em}
+.resa .due{color:var(--amber);font-weight:700;font-size:.8rem}
+.resa a{color:#9FC1FF;font-weight:700}
+
+/* ---------- Budget ---------- */
+.budget{margin:18px 14px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.budget h2{font-family:'Barlow Condensed';font-weight:800;font-size:1.25rem;text-transform:uppercase;padding:12px 14px 6px}
+.budget table{width:100%;border-collapse:collapse;font-size:.9rem}
+.budget td{padding:.55rem 14px;border-top:1px solid var(--line)}
+.budget td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.budget .total td{background:#ECEBE4;font-weight:700}
+
+/* ---------- Numéros utiles ---------- */
+.phones{margin:0 14px 30px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.phones a{display:block;text-decoration:none;background:var(--card);border:1.5px solid var(--sign);border-radius:8px;padding:.6rem .7rem;color:var(--ink)}
+.phones a b{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:.92rem;text-transform:uppercase;color:var(--sign)}
+.phones a span{font-size:.82rem;font-weight:700}
+footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
+
+/* ---------- Popups ---------- */
+.overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
+.overlay.open{display:block}
+.modal{background:var(--card);border-radius:12px;max-width:520px;margin:4vh auto 0;padding:18px 16px 14px;border-top:8px solid var(--amber)}
+.modal h3{font-family:'Barlow Condensed';font-weight:800;font-size:1.35rem;text-transform:uppercase;margin-bottom:.5rem}
+.modal h4{font-family:'Barlow Condensed';font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--sign);margin:.7rem 0 .2rem}
+.modal ul{padding-left:1.2rem;font-size:.92rem}
+.modal li{margin:.2rem 0}
+.modal .note{font-size:.82rem;color:#6a6e76;margin-top:.6rem}
+.modal .close{display:block;width:100%;margin-top:.9rem;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:.7rem;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;text-transform:uppercase;cursor:pointer}
+.big-courses{margin:0 14px 18px}
+.big-courses button{width:100%;background:var(--amber);border:none;border-radius:10px;padding:.9rem;font-family:'Barlow Condensed';font-weight:800;font-size:1.15rem;text-transform:uppercase;color:#231a00;cursor:pointer}
+@media(min-width:640px){body{max-width:640px;margin:0 auto}header h1{font-size:2.5rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-eyebrow">Roadbook · 25 → 27 septembre</div>
+  <h1>EVG de Jérémie</h1>
+  <div class="hd-route"><span>Plessis-Robinson</span><span class="arrow">➜</span><span>Sainte-Solange</span><span class="arrow">➜</span><span>Panossas</span></div>
+  <div class="hd-badge">3 pilotes ven. · 5 sam. · 6 dim.</div>
+</header>
+
+<!-- Météo dynamique -->
+<div class="wx">
+  <div class="wxcard" id="wx1">
+    <div class="wxday">Ven · Lyon</div>
+    <div class="wxmain">…</div>
+    <div class="wxtemp"></div>
+    <div class="wxrain"></div>
+    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Lyon+vendredi+25+septembre" target="_blank">Détail →</a>
+  </div>
+  <div class="wxcard" id="wx2">
+    <div class="wxday">Sam · Walibi</div>
+    <div class="wxmain">…</div>
+    <div class="wxtemp"></div>
+    <div class="wxrain"></div>
+    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Les+Aveni%C3%A8res+samedi+26+septembre" target="_blank">Détail →</a>
+  </div>
+  <div class="wxcard" id="wx3">
+    <div class="wxday">Dim · Crémieu</div>
+    <div class="wxmain">…</div>
+    <div class="wxtemp"></div>
+    <div class="wxrain"></div>
+    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Cr%C3%A9mieu+dimanche+27+septembre" target="_blank">Détail →</a>
+  </div>
+</div>
+
+<nav>
+  <button data-t="j1">Ven 25</button>
+  <button data-t="j2">Sam 26</button>
+  <button data-t="j3">Dim 27</button>
+</nav>
+
+<!-- ================= VENDREDI ================= -->
+<section id="j1">
+  <div class="day-sign">
+    <div class="etape">Étape 1 · 3 personnes · ~650 km</div>
+    <h2>Vendredi 25 — Route &amp; soirée Lyon</h2>
+    <div class="sub">Plessis-Robinson → Sainte-Solange → Magny-Cours → Panossas → Lyon 6ᵉ</div>
+  </div>
+
+  <div class="road">
+    <div class="stop">
+      <span class="time">06:15</span><span class="drive">🚗 ~2h30</span>
+      <h3>Départ — Le Plessis-Robinson</h3>
+      <p>5 rue Claude Nicolas Ledoux. A10 → A71 direction Bourges. Café thermos conseillé.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze → Sainte-Solange</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">~07:30</span>
+      <h3>Récupération de Duncan</h3>
+      <p>Point de rendez-vous sur la route à caler avec lui (idéalement une sortie A10/A71 ou un péage). Prévoir +15 min.</p>
+    </div>
+
+    <div class="stop key">
+      <span class="time">09:00</span>
+      <h3>Surprise — Sainte-Solange</h3>
+      <p>8 rue des Fauvettes, 18220. Sac de Jérémie préparé en douce, t-shirt EVG à lui enfiler direct, photo de départ. Décollage 09:45.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze → Karting</a>
+      </div>
+      <div class="tagrow"><span class="tag">🚗 ~1h00 vers Magny-Cours</span></div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">10:45</span>
+      <h3>Karting Nevers Magny-Cours</h3>
+      <p>Piste outdoor 1 110 m homologuée FFSA. 2 sessions de 10 min chacun + chrono : le dernier a un gage.</p>
+      <div class="tagrow"><span class="tag euro">~40 €/session</span></div>
+      <div class="meta">
+        <a class="book" href="https://www.kartingmagnycours.com" target="_blank">Réserver</a>
+        <a class="call" href="tel:+33386218043">📞 03 86 21 80 43</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">12:45</span><span class="drive">🚗 ~45 min</span>
+      <h3>Déjeuner — Moulins</h3>
+      <p>Centre-ville ou aire de l'A79 selon l'horaire. Repartir à 14:00 max.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=Moulins%2003000&navigate=yes">🧭 Waze → Moulins</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">14:00</span><span class="drive">🚗 ~2h30</span>
+      <h3>Route → Panossas</h3>
+      <p>A79 → A6 → A43/A432. Pause café vers Mâcon.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">16:30</span>
+      <h3>Check-in Airbnb + courses</h3>
+      <p>17 Chemin du Château d'Eau, Panossas. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
+      <div class="meta">
+        <button class="food" data-m="m-courses">🛒 Liste de courses</button>
+      </div>
+    </div>
+
+    <div class="stop pool">
+      <span class="time">17:15</span>
+      <h3>Piscine · jacuzzi · apéro</h3>
+      <p>Première session détente : baignade, jacuzzi et apéro au bord de l'eau avant de se changer. Sortie de l'eau 18:15.</p>
+      <div class="meta">
+        <button class="food" data-m="m-apero">🍽 Idées apéro</button>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">18:45</span><span class="drive">🚗 ~30 min</span>
+      <h3>Départ Lyon — parking Cité Internationale</h3>
+      <p>Se garer à la Cité Internationale : le club est sur place, le resto à 10 min.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze → Parking</a>
+      </div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">19:45</span>
+      <h3>Dîner — Brasserie des Brotteaux</h3>
+      <p>1 place Jules Ferry, Lyon 6ᵉ. Service jusqu'à 22h. Plan B bouchon : L'Antr'Opotes, 118 rue Bossuet.</p>
+      <div class="tagrow"><span class="tag euro">~35-50 €/pers</span></div>
+      <div class="meta">
+        <a class="book" href="http://www.brasseriedesbrotteaux.com" target="_blank">Réserver</a>
+        <a class="call" href="tel:+33472740398">📞 04 72 74 03 98</a>
+      </div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">22:15</span>
+      <h3>Bus Paradise — cabaret / strip club</h3>
+      <p>44 quai Charles de Gaulle (Cité Internationale). Entrée 20 €, verre dès 30 €, show privé 90 €. Pic de soirée 0h-3h.</p>
+      <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span><span class="tag euro">80-150 €/pers</span></div>
+      <div class="meta">
+        <a class="book" href="https://www.bus-paradise.com" target="_blank">Réserver table EVG</a>
+        <a class="call" href="tel:+33423400947">📞 04 23 40 09 47</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">01:30</span><span class="drive">🚗 ~30 min</span>
+      <h3>Retour Panossas</h3>
+      <p>Retour direct A42/A432. Dodo, grosse journée le lendemain.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAMEDI ================= -->
+<section id="j2">
+  <div class="day-sign">
+    <div class="etape">Étape 2 · 5 personnes</div>
+    <h2>Samedi 26 — Paintball &amp; Walibi</h2>
+    <div class="sub">Chamagnieu → Les Avenières → piscine &amp; BBQ</div>
+  </div>
+
+  <div class="road">
+    <div class="stop">
+      <span class="time">09:00</span>
+      <h3>Petit-déj + arrivée des renforts</h3>
+      <p>Les 2 arrivants rejoignent directement l'Airbnb.</p>
+      <div class="meta">
+        <button class="food" data-m="m-petitdej">🍽 Petit-déj</button>
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb (arrivants)</a>
+      </div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">09:30</span><span class="drive">🚗 ~10 min</span>
+      <h3>BSKS Paintball — Chamagnieu</h3>
+      <p>Lieu-dit St Martin. Arriver 30 min avant le créneau de 10:00. À moins de 8 joueurs, regroupement avec un autre groupe = des adversaires. Archery tag / bubble foot possibles en complément.</p>
+      <div class="tagrow"><span class="tag euro">~25-35 €/pers</span></div>
+      <div class="meta">
+        <a class="book" href="https://bsks-paintball.com" target="_blank">Réserver</a>
+        <a class="call" href="tel:+33634023646">📞 06 34 02 36 46</a>
+        <a class="waze" href="https://waze.com/ul?q=BSKS%20Paintball%20Chamagnieu&navigate=yes">🧭 Waze</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">12:45</span>
+      <h3>Déjeuner express Airbnb</h3>
+      <p>Sandwichs/wraps préparés avec les courses de la veille. Départ 13:20.</p>
+      <div class="meta">
+        <button class="food" data-m="m-sandwich">🍽 Menu du midi</button>
+      </div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">14:00</span><span class="drive">🚗 ~40 min</span>
+      <h3>Walibi Rhône-Alpes</h3>
+      <p>Les Avenières, par la D522. Ouvert 10h-18h. Viser Mahuka, Mystic, Timber en files single rider. Billets DATÉS à acheter au moins 5 jours avant.</p>
+      <div class="tagrow"><span class="tag euro">Dès 34 €</span><span class="tag warn">Acheter avant le 20/09</span></div>
+      <div class="meta">
+        <a class="book" href="https://www.walibi.fr" target="_blank">Billets datés</a>
+        <a class="call" href="tel:+33474337180">📞 04 74 33 71 80</a>
+        <a class="waze" href="https://waze.com/ul?q=Walibi%20Rh%C3%B4ne-Alpes%20Les%20Aveni%C3%A8res&navigate=yes">🧭 Waze</a>
+      </div>
+    </div>
+
+    <div class="stop pool">
+      <span class="time">19:00</span>
+      <h3>Piscine &amp; jacuzzi — récup</h3>
+      <p>Retour ~18:45 (Waze → Airbnb). Session jacuzzi pour les courbatures du paintball, baignade, premières bières au bord de l'eau pendant que le charbon chauffe.</p>
+    </div>
+
+    <div class="stop">
+      <span class="time">20:15</span>
+      <h3>BBQ + soirée jeux</h3>
+      <p>Quiz sur Jérémie, gages, bière-pong. Personne ne conduit ce soir.</p>
+      <div class="meta">
+        <button class="food" data-m="m-bbq">🍽 Menu BBQ</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIMANCHE ================= -->
+<section id="j3">
+  <div class="day-sign">
+    <div class="etape">Étape 3 · 6 personnes</div>
+    <h2>Dimanche 27 — Crémieu &amp; clôture</h2>
+    <div class="sub">Brunch → dernière baignade → cité médiévale → déjeuner</div>
+  </div>
+
+  <div class="road">
+    <div class="stop">
+      <span class="time">09:00</span>
+      <h3>Brunch + arrivée du 6ᵉ</h3>
+      <p>Le dernier arrivant rejoint l'Airbnb pour le brunch collectif.</p>
+      <div class="meta">
+        <button class="food" data-m="m-brunch">🍽 Menu brunch</button>
+      </div>
+    </div>
+
+    <div class="stop pool">
+      <span class="time">09:45</span>
+      <h3>Dernière session piscine · jacuzzi</h3>
+      <p>Une heure de flottaison avant de plier. Sortie 10:45, ménage et check-out à 11:00.</p>
+    </div>
+
+    <div class="stop">
+      <span class="time">11:30</span><span class="drive">🚗 ~15 min</span>
+      <h3>Cité médiévale de Crémieu</h3>
+      <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit.</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=Cr%C3%A9mieu%2038460&navigate=yes">🧭 Waze</a>
+      </div>
+    </div>
+
+    <div class="stop key">
+      <span class="time">12:30</span>
+      <h3>Déjeuner — La Fresque · Chez Inès</h3>
+      <p>52 Grande Rue de la Halle, Crémieu. Attention : dimanche ouvert jusqu'à 13:30 seulement. Plan B : Les Terrasses des Augustins, place de la Nation (jusqu'à 18h).</p>
+      <div class="tagrow"><span class="tag warn">Réserver, service court</span></div>
+      <div class="meta">
+        <a class="book" href="https://bookings.zenchef.com/results?rid=377907&pid=1001" target="_blank">Réserver</a>
+        <a class="call" href="tel:+33437053989">📞 04 37 05 39 89</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="time">14:30</span>
+      <h3>Dispersion</h3>
+      <p>Remise du diplôme d'enterré à Jérémie. Chacun rentre à une heure correcte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COURSES ================= -->
+<div class="big-courses"><button data-m="m-courses">🛒 Liste de courses complète</button></div>
+
+<!-- ================= RESAS ================= -->
+<div class="resas" id="resas">
+  <h2>Résas — par ordre d'urgence</h2>
+  <div class="resa"><input type="checkbox" id="r1"><label class="txt" for="r1"><strong>1 · Bus Paradise — table EVG 3 pers.</strong>vendredi 25 au soir · <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a> · <span class="due">cette semaine</span></label></div>
+  <div class="resa"><input type="checkbox" id="r2"><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
+  <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Walibi — 5 billets datés sam. 26</strong><a href="https://www.walibi.fr" target="_blank">walibi.fr</a> · <span class="due">avant le 20/09</span></label></div>
+  <div class="resa"><input type="checkbox" id="r4"><label class="txt" for="r4"><strong>4 · Paintball BSKS — 5 pers. sam. 10:00</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
+  <div class="resa"><input type="checkbox" id="r5"><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:45</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
+  <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · La Fresque — 6 couverts dim. 12:30</strong><a href="tel:+33437053989">04 37 05 39 89</a> · <span class="due">semaine du 21/09</span></label></div>
+</div>
+
+<!-- ================= BUDGET ================= -->
+<div class="budget">
+  <h2>Budget estimé / pers. (hors essence &amp; péages)</h2>
+  <table>
+    <tr><td>Karting (2 sessions)</td><td>~80 €</td></tr>
+    <tr><td>Dîner Brotteaux</td><td>35-50 €</td></tr>
+    <tr><td>Bus Paradise (entrée + consos)</td><td>80-150 €</td></tr>
+    <tr><td>Paintball</td><td>25-35 €</td></tr>
+    <tr><td>Walibi (billet daté)</td><td>34-39 €</td></tr>
+    <tr><td>Déjeuner Crémieu</td><td>~25 €</td></tr>
+    <tr><td>Courses communes (à diviser)</td><td>~120-150 €</td></tr>
+    <tr class="total"><td>Trio du vendredi</td><td>≈ 200-270 €</td></tr>
+    <tr class="total"><td>Arrivants samedi</td><td>≈ 100-150 €</td></tr>
+  </table>
+</div>
+
+<!-- ================= TELEPHONES ================= -->
+<div class="phones">
+  <a href="tel:+33386218043"><b>Karting Magny-Cours</b><span>03 86 21 80 43</span></a>
+  <a href="tel:+33472740398"><b>Brasserie Brotteaux</b><span>04 72 74 03 98</span></a>
+  <a href="tel:+33423400947"><b>Bus Paradise</b><span>04 23 40 09 47</span></a>
+  <a href="tel:+33634023646"><b>BSKS Paintball</b><span>06 34 02 36 46</span></a>
+  <a href="tel:+33474337180"><b>Walibi</b><span>04 74 33 71 80</span></a>
+  <a href="tel:+33437053989"><b>La Fresque Crémieu</b><span>04 37 05 39 89</span></a>
+</div>
+
+<footer>Airbnb : 17 Chemin du Château d'Eau, Panossas 38460 · Les cases à cocher ne sont pas sauvegardées : fais une capture une fois les résas faites. · Météo : Open-Meteo, mise à jour à chaque ouverture (prévisions fiables ~10 jours avant).</footer>
+
+<!-- ================= POPUPS ================= -->
+<div class="overlay" id="m-courses">
+  <div class="modal">
+    <h3>🛒 Courses — vendredi 16:45, Tignieu-Jameyzieu</h3>
+    <h4>Apéros (ven + sam)</h4>
+    <ul><li>Chips, olives, saucisson, houmous + carottes</li><li>Bières (2 packs) + softs et eau pétillante</li><li>Glaçons</li></ul>
+    <h4>BBQ samedi soir (5 pers.)</h4>
+    <ul><li>Merguez + chipolatas (10-12 pièces)</li><li>Poulet mariné ou côtes (5 parts)</li><li>Halloumi + épis de maïs</li><li>Salade verte, tomates, pain, sauces</li><li>Charbon + allume-feu (vérifier si le BBQ de l'Airbnb en a)</li></ul>
+    <h4>Midi samedi (sandwichs)</h4>
+    <ul><li>Pain de mie ou wraps, jambon, poulet, fromage, crudités</li></ul>
+    <h4>Petits-déj + brunch (jusqu'à 6 pers. dimanche)</h4>
+    <ul><li>Œufs (x12), bacon</li><li>Pain, beurre, confiture, café, lait, jus d'orange</li><li>Viennoiseries : boulangerie dimanche matin</li></ul>
+    <h4>Divers</h4>
+    <ul><li>Eau (pack), sacs poubelle, sopalin, produit vaisselle</li><li>Doliprane (lendemains difficiles)</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="m-apero">
+  <div class="modal">
+    <h3>🍽 Apéro piscine — vendredi 17:15</h3>
+    <ul><li>Chips, olives, saucisson coupé, houmous-carottes</li><li>Bières fraîches + softs</li><li>Léger : le dîner à Lyon est à 19:45, on ne se ruine pas l'appétit</li></ul>
+    <p class="note">Pas de verre au bord de la piscine : gobelets ou canettes.</p>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="m-petitdej">
+  <div class="modal">
+    <h3>🍽 Petit-déj samedi — 09:00</h3>
+    <ul><li>Café + jus d'orange</li><li>Pain beurre confiture, œufs brouillés pour les motivés</li><li>Copieux : paintball puis parc, le déjeuner sera rapide</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="m-sandwich">
+  <div class="modal">
+    <h3>🍽 Midi samedi — express</h3>
+    <ul><li>Wraps ou sandwichs poulet/jambon-fromage-crudités</li><li>Chips, fruits, eau</li><li>À préparer pendant le petit-déj pour gagner du temps au retour du paintball</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="m-bbq">
+  <div class="modal">
+    <h3>🍽 BBQ samedi soir — 20:15</h3>
+    <h4>Au feu</h4>
+    <ul><li>Merguez + chipolatas</li><li>Poulet mariné (préparer la marinade le matin : huile, citron, ail, herbes)</li><li>Halloumi + épis de maïs</li></ul>
+    <h4>Autour</h4>
+    <ul><li>Salade verte + tomates, pain, sauces</li><li>Chips restantes de l'apéro</li></ul>
+    <h4>Rôles</h4>
+    <ul><li>1 chef grill, 1 commis, Jérémie ne touche à rien (il subit le quiz)</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="m-brunch">
+  <div class="modal">
+    <h3>🍽 Brunch dimanche — 09:00</h3>
+    <ul><li>Œufs brouillés + bacon</li><li>Viennoiseries fraîches (boulangerie de Panossas ou Tignieu, à récupérer par le 6ᵉ arrivant)</li><li>Pain, beurre, confiture, café, jus</li><li>Restes du BBQ pour les gros appétits</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<script>
+// Navigation par jour
+document.querySelectorAll("nav button").forEach(function(b){
+  b.addEventListener("click",function(){
+    var t=document.getElementById(b.dataset.t);
+    if(t){t.scrollIntoView({behavior:"smooth",block:"start"});}
+  });
+});
+
+// Popups
+document.querySelectorAll("[data-m]").forEach(function(b){
+  b.addEventListener("click",function(){
+    var m=document.getElementById(b.dataset.m);
+    if(m){m.classList.add("open");}
+  });
+});
+document.querySelectorAll(".overlay").forEach(function(o){
+  o.addEventListener("click",function(e){
+    if(e.target===o||e.target.classList.contains("close")){o.classList.remove("open");}
+  });
+});
+
+// Météo dynamique (Open-Meteo, se met à jour à chaque ouverture)
+var WX={0:"☀️ Ciel clair",1:"🌤 Plutôt clair",2:"⛅ Éclaircies",3:"☁️ Couvert",45:"🌫 Brouillard",48:"🌫 Brouillard",51:"🌦 Bruine",53:"🌦 Bruine",55:"🌧 Bruine forte",56:"🌧 Bruine verglaçante",57:"🌧 Bruine verglaçante",61:"🌧 Pluie faible",63:"🌧 Pluie",65:"🌧 Pluie forte",66:"🌧 Pluie verglaçante",67:"🌧 Pluie verglaçante",71:"🌨 Neige",73:"🌨 Neige",75:"🌨 Neige forte",80:"🌦 Averses",81:"🌧 Averses",82:"⛈ Fortes averses",95:"⛈ Orages",96:"⛈ Orages grêle",99:"⛈ Orages grêle"};
+var spots=[
+ {el:"wx1",date:"2026-09-25",lat:45.77,lon:4.84},
+ {el:"wx2",date:"2026-09-26",lat:45.62,lon:5.57},
+ {el:"wx3",date:"2026-09-27",lat:45.72,lon:5.25}
+];
+spots.forEach(function(s){
+  var box=document.getElementById(s.el);
+  fetch("https://api.open-meteo.com/v1/forecast?latitude="+s.lat+"&longitude="+s.lon+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FParis&start_date="+s.date+"&end_date="+s.date)
+  .then(function(r){if(!r.ok){throw new Error("range");}return r.json();})
+  .then(function(d){
+    if(!d.daily||d.daily.weather_code[0]===null){throw new Error("nodata");}
+    box.querySelector(".wxmain").textContent=WX[d.daily.weather_code[0]]||"—";
+    box.querySelector(".wxtemp").textContent=Math.round(d.daily.temperature_2m_min[0])+"° / "+Math.round(d.daily.temperature_2m_max[0])+"°";
+    box.querySelector(".wxrain").textContent="Pluie "+d.daily.precipitation_probability_max[0]+"%";
+  })
+  .catch(function(){
+    box.querySelector(".wxmain").textContent="Prévisions dispo ~10 j avant";
+    box.querySelector(".wxtemp").textContent="—";
+    box.querySelector(".wxrain").textContent="";
+  });
+});
+</script>
+
+</body>
+</html>
