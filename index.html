@@ -43,11 +43,11 @@ header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-h
 .hd-route .arrow{font-size:1.2rem}
 
 /* ---------- Bandeau organisateurs ---------- */
-.orga{position:sticky;top:0;z-index:60;background:var(--amber);color:#231a00;padding:10px 18px;font-weight:700;font-size:.92rem;display:flex;gap:.6rem;align-items:center}
-.orga .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--borne);color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(208,52,44,.25)}
+.orga{position:sticky;top:0;z-index:60;background:var(--borne);color:#fff;padding:10px 18px;font-weight:700;font-size:.92rem;display:flex;gap:.6rem;align-items:center}
+.orga .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--borne);font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(255,255,255,.25)}
 
 /* ---------- Secret ---------- */
-.secret-dot{position:absolute;top:8px;right:10px;background:none;border:none;color:#C9C8C1;font-size:1rem;cursor:pointer;padding:.2rem .4rem}
+.secret-dot{position:absolute;top:12px;right:58px;background:none;border:none;color:#C9C8C1;font-size:1rem;cursor:pointer;padding:.2rem .4rem}
 .code-in{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:.6rem .7rem;font-size:1rem;margin:.4rem 0}
 .code-err{color:var(--borne);font-weight:700;font-size:.85rem;min-height:1.2em}
 .modal.secret{border-top-color:var(--borne)}
@@ -97,15 +97,15 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .time{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;color:#fff;background:var(--ink);display:inline-block;padding:.05rem .5rem;border-radius:3px;border-top:4px solid var(--borne)}
 .drive{display:inline-block;margin-left:.4rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#fff;background:var(--route);padding:.15rem .5rem;border-radius:3px}
-.dur{display:inline-block;margin-left:.4rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#fff;background:var(--sign);padding:.15rem .5rem;border-radius:3px}
+.dur{display:inline-block;margin-left:.5rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#8a8e96;background:none;padding:0}
 .meta .done{display:inline-flex;align-items:center;gap:.3rem;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;background:var(--sign);color:#fff;border:1.5px solid var(--sign)}
 .stop h3{font-family:'Barlow Condensed';font-weight:700;font-size:1.2rem;text-transform:uppercase;margin:.35rem 0 .15rem;line-height:1.1}
 .stop p{font-size:.92rem;margin:.25rem 0;color:#3a3e46}
 .meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.55rem}
 .meta a,.meta button{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;font-family:'Barlow',sans-serif;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;border:1.5px solid var(--route);color:var(--route);background:#fff;cursor:pointer}
-.meta a.call{border-color:var(--sign);color:var(--sign)}
+.meta a.call{background:#33CCFF;border:none;color:#062A3A}
 .meta a.book{background:var(--borne);border-color:var(--borne);color:#fff}
-.meta a.waze{background:#33CCFF;border-color:#33CCFF;color:#062A3A}
+.meta a.waze{background:#33CCFF;border:none;color:#062A3A}
 .meta button.food{background:var(--amber);border-color:var(--amber);color:#231a00}
 .leg{margin:-2px 0 12px 2px;display:inline-block;background:#fff;border:1.5px dashed var(--route);color:var(--route);font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.15rem .6rem;border-radius:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
@@ -148,13 +148,18 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .modal .phones{margin:.8rem 0 0}
 
 /* ---------- Photos ---------- */
-.pbtn{display:inline-flex;align-items:center;gap:.3rem;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;font-family:'Barlow',sans-serif}
-.pstack{display:none;margin-top:.6rem;align-items:center;cursor:pointer}
-.pstack img{width:48px;height:48px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);margin-right:-16px;transform:rotate(-4deg)}
+.pbtn{position:absolute;top:10px;right:10px;font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:none;background:var(--ink);color:#fff;cursor:pointer;line-height:1}
+.pstack{display:none;margin-top:.6rem;align-items:center;justify-content:flex-end;cursor:pointer}
+.pstack img{width:48px;height:48px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);margin-left:-16px;transform:rotate(-4deg)}
 .pstack img:nth-child(2){transform:rotate(3deg)}
 .pstack img:nth-child(3){transform:rotate(-1deg)}
-.pmore{margin-left:22px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
-#m-gal .gimg{width:100%;border-radius:8px;margin:.35rem 0;display:block}
+.pmore{margin-left:24px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
+#m-gal .gimg{width:100%;border-radius:8px;margin:.35rem 0 .1rem;display:block}
+.gbtns{display:flex;gap:8px;margin:0 0 12px}
+.gbtns a,.gbtns button{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;padding:.35rem .6rem;border-radius:6px;border:none;cursor:pointer;text-decoration:none}
+.gbtns a{background:#33CCFF;color:#062A3A}
+.gbtns button{background:#ECEBE4;color:var(--borne)}
+.srcbtn{display:block;width:100%;margin:.45rem 0;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:.8rem;font-family:'Barlow Condensed';font-weight:700;font-size:1.05rem;text-transform:uppercase;cursor:pointer}
 #m-gal h4{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--sign);margin:.9rem 0 .2rem}
 .retro{margin:26px 14px 8px;background:var(--sign);color:#fff;border-radius:10px;padding:16px 14px;box-shadow:inset 0 0 0 3px var(--sign),inset 0 0 0 5px #fff;text-align:center;cursor:pointer}
 .retro h2{font-family:'Barlow Condensed';font-weight:800;font-size:1.35rem;text-transform:uppercase}
@@ -177,7 +182,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 </head>
 <body>
 
-<div class="orga"><span class="dot">!</span>Ne pas partager à Jérémie !</div>
+<div class="orga" id="orga"><span class="dot">!</span>Ne pas partager à Jérémie jusqu'au 27 !</div>
 
 <header>
   <div class="hd-eyebrow">Roadbook · 25 → 27 septembre</div>
@@ -331,7 +336,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="meta">
         <span class="done">✅ Réservé — 19h45</span>
         <a class="call" href="tel:+33472740398">📞 04 72 74 03 98</a>
-        <a href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">🗺 Maps</a>
+        <a class="waze" href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
 
@@ -345,12 +350,14 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="meta">
         <a class="book" href="https://www.bus-paradise.com" target="_blank">Réserver table EVG</a>
         <a class="call" href="tel:+33423400947">📞 04 23 40 09 47</a>
-        <a href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">🗺 Maps</a>
+        <a class="waze" href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
 
+    <div class="leg">🚗 ~30 min</div>
+
     <div class="stop">
-      <span class="time">01:30</span><span class="drive">🚗 ~30 min</span>
+      <span class="time">01:30</span>
       <h3>Retour Panossas</h3>
       <p>Retour direct A42/A432. Dodo, grosse journée le lendemain.</p>
       <div class="meta">
@@ -492,8 +499,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>Vaisselle, poubelles, photo de famille devant la maison, remise du diplôme d'enterré à Jérémie.</p>
     </div>
 
+    <div class="leg">🚗 ~2h50</div>
+
     <div class="stop">
-      <span class="time">14:15</span><span class="drive">🚗 ~2h50</span>
+      <span class="time">14:15</span>
       <h3>Retour 1 — Dépôt de Jérémie à Sainte-Solange</h3>
       <p>A43 → A46 → A6 → A79 → A71. Arrivée estimée 17:05.</p>
       <div class="meta">
@@ -501,8 +510,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~2h05</div>
+
     <div class="stop">
-      <span class="time">17:15</span><span class="drive">🚗 ~2h05</span>
+      <span class="time">17:15</span>
       <h3>Retour 2 — Dépôt de Duncan à St-Michel-sur-Orge</h3>
       <p>A71 → A10 → N104. Arrivée estimée 19:20.</p>
       <div class="meta">
@@ -510,8 +521,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~35 min</div>
+
     <div class="stop">
-      <span class="time">19:25</span><span class="drive">🚗 ~35 min</span>
+      <span class="time">19:25</span>
       <h3>Retour 3 — Le Plessis-Robinson</h3>
       <p>Arrivée estimée 20:00. Fin du roadbook, mission accomplie.</p>
       <div class="meta">
@@ -775,7 +788,8 @@ function refreshNav(){
 window.addEventListener("scroll",refreshNav,{passive:true});
 refreshNav();
 var orgaEl=document.querySelector(".orga"),navEl2=document.querySelector("nav");
-function fixTops(){if(orgaEl&&navEl2){navEl2.style.top=orgaEl.offsetHeight+"px";}}
+if(orgaEl&&Date.now()>new Date("2026-09-28T00:00:00+02:00").getTime()){orgaEl.style.display="none";}
+function fixTops(){if(orgaEl&&navEl2){navEl2.style.top=(orgaEl.style.display==="none"?0:orgaEl.offsetHeight)+"px";}}
 window.addEventListener("resize",fixTops);fixTops();
 
 // Théâtre du pompier — moteur pixel-art
@@ -1011,11 +1025,12 @@ spots.forEach(function(sp){
 
 // Photos partagées par étape (stockées sur cet appareil)
 (function(){
-  var KEY="evgPhotos";
+  var KEY="evgPhotos",PASS="jeremieestunfifou";
   function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]");}catch(e){return [];}}
-  function saveAll(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true;}catch(e){alert("Stockage photos plein sur cet appareil : supprime quelques photos ou passe en qualité moindre.");return false;}}
+  function saveAll(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true;}catch(e){alert("Stockage photos plein sur cet appareil.");return false;}}
   var photos=load();
   var stops=[].slice.call(document.querySelectorAll(".stop"));
+  var cur=0,lastIdxs=null;
   function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
   function dayOf(st){var sec=st.closest("section");var h=sec?sec.querySelector("h2"):null;return h?h.textContent.split("—")[0].trim():"";}
   function render(){
@@ -1044,25 +1059,37 @@ spots.forEach(function(sp){
     };
     r.readAsDataURL(file);
   }
-  stops.forEach(function(st,i){
-    var meta=st.querySelector(".meta");
-    if(!meta){meta=document.createElement("div");meta.className="meta";st.appendChild(meta);}
-    var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter une photo";
-    var inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.multiple=true;inp.style.display="none";
-    b.addEventListener("click",function(){inp.click();});
-    inp.addEventListener("change",function(){
-      [].slice.call(inp.files).forEach(function(f){
-        shrink(f,function(d){photos.push({i:i,d:d,t:Date.now()});if(saveAll(photos)){render();}});
-      });
-      inp.value="";
+  // deux entrées : appareil photo direct / galerie du téléphone
+  var inpCam=document.createElement("input");inpCam.type="file";inpCam.accept="image/*";inpCam.setAttribute("capture","environment");inpCam.style.display="none";
+  var inpLib=document.createElement("input");inpLib.type="file";inpLib.accept="image/*";inpLib.multiple=true;inpLib.style.display="none";
+  document.body.appendChild(inpCam);document.body.appendChild(inpLib);
+  function onFiles(inp){
+    [].slice.call(inp.files).forEach(function(f){
+      shrink(f,function(d){photos.push({i:cur,d:d,t:Date.now()});if(saveAll(photos)){render();}});
     });
-    meta.appendChild(b);meta.appendChild(inp);
+    inp.value="";
+  }
+  inpCam.addEventListener("change",function(){onFiles(inpCam);srcModal.classList.remove("open");});
+  inpLib.addEventListener("change",function(){onFiles(inpLib);srcModal.classList.remove("open");});
+  // choix de la source
+  var srcModal=document.createElement("div");srcModal.className="overlay";srcModal.id="m-photosrc";
+  srcModal.innerHTML='<div class="modal"><h3>📸 Ajouter une photo</h3><button class="srcbtn" id="src-cam">📷 Prendre une photo</button><button class="srcbtn" id="src-lib">🖼 Choisir dans la galerie</button><button class="close">Annuler</button></div>';
+  document.body.appendChild(srcModal);
+  srcModal.addEventListener("click",function(e){if(e.target===srcModal||e.target.classList.contains("close")){srcModal.classList.remove("open");}});
+  document.getElementById("src-cam").addEventListener("click",function(){inpCam.click();});
+  document.getElementById("src-lib").addEventListener("click",function(){inpLib.click();});
+  stops.forEach(function(st,i){
+    var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter une photo";
+    b.addEventListener("click",function(){cur=i;srcModal.classList.add("open");});
+    st.appendChild(b);
   });
+  // galerie
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
   gal.innerHTML='<div class="modal"><h3>📸 Photos</h3><div id="galbody"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
   gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");}});
   function openGal(idxs){
+    lastIdxs=idxs;
     var body=document.getElementById("galbody");body.innerHTML="";
     var any=false;
     idxs.forEach(function(i){
@@ -1071,7 +1098,20 @@ spots.forEach(function(sp){
       any=true;
       var h=document.createElement("h4");h.textContent=(dayOf(stops[i])?dayOf(stops[i])+" · ":"")+stopName(stops[i]);
       body.appendChild(h);
-      mine.forEach(function(ph){var im=document.createElement("img");im.className="gimg";im.src=ph.d;body.appendChild(im);});
+      mine.forEach(function(ph){
+        var im=document.createElement("img");im.className="gimg";im.src=ph.d;body.appendChild(im);
+        var row=document.createElement("div");row.className="gbtns";
+        var dl=document.createElement("a");dl.textContent="⬇ Télécharger";dl.href=ph.d;dl.download="evg-jeremie-"+ph.t+".jpg";
+        var del=document.createElement("button");del.textContent="🗑 Supprimer";
+        del.addEventListener("click",function(){
+          var mp=prompt("Mot de passe pour supprimer :");
+          if(mp&&mp.trim().toLowerCase()===PASS){
+            photos=photos.filter(function(q){return !(q.t===ph.t&&q.i===ph.i);});
+            saveAll(photos);render();openGal(lastIdxs);
+          }else if(mp!==null){alert("Mauvais mot de passe.");}
+        });
+        row.appendChild(dl);row.appendChild(del);body.appendChild(row);
+      });
     });
     if(!any){var e=document.createElement("p");e.textContent="Pas encore de photo. Le bouton 📸 de chaque étape permet d'en ajouter.";body.appendChild(e);}
     gal.classList.add("open");
