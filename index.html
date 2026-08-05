@@ -22,7 +22,7 @@ body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--ink);fo
 a{color:var(--route)}
 
 /* ---------- Header panneau autoroute ---------- */
-header{position:relative;overflow:hidden;background:var(--route);color:#fff;padding:22px 18px 52px;border-bottom:6px solid #fff;box-shadow:inset 0 0 0 4px var(--route),inset 0 0 0 7px #fff}
+header{position:relative;overflow:hidden;background:var(--route);color:#fff;padding:22px 18px 52px;border-bottom:6px solid #E9E8E1;box-shadow:inset 0 0 0 4px var(--route),inset 0 0 0 7px #fff}
 .stage{position:absolute;left:0;right:0;bottom:6px;height:46px}
 .actor{position:absolute;bottom:0;line-height:0;will-change:left}
 .actor canvas{display:block;image-rendering:pixelated}
@@ -43,7 +43,7 @@ header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-h
 .hd-route .arrow{font-size:1.2rem}
 
 /* ---------- Bandeau organisateurs ---------- */
-.orga{background:var(--amber);color:#231a00;padding:10px 18px;font-weight:700;font-size:.92rem;display:flex;gap:.6rem;align-items:center}
+.orga{position:sticky;top:0;z-index:60;background:var(--amber);color:#231a00;padding:10px 18px;font-weight:700;font-size:.92rem;display:flex;gap:.6rem;align-items:center}
 .orga .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--borne);color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(208,52,44,.25)}
 
 /* ---------- Secret ---------- */
@@ -60,6 +60,9 @@ header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-h
 .wxcard .wxmain{font-size:.85rem;font-weight:700;margin:.2rem 0;min-height:2.2em;display:flex;align-items:center;justify-content:center}
 .sun{display:inline-block;font-size:1.3rem;animation:sunspin 8s linear infinite}
 @keyframes sunspin{from{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.15)}to{transform:rotate(360deg) scale(1)}}
+.wxi{display:inline-block;font-size:1.45rem;animation:breathe 3s ease-in-out infinite}
+.wxi.frozen{animation:none}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .wxcard .wxtemp{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem}
 .wxcard .wxrain{font-size:.75rem;color:#4a4e56}
 .wxcard a{font-size:.72rem;font-weight:700;display:inline-block;margin-top:.25rem}
@@ -89,7 +92,7 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 .stop::before{content:"";position:absolute;left:-28px;top:18px;width:16px;height:16px;background:#fff;border:4px solid var(--ink);border-radius:50%}
 .stop.key::before{border-color:var(--borne)}
 .stop.pool::before{border-color:#1D9BD8}
-.fireman-pin{position:absolute;left:-54px;top:8px;z-index:2;line-height:0;animation:bounce 1.6s ease-in-out infinite;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.fireman-pin{position:absolute;z-index:2;line-height:0;animation:bounce 1.6s ease-in-out infinite;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
 .fireman-pin canvas{display:block;image-rendering:pixelated}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .time{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;color:#fff;background:var(--ink);display:inline-block;padding:.05rem .5rem;border-radius:3px;border-top:4px solid var(--borne)}
@@ -104,6 +107,7 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 .meta a.book{background:var(--borne);border-color:var(--borne);color:#fff}
 .meta a.waze{background:#33CCFF;border-color:#33CCFF;color:#062A3A}
 .meta button.food{background:var(--amber);border-color:var(--amber);color:#231a00}
+.leg{margin:-2px 0 12px 2px;display:inline-block;background:#fff;border:1.5px dashed var(--route);color:var(--route);font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.15rem .6rem;border-radius:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
 .tag{font-family:'Barlow Condensed';font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;background:#ECEBE4;color:#4a4e56}
 .tag.warn{background:var(--amber);color:#231a00}
@@ -142,6 +146,21 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .modal .budget{margin:.2rem 0 0;border:none}
 .modal .budget h2{padding-left:0;padding-right:0}
 .modal .phones{margin:.8rem 0 0}
+
+/* ---------- Photos ---------- */
+.pbtn{display:inline-flex;align-items:center;gap:.3rem;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;font-family:'Barlow',sans-serif}
+.pstack{display:none;margin-top:.6rem;align-items:center;cursor:pointer}
+.pstack img{width:48px;height:48px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);margin-right:-16px;transform:rotate(-4deg)}
+.pstack img:nth-child(2){transform:rotate(3deg)}
+.pstack img:nth-child(3){transform:rotate(-1deg)}
+.pmore{margin-left:22px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
+#m-gal .gimg{width:100%;border-radius:8px;margin:.35rem 0;display:block}
+#m-gal h4{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--sign);margin:.9rem 0 .2rem}
+.retro{margin:26px 14px 8px;background:var(--sign);color:#fff;border-radius:10px;padding:16px 14px;box-shadow:inset 0 0 0 3px var(--sign),inset 0 0 0 5px #fff;text-align:center;cursor:pointer}
+.retro h2{font-family:'Barlow Condensed';font-weight:800;font-size:1.35rem;text-transform:uppercase}
+.retro p{font-size:.85rem;opacity:.95;margin-top:.2rem}
+.retro-truck{display:flex;justify-content:center;margin-bottom:8px}
+.retro-truck canvas{image-rendering:pixelated}
 
 /* ---------- Popups ---------- */
 .overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
@@ -207,7 +226,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
   <div class="road">
     <div class="stop">
-      <span class="time">04:45</span><span class="drive">🚗 ~30 min</span>
+      <span class="time">04:45</span>
       <h3>Départ — Le Plessis-Robinson</h3>
       <span class="fireman-pin" id="fireman-pin" title="On en est là"></span>
       <p>5 rue Claude Nicolas Ledoux. Direction Saint-Michel-sur-Orge. Café thermos conseillé.</p>
@@ -217,8 +236,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~30 min</div>
+
     <div class="stop">
-      <span class="time">05:15</span><span class="drive">🚗 ~2h10</span>
+      <span class="time">05:15</span>
       <h3>Récupération de Duncan — St-Michel-sur-Orge</h3>
       <p>Embarquement rapide puis N104 → A10 → A71 direction Bourges.</p>
       <div class="meta">
@@ -226,23 +247,27 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~2h10</div>
+
     <div class="stop key">
       <span class="time">07:30</span>
       <h3>Kidnapping — Sainte-Solange</h3>
       <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo.</p>
       <div class="meta">
-        <button class="food" data-m="m-sac">🎒 Sac de Jérémie (brief Aude)</button>
+        <button class="food" data-m="m-sac">🎒 Sac de Jérémie</button>
       </div>
     </div>
 
     <div class="stop">
-      <span class="time">07:40</span><span class="drive">🚗 ~1h10</span>
+      <span class="time">07:40</span>
       <h3>Départ de Sainte-Solange</h3>
       <p>Direction Magny-Cours par Bourges puis Nevers. Croissants possibles au passage à Bourges (boulangeries ouvertes dès 7h).</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze</a>
       </div>
     </div>
+
+    <div class="leg">🚗 ~1h10</div>
 
     <div class="stop key">
       <span class="time">08:50</span><span class="dur">⏱ 1h30 de piste</span>
@@ -255,8 +280,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~45 min</div>
+
     <div class="stop">
-      <span class="time">12:30</span><span class="drive">🚗 ~45 min</span><span class="dur">⏱ 1h15</span>
+      <span class="time">12:30</span><span class="dur">⏱ 1h15</span>
       <h3>Déjeuner — Moulins</h3>
       <p>Centre-ville ou aire de l'A79 selon l'horaire. Repartir à 13:45 max.</p>
       <div class="meta">
@@ -264,21 +291,15 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
-    <div class="stop">
-      <span class="time">13:45</span><span class="drive">🚗 ~2h30</span>
-      <h3>Route → Panossas</h3>
-      <p>A79 → A6 → A43/A432. Pause café vers Mâcon.</p>
-      <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
-      </div>
-    </div>
+    <div class="leg">🚗 ~2h30 · pause café vers Mâcon</div>
 
     <div class="stop">
       <span class="time">16:15</span>
       <h3>Check-in Airbnb + courses</h3>
       <p>17 Chemin du Château d'Eau, Panossas. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
       <div class="meta">
-        <button class="food" data-m="m-courses">🛒 Liste de courses</button>
+        <button class="food" data-m="m-courses">🛒 Courses</button>
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -287,18 +308,20 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Piscine · jacuzzi · apéro</h3>
       <p>Première session détente : baignade, jacuzzi et apéro au bord de l'eau avant de se changer. Sortie de l'eau 18:15.</p>
       <div class="meta">
-        <button class="food" data-m="m-apero">🍽 Idées apéro</button>
+        <button class="food" data-m="m-apero">🍹 Apéro</button>
       </div>
     </div>
 
     <div class="stop">
-      <span class="time">18:45</span><span class="drive">🚗 ~30 min</span>
+      <span class="time">18:45</span>
       <h3>Départ Lyon — parking Cité Internationale</h3>
       <p>Se garer à la Cité Internationale : le club est sur place, le resto à 10 min.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze</a>
       </div>
     </div>
+
+    <div class="leg">🚗 ~30 min</div>
 
     <div class="stop key">
       <span class="time">19:45</span><span class="dur">⏱ 2h</span>
@@ -311,6 +334,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
         <a href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
+
+    <div class="leg">🚶 10 min à pied</div>
 
     <div class="stop key">
       <span class="time">22:15</span><span class="dur">⏱ ~3h</span>
@@ -350,13 +375,15 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Petit-déj + arrivée des renforts</h3>
       <p>Mgn, Thierry et Romain rejoignent directement l'Airbnb.</p>
       <div class="meta">
-        <button class="food" data-m="m-petitdej">🍽 Petit-déj</button>
+        <button class="food" data-m="m-petitdej">🍽 Repas</button>
         <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
+    <div class="leg">🚗 ~10 min</div>
+
     <div class="stop key">
-      <span class="time">09:30</span><span class="drive">🚗 ~10 min</span><span class="dur">⏱ 2h30 sur place</span>
+      <span class="time">09:30</span><span class="dur">⏱ 2h30 sur place</span>
       <h3>BSKS Paintball — Chamagnieu</h3>
       <p>Lieu-dit St Martin. Arriver 30 min avant le créneau de 10:00. À moins de 8 joueurs, regroupement avec un autre groupe = des adversaires. Archery tag / bubble foot possibles en complément.</p>
       <div class="tagrow"><span class="tag euro">~25-35 €/pers</span></div>
@@ -367,17 +394,21 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~10 min</div>
+
     <div class="stop">
       <span class="time">12:45</span>
       <h3>Déjeuner express Airbnb</h3>
       <p>Sandwichs/wraps préparés avec les courses de la veille. Départ 13:20.</p>
       <div class="meta">
-        <button class="food" data-m="m-sandwich">🍽 Menu du midi</button>
+        <button class="food" data-m="m-sandwich">🍽 Repas</button>
       </div>
     </div>
 
+    <div class="leg">🚗 ~55 min</div>
+
     <div class="stop key">
-      <span class="time">14:30</span><span class="drive">🚗 ~55 min</span><span class="dur">⏱ ~3h</span>
+      <span class="time">14:30</span><span class="dur">⏱ ~3h</span>
       <h3>Canyoning — Canyon de Chaley (Bugey)</h3>
       <p>Avec Canyoning Emotions : sauts, toboggans naturels et rappels dans les gorges de l'Albarine. Combinaisons fournies ; prévoir maillot, serviette et baskets qui peuvent aller dans l'eau. Départ de l'Airbnb 13:30. Demander à JB un créneau groupe 14:30 (privatisable à 6).</p>
       <div class="tagrow"><span class="tag euro">~45-55 €/pers</span><span class="tag warn">Caler le créneau par téléphone avec JB</span></div>
@@ -387,6 +418,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
         <a class="waze" href="https://waze.com/ul?q=Chaley%2001230&navigate=yes">🧭 Waze</a>
       </div>
     </div>
+
+    <div class="leg">🚗 ~55 min</div>
 
     <div class="stop pool">
       <span class="time">19:00</span><span class="dur">⏱ 1h15</span>
@@ -399,7 +432,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>BBQ + soirée jeux</h3>
       <p>Quiz sur Jérémie, gages, bière-pong. Personne ne conduit ce soir.</p>
       <div class="meta">
-        <button class="food" data-m="m-bbq">🍽 Menu BBQ</button>
+        <button class="food" data-m="m-bbq">🍽 Repas</button>
       </div>
     </div>
   </div>
@@ -420,7 +453,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Brunch + départ de Romain</h3>
       <p>Brunch collectif, Romain reprend la route après le café.</p>
       <div class="meta">
-        <button class="food" data-m="m-brunch">🍽 Menu brunch</button>
+        <button class="food" data-m="m-brunch">🍽 Repas</button>
       </div>
     </div>
 
@@ -430,8 +463,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>Une heure de flottaison. Sortie de l'eau 10:45, on plie les affaires.</p>
     </div>
 
+    <div class="leg">🚗 ~15 min</div>
+
     <div class="stop">
-      <span class="time">11:00</span><span class="drive">🚗 ~15 min</span><span class="dur">⏱ 1h</span>
+      <span class="time">11:00</span><span class="dur">⏱ 1h</span>
       <h3>Cité médiévale de Crémieu</h3>
       <button class="secret-dot" id="secret-dot" aria-label="infos">···</button>
       <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit. Retour à l'Airbnb 12:15.</p>
@@ -440,12 +475,14 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~15 min</div>
+
     <div class="stop key">
       <span class="time">12:30</span>
       <h3>Déjeuner de clôture — Airbnb</h3>
       <p>Grande pasta party avec les restes du BBQ, tout est dans les courses de vendredi. Zéro résa, zéro contrainte d'horaire.</p>
       <div class="meta">
-        <button class="food" data-m="m-dejdim">🍽 Menu du déjeuner</button>
+        <button class="food" data-m="m-dejdim">🍽 Repas</button>
       </div>
     </div>
 
@@ -592,17 +629,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   </div>
 </div>
 
-<div class="overlay" id="m-collation">
-  <div class="modal">
-    <h3>🍽 Collation de route — à préparer jeudi soir</h3>
-    <h4>Dans la voiture au départ</h4>
-    <ul><li>Thermos de café + gobelets (pour Duncan aussi)</li><li>Jus de fruits ou eau (1,5 L)</li><li>Viennoiseries ou brioche, bananes</li><li>Barres de céréales pour tenir jusqu'au karting</li></ul>
-    <h4>Pour le kidnapping de Jérémie</h4>
-    <ul><li>Un croissant et un café en rab : on enlève les gens, on ne les affame pas</li></ul>
-    <p class="note">À acheter la veille près de chez toi : rien n'est ouvert à 6h du matin.</p>
-    <button class="close">Fermer</button>
-  </div>
-</div>
+
 
 <div class="overlay" id="m-apero">
   <div class="modal">
@@ -747,6 +774,9 @@ function refreshNav(){
 }
 window.addEventListener("scroll",refreshNav,{passive:true});
 refreshNav();
+var orgaEl=document.querySelector(".orga"),navEl2=document.querySelector("nav");
+function fixTops(){if(orgaEl&&navEl2){navEl2.style.top=orgaEl.offsetHeight+"px";}}
+window.addEventListener("resize",fixTops);fixTops();
 
 // Théâtre du pompier — moteur pixel-art
 (function(){
@@ -896,18 +926,40 @@ refreshNav();
   // Camion pixel sur la timeline
   var pin=document.getElementById("fireman-pin");
   if(pin){pin.textContent="";pin.appendChild(makeCanvas(TRUCK,PAL,2.6));}
+  window._truckCanvas=function(sc){return makeCanvas(TRUCK,PAL,sc);};
 })();
 
-// Pompier de progression : déplacer avec setProgress(n) — n = index de l'étape (0 = départ)
-window.setProgress=function(n){
+// Camion de progression automatique : suit le programme en temps réel
+// (entre deux étapes pendant les trajets, sur l'étape à l'heure dite ; figé au terminus après l'EVG)
+var STOP_TIMES=[
+ "2026-09-25T04:45","2026-09-25T05:15","2026-09-25T07:30","2026-09-25T07:40","2026-09-25T08:50",
+ "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T18:45","2026-09-25T19:45",
+ "2026-09-25T22:15","2026-09-26T01:30",
+ "2026-09-26T09:00","2026-09-26T09:30","2026-09-26T12:45","2026-09-26T14:30","2026-09-26T19:00","2026-09-26T20:15",
+ "2026-09-27T09:00","2026-09-27T09:45","2026-09-27T11:00","2026-09-27T12:30","2026-09-27T13:45",
+ "2026-09-27T14:15","2026-09-27T17:15","2026-09-27T19:25"
+].map(function(t){return new Date(t+":00+02:00").getTime();});
+function updateTruck(){
   var pin=document.getElementById("fireman-pin");
   var stops=document.querySelectorAll(".stop");
   if(!pin||!stops.length){return;}
-  var t=stops[Math.max(0,Math.min(n,stops.length-1))];
-  t.style.position="relative";
-  t.appendChild(pin);
-};
-setProgress(0); // pour le moment : au départ
+  if(pin.parentNode!==document.body){pin.style.position="absolute";document.body.appendChild(pin);}
+  var now=Date.now(),i=0,frac=0,n=STOP_TIMES.length;
+  if(now>=STOP_TIMES[n-1]){i=n-1;frac=0;}
+  else if(now>STOP_TIMES[0]){
+    for(var k=0;k<n-1;k++){if(now>=STOP_TIMES[k]&&now<STOP_TIMES[k+1]){i=k;frac=(now-STOP_TIMES[k])/(STOP_TIMES[k+1]-STOP_TIMES[k]);break;}}
+  }
+  i=Math.min(i,stops.length-1);
+  var a=stops[i],b=stops[Math.min(i+1,stops.length-1)];
+  function pos(el){var r=el.getBoundingClientRect();return {top:r.top+window.scrollY+10,left:r.left+window.scrollX-54};}
+  var pa=pos(a),pb=pos(b);
+  pin.style.top=(pa.top+(pb.top-pa.top)*frac)+"px";
+  pin.style.left=pa.left+"px";
+}
+setInterval(updateTruck,60000);
+window.addEventListener("resize",updateTruck);
+window.addEventListener("load",updateTruck);
+setTimeout(updateTruck,300);
 
 // Zone secrète
 var SECRET="jeremieestunfifou";
@@ -926,22 +978,29 @@ document.getElementById("code-go").addEventListener("click",function(e){
   }
 });
 
-// Météo dynamique (Open-Meteo, se met à jour à chaque ouverture)
-var WX={0:"☀️ Ciel clair",1:"🌤 Plutôt clair",2:"⛅ Éclaircies",3:"☁️ Couvert",45:"🌫 Brouillard",48:"🌫 Brouillard",51:"🌦 Bruine",53:"🌦 Bruine",55:"🌧 Bruine forte",56:"🌧 Bruine verglaçante",57:"🌧 Bruine verglaçante",61:"🌧 Pluie faible",63:"🌧 Pluie",65:"🌧 Pluie forte",66:"🌧 Pluie verglaçante",67:"🌧 Pluie verglaçante",71:"🌨 Neige",73:"🌨 Neige",75:"🌨 Neige forte",80:"🌦 Averses",81:"🌧 Averses",82:"⛈ Fortes averses",95:"⛈ Orages",96:"⛈ Orages grêle",99:"⛈ Orages grêle"};
+// Météo dynamique — prévisions avant l'EVG, archives réelles après (rétrospective figée)
+var WXI={0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",48:"🌫",51:"🌦",53:"🌦",55:"🌧",56:"🌧",57:"🌧",61:"🌧",63:"🌧",65:"🌧",66:"🌧",67:"🌧",71:"🌨",73:"🌨",75:"🌨",80:"🌦",81:"🌧",82:"⛈",95:"⛈",96:"⛈",99:"⛈"};
 var spots=[
  {el:"wx1",date:"2026-09-25",lat:45.77,lon:4.84},
  {el:"wx2",date:"2026-09-26",lat:45.95,lon:5.43},
  {el:"wx3",date:"2026-09-27",lat:45.72,lon:5.25}
 ];
-spots.forEach(function(s){
-  var box=document.getElementById(s.el);
-  fetch("https://api.open-meteo.com/v1/forecast?latitude="+s.lat+"&longitude="+s.lon+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FParis&start_date="+s.date+"&end_date="+s.date)
-  .then(function(r){if(!r.ok){throw new Error("range");}return r.json();})
+spots.forEach(function(sp){
+  var box=document.getElementById(sp.el);
+  var past=(new Date(sp.date+"T23:59:00+02:00")).getTime() < (Date.now()-2*86400000);
+  var base=past?"https://archive-api.open-meteo.com/v1/archive":"https://api.open-meteo.com/v1/forecast";
+  var daily=past?"weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max":"weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max";
+  fetch(base+"?latitude="+sp.lat+"&longitude="+sp.lon+"&daily="+daily+"&timezone=Europe%2FParis&start_date="+sp.date+"&end_date="+sp.date)
+  .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
   .then(function(d){
-    if(!d.daily||d.daily.weather_code[0]===null){throw new Error("nodata");}
-    box.querySelector(".wxmain").textContent=WX[d.daily.weather_code[0]]||"—";
+    if(!d.daily||d.daily.weather_code[0]===null||d.daily.weather_code[0]===undefined){throw new Error("vide");}
+    box.querySelector(".wxmain").innerHTML='<span class="wxi'+(past?" frozen":"")+'">'+(WXI[d.daily.weather_code[0]]||"🌡")+'</span>';
     box.querySelector(".wxtemp").textContent=Math.round(d.daily.temperature_2m_min[0])+"° / "+Math.round(d.daily.temperature_2m_max[0])+"°";
-    box.querySelector(".wxrain").textContent="Pluie "+d.daily.precipitation_probability_max[0]+"%";
+    var bits=[];
+    if(past){if(d.daily.precipitation_sum&&d.daily.precipitation_sum[0]!==null){bits.push("💧 "+Math.round(d.daily.precipitation_sum[0])+" mm");}}
+    else{if(d.daily.precipitation_probability_max&&d.daily.precipitation_probability_max[0]!==null){bits.push("💧 "+d.daily.precipitation_probability_max[0]+" %");}}
+    if(d.daily.wind_speed_10m_max&&d.daily.wind_speed_10m_max[0]!==null){bits.push("💨 "+Math.round(d.daily.wind_speed_10m_max[0])+" km/h");}
+    box.querySelector(".wxrain").textContent=bits.join("  ");
   })
   .catch(function(){
     box.querySelector(".wxmain").innerHTML='<span class="sun">☀️</span>';
@@ -949,6 +1008,82 @@ spots.forEach(function(s){
     box.querySelector(".wxrain").textContent="dispo ~10 j avant";
   });
 });
+
+// Photos partagées par étape (stockées sur cet appareil)
+(function(){
+  var KEY="evgPhotos";
+  function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]");}catch(e){return [];}}
+  function saveAll(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true;}catch(e){alert("Stockage photos plein sur cet appareil : supprime quelques photos ou passe en qualité moindre.");return false;}}
+  var photos=load();
+  var stops=[].slice.call(document.querySelectorAll(".stop"));
+  function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
+  function dayOf(st){var sec=st.closest("section");var h=sec?sec.querySelector("h2"):null;return h?h.textContent.split("—")[0].trim():"";}
+  function render(){
+    stops.forEach(function(st,i){
+      var mine=photos.filter(function(ph){return ph.i===i;});
+      var stack=st.querySelector(".pstack");
+      if(!stack){stack=document.createElement("div");stack.className="pstack";st.appendChild(stack);
+        (function(idx){stack.addEventListener("click",function(){openGal([idx]);});})(i);}
+      stack.innerHTML="";
+      mine.slice(0,3).forEach(function(ph){var im=document.createElement("img");im.src=ph.d;stack.appendChild(im);});
+      if(mine.length>3){var m=document.createElement("span");m.className="pmore";m.textContent="+"+(mine.length-3)+" photos";stack.appendChild(m);}
+      stack.style.display=mine.length?"flex":"none";
+    });
+  }
+  function shrink(file,cb){
+    var r=new FileReader();
+    r.onload=function(){
+      var img=new Image();
+      img.onload=function(){
+        var mx=1000,sc=Math.min(1,mx/Math.max(img.width,img.height));
+        var c=document.createElement("canvas");c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);
+        c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+        cb(c.toDataURL("image/jpeg",0.72));
+      };
+      img.src=r.result;
+    };
+    r.readAsDataURL(file);
+  }
+  stops.forEach(function(st,i){
+    var meta=st.querySelector(".meta");
+    if(!meta){meta=document.createElement("div");meta.className="meta";st.appendChild(meta);}
+    var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter une photo";
+    var inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.multiple=true;inp.style.display="none";
+    b.addEventListener("click",function(){inp.click();});
+    inp.addEventListener("change",function(){
+      [].slice.call(inp.files).forEach(function(f){
+        shrink(f,function(d){photos.push({i:i,d:d,t:Date.now()});if(saveAll(photos)){render();}});
+      });
+      inp.value="";
+    });
+    meta.appendChild(b);meta.appendChild(inp);
+  });
+  var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
+  gal.innerHTML='<div class="modal"><h3>📸 Photos</h3><div id="galbody"></div><button class="close">Fermer</button></div>';
+  document.body.appendChild(gal);
+  gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");}});
+  function openGal(idxs){
+    var body=document.getElementById("galbody");body.innerHTML="";
+    var any=false;
+    idxs.forEach(function(i){
+      var mine=photos.filter(function(ph){return ph.i===i;});
+      if(!mine.length){return;}
+      any=true;
+      var h=document.createElement("h4");h.textContent=(dayOf(stops[i])?dayOf(stops[i])+" · ":"")+stopName(stops[i]);
+      body.appendChild(h);
+      mine.forEach(function(ph){var im=document.createElement("img");im.className="gimg";im.src=ph.d;body.appendChild(im);});
+    });
+    if(!any){var e=document.createElement("p");e.textContent="Pas encore de photo. Le bouton 📸 de chaque étape permet d'en ajouter.";body.appendChild(e);}
+    gal.classList.add("open");
+  }
+  var retro=document.createElement("div");retro.className="retro";
+  retro.innerHTML='<div class="retro-truck"></div><h2>🏁 Terminus — la rétrospective</h2><p>Toutes les photos du week-end, étape par étape, à garder pour Jérémie.</p>';
+  var quick=document.querySelector(".quick");
+  if(quick){quick.parentNode.insertBefore(retro,quick);}else{document.body.appendChild(retro);}
+  if(window._truckCanvas){retro.querySelector(".retro-truck").appendChild(window._truckCanvas(3.4));}
+  retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
+  render();
+})();
 </script>
 
 </body>
