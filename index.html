@@ -1023,14 +1023,16 @@ spots.forEach(function(sp){
   });
 });
 
-// Photos partagées par étape (stockées sur cet appareil)
+// Photos partagées entre tous les participants (Supabase)
 (function(){
-  var KEY="evgPhotos",PASS="jeremieestunfifou";
-  function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]");}catch(e){return [];}}
-  function saveAll(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true;}catch(e){alert("Stockage photos plein sur cet appareil.");return false;}}
-  var photos=load();
+  var SB_URL="https://pryrofztqabprfsbauvo.supabase.co";
+  var SB_KEY="sb_publishable_1T3y9KiP4jzeAVF7xQkYKw_l35iOg0l";
+  var API=SB_URL+"/rest/v1/evg_photos";
+  var HDR={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};
+  var PASS="jeremieestunfifou";
+  var photos=[];
   var stops=[].slice.call(document.querySelectorAll(".stop"));
-  var cur=0,lastIdxs=null;
+  var cur=0,lastIdxs=null,galOpen=false;
   function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
   function dayOf(st){var sec=st.closest("section");var h=sec?sec.querySelector("h2"):null;return h?h.textContent.split("—")[0].trim():"";}
   function render(){
@@ -1045,33 +1047,47 @@ spots.forEach(function(sp){
       stack.style.display=mine.length?"flex":"none";
     });
   }
+  function fetchPhotos(){
+    return fetch(API+"?select=id,stop_i,data,created_at&order=created_at.asc",{headers:HDR})
+      .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
+      .then(function(rows){
+        photos=rows.map(function(r){return {id:r.id,i:r.stop_i,d:r.data,t:r.created_at};});
+        render();
+        if(galOpen&&lastIdxs){openGal(lastIdxs);}
+      })
+      .catch(function(){});
+  }
   function shrink(file,cb){
     var r=new FileReader();
     r.onload=function(){
       var img=new Image();
       img.onload=function(){
-        var mx=1000,sc=Math.min(1,mx/Math.max(img.width,img.height));
+        var mx=900,sc=Math.min(1,mx/Math.max(img.width,img.height));
         var c=document.createElement("canvas");c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);
         c.getContext("2d").drawImage(img,0,0,c.width,c.height);
-        cb(c.toDataURL("image/jpeg",0.72));
+        cb(c.toDataURL("image/jpeg",0.7));
       };
       img.src=r.result;
     };
     r.readAsDataURL(file);
   }
-  // deux entrées : appareil photo direct / galerie du téléphone
+  function upload(d,btn){
+    if(btn){btn.textContent="⏳";}
+    fetch(API,{method:"POST",headers:HDR,body:JSON.stringify({stop_i:cur,data:d})})
+      .then(function(r){if(!r.ok){throw new Error("hs");}return fetchPhotos();})
+      .catch(function(){alert("Envoi impossible : vérifie la connexion (la photo n'a pas été partagée).");})
+      .then(function(){if(btn){btn.textContent="📸";}});
+  }
   var inpCam=document.createElement("input");inpCam.type="file";inpCam.accept="image/*";inpCam.setAttribute("capture","environment");inpCam.style.display="none";
   var inpLib=document.createElement("input");inpLib.type="file";inpLib.accept="image/*";inpLib.multiple=true;inpLib.style.display="none";
   document.body.appendChild(inpCam);document.body.appendChild(inpLib);
+  var curBtn=null;
   function onFiles(inp){
-    [].slice.call(inp.files).forEach(function(f){
-      shrink(f,function(d){photos.push({i:cur,d:d,t:Date.now()});if(saveAll(photos)){render();}});
-    });
+    [].slice.call(inp.files).forEach(function(f){shrink(f,function(d){upload(d,curBtn);});});
     inp.value="";
   }
   inpCam.addEventListener("change",function(){onFiles(inpCam);srcModal.classList.remove("open");});
   inpLib.addEventListener("change",function(){onFiles(inpLib);srcModal.classList.remove("open");});
-  // choix de la source
   var srcModal=document.createElement("div");srcModal.className="overlay";srcModal.id="m-photosrc";
   srcModal.innerHTML='<div class="modal"><h3>📸 Ajouter une photo</h3><button class="srcbtn" id="src-cam">📷 Prendre une photo</button><button class="srcbtn" id="src-lib">🖼 Choisir dans la galerie</button><button class="close">Annuler</button></div>';
   document.body.appendChild(srcModal);
@@ -1080,16 +1096,15 @@ spots.forEach(function(sp){
   document.getElementById("src-lib").addEventListener("click",function(){inpLib.click();});
   stops.forEach(function(st,i){
     var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter une photo";
-    b.addEventListener("click",function(){cur=i;srcModal.classList.add("open");});
+    b.addEventListener("click",function(){cur=i;curBtn=b;srcModal.classList.add("open");});
     st.appendChild(b);
   });
-  // galerie
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
   gal.innerHTML='<div class="modal"><h3>📸 Photos</h3><div id="galbody"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
-  gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");}});
+  gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;}});
   function openGal(idxs){
-    lastIdxs=idxs;
+    lastIdxs=idxs;galOpen=true;
     var body=document.getElementById("galbody");body.innerHTML="";
     var any=false;
     idxs.forEach(function(i){
@@ -1101,13 +1116,14 @@ spots.forEach(function(sp){
       mine.forEach(function(ph){
         var im=document.createElement("img");im.className="gimg";im.src=ph.d;body.appendChild(im);
         var row=document.createElement("div");row.className="gbtns";
-        var dl=document.createElement("a");dl.textContent="⬇ Télécharger";dl.href=ph.d;dl.download="evg-jeremie-"+ph.t+".jpg";
+        var dl=document.createElement("a");dl.textContent="⬇ Télécharger";dl.href=ph.d;dl.download="evg-jeremie-"+ph.id+".jpg";
         var del=document.createElement("button");del.textContent="🗑 Supprimer";
         del.addEventListener("click",function(){
           var mp=prompt("Mot de passe pour supprimer :");
           if(mp&&mp.trim().toLowerCase()===PASS){
-            photos=photos.filter(function(q){return !(q.t===ph.t&&q.i===ph.i);});
-            saveAll(photos);render();openGal(lastIdxs);
+            fetch(API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR})
+              .then(function(r){if(!r.ok){throw new Error("hs");}return fetchPhotos();})
+              .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
           }else if(mp!==null){alert("Mauvais mot de passe.");}
         });
         row.appendChild(dl);row.appendChild(del);body.appendChild(row);
@@ -1122,7 +1138,8 @@ spots.forEach(function(sp){
   if(quick){quick.parentNode.insertBefore(retro,quick);}else{document.body.appendChild(retro);}
   if(window._truckCanvas){retro.querySelector(".retro-truck").appendChild(window._truckCanvas(3.4));}
   retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
-  render();
+  fetchPhotos();
+  setInterval(fetchPhotos,60000);
 })();
 </script>
 
