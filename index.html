@@ -154,8 +154,15 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .pstack img:nth-child(2){transform:rotate(3deg)}
 .pstack img:nth-child(3){transform:rotate(-1deg)}
 .pmore{margin-left:24px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
-#m-gal .gimg{width:100%;border-radius:8px;margin:.35rem 0 .1rem;display:block}
-.gbtns{display:flex;gap:8px;margin:0 0 12px}
+.slide-wrap{position:relative;background:#111318;border-radius:10px;overflow:hidden}
+#gimg{width:100%;max-height:58vh;object-fit:contain;display:block}
+.gnavbtn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--ink);font-size:1.5rem;font-weight:700;cursor:pointer;line-height:1;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+#gprev{left:8px}
+#gnext{right:8px}
+.gnavbtn:disabled{opacity:.25}
+#gcap{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--sign);margin:.2rem 0 .5rem;min-height:1.2em}
+#gcount{text-align:center;font-family:'Barlow Condensed';font-weight:700;font-size:.9rem;color:#6a6e76;margin:.4rem 0 0}
+.gbtns{display:flex;gap:8px;margin:10px 0 2px;justify-content:center}
 .gbtns a,.gbtns button{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;padding:.35rem .6rem;border-radius:6px;border:none;cursor:pointer;text-decoration:none}
 .gbtns a{background:#33CCFF;color:#062A3A}
 .gbtns button{background:#ECEBE4;color:var(--borne)}
@@ -686,7 +693,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="modal">
     <h3>🥐 Collation de route — départ 04:45</h3>
     <h4>À préparer la veille</h4>
-    <ul><li>Thermos de café + gobelets</li><li>Bouteilles d'eau, bananes, barres de céréales</li></ul>
+    <ul><li>Thermos de café + gobelets</li><li>Pack de petites bouteilles d'eau</li><li>Bananes, barres de céréales</li></ul>
+    <h4>Cochonneries pour tenir</h4>
+    <ul><li>Bonbons : Dragibus, Tagada, crocos — le sac d'1 kg, soyons sérieux</li><li>Chips ou Curly (format tube, ça ne s'écrase pas)</li><li>Fruits secs et amandes pour la caution santé</li><li>Chewing-gums + boisson énergisante fraîche pour le conducteur</li></ul>
     <h4>Sur la route</h4>
     <ul><li>Rien n'est ouvert à 4h45 : premier vrai café à l'aire de Limours-Janvry (A10, 24h/24, ~25 min après St-Michel)</li><li>Viennoiseries possibles dès 7h dans une boulangerie de Bourges, à 10 min de Sainte-Solange</li></ul>
     <button class="close">Fermer</button>
@@ -1100,36 +1109,66 @@ spots.forEach(function(sp){
     st.appendChild(b);
   });
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
-  gal.innerHTML='<div class="modal"><h3>📸 Photos</h3><div id="galbody"></div><button class="close">Fermer</button></div>';
+  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><a id="gdl">⬇ Télécharger</a><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
   gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;}});
-  function openGal(idxs){
-    lastIdxs=idxs;galOpen=true;
-    var body=document.getElementById("galbody");body.innerHTML="";
-    var any=false;
+  var slides=[],gi=0;
+  function buildSlides(idxs){
+    slides=[];
     idxs.forEach(function(i){
-      var mine=photos.filter(function(ph){return ph.i===i;});
-      if(!mine.length){return;}
-      any=true;
-      var h=document.createElement("h4");h.textContent=(dayOf(stops[i])?dayOf(stops[i])+" · ":"")+stopName(stops[i]);
-      body.appendChild(h);
-      mine.forEach(function(ph){
-        var im=document.createElement("img");im.className="gimg";im.src=ph.d;body.appendChild(im);
-        var row=document.createElement("div");row.className="gbtns";
-        var dl=document.createElement("a");dl.textContent="⬇ Télécharger";dl.href=ph.d;dl.download="evg-jeremie-"+ph.id+".jpg";
-        var del=document.createElement("button");del.textContent="🗑 Supprimer";
-        del.addEventListener("click",function(){
-          var mp=prompt("Mot de passe pour supprimer :");
-          if(mp&&mp.trim().toLowerCase()===PASS){
-            fetch(API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR})
-              .then(function(r){if(!r.ok){throw new Error("hs");}return fetchPhotos();})
-              .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
-          }else if(mp!==null){alert("Mauvais mot de passe.");}
-        });
-        row.appendChild(dl);row.appendChild(del);body.appendChild(row);
+      photos.filter(function(ph){return ph.i===i;}).forEach(function(ph){
+        slides.push({ph:ph,label:(dayOf(stops[i])?dayOf(stops[i])+" · ":"")+stopName(stops[i])});
       });
     });
-    if(!any){var e=document.createElement("p");e.textContent="Pas encore de photo. Le bouton 📸 de chaque étape permet d'en ajouter.";body.appendChild(e);}
+  }
+  function showSlide(){
+    var cap=document.getElementById("gcap"),img=document.getElementById("gimg"),
+        cnt=document.getElementById("gcount"),dl=document.getElementById("gdl"),
+        del=document.getElementById("gdel"),pv=document.getElementById("gprev"),nx=document.getElementById("gnext");
+    if(!slides.length){
+      cap.textContent="Pas encore de photo";img.removeAttribute("src");img.style.minHeight="120px";
+      cnt.textContent="Le bouton 📸 de chaque étape permet d'en ajouter";
+      dl.style.display="none";del.style.display="none";pv.disabled=true;nx.disabled=true;return;
+    }
+    gi=Math.max(0,Math.min(gi,slides.length-1));
+    var sl=slides[gi];
+    cap.textContent=sl.label;img.src=sl.ph.d;img.style.minHeight="";
+    cnt.textContent=(gi+1)+" / "+slides.length;
+    dl.style.display="";del.style.display="";
+    dl.href=sl.ph.d;dl.download="evg-jeremie-"+sl.ph.id+".jpg";
+    pv.disabled=(gi===0);nx.disabled=(gi===slides.length-1);
+  }
+  document.getElementById("gprev").addEventListener("click",function(){gi--;showSlide();});
+  document.getElementById("gnext").addEventListener("click",function(){gi++;showSlide();});
+  document.getElementById("gdel").addEventListener("click",function(){
+    if(!slides.length){return;}
+    var ph=slides[gi].ph;
+    var mp=prompt("Mot de passe pour supprimer :");
+    if(mp&&mp.trim().toLowerCase()===PASS){
+      fetch(API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR})
+        .then(function(r){if(!r.ok){throw new Error("hs");}return fetchPhotos();})
+        .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
+    }else if(mp!==null){alert("Mauvais mot de passe.");}
+  });
+  // glisser du doigt pour changer de photo
+  (function(){
+    var x0=null,wrap=gal;
+    wrap.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;},{passive:true});
+    wrap.addEventListener("touchend",function(e){
+      if(x0===null){return;}
+      var dx=e.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>50){if(dx<0&&gi<slides.length-1){gi++;}else if(dx>0&&gi>0){gi--;}showSlide();}
+    },{passive:true});
+  })();
+  function openGal(idxs){
+    lastIdxs=idxs;galOpen=true;
+    var keep=(slides[gi]&&slides[gi].ph)?slides[gi].ph.id:null;
+    buildSlides(idxs);
+    if(keep!==null){
+      var f=slides.findIndex(function(sl){return sl.ph.id===keep;});
+      gi=(f>=0)?f:0;
+    }else{gi=0;}
+    showSlide();
     gal.classList.add("open");
   }
   var retro=document.createElement("div");retro.className="retro";
