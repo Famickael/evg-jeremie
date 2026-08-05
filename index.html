@@ -44,7 +44,7 @@ header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-h
 
 /* ---------- Bandeau organisateurs ---------- */
 .orga{background:var(--amber);color:#231a00;padding:10px 18px;font-weight:700;font-size:.92rem;display:flex;gap:.6rem;align-items:center}
-.orga .dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;background:#231a00;box-shadow:0 0 0 3px rgba(35,26,0,.2)}
+.orga .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--borne);color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(208,52,44,.25)}
 
 /* ---------- Secret ---------- */
 .secret-dot{position:absolute;top:8px;right:10px;background:none;border:none;color:#C9C8C1;font-size:1rem;cursor:pointer;padding:.2rem .4rem}
@@ -89,7 +89,7 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 .stop::before{content:"";position:absolute;left:-28px;top:18px;width:16px;height:16px;background:#fff;border:4px solid var(--ink);border-radius:50%}
 .stop.key::before{border-color:var(--borne)}
 .stop.pool::before{border-color:#1D9BD8}
-.fireman-pin{position:absolute;left:-48px;top:10px;z-index:2;line-height:0;animation:bounce 1.6s ease-in-out infinite;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.fireman-pin{position:absolute;left:-54px;top:8px;z-index:2;line-height:0;animation:bounce 1.6s ease-in-out infinite;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
 .fireman-pin canvas{display:block;image-rendering:pixelated}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .time{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;color:#fff;background:var(--ink);display:inline-block;padding:.05rem .5rem;border-radius:3px;border-top:4px solid var(--borne)}
@@ -156,7 +156,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 </head>
 <body>
 
-<div class="orga"><span class="dot"></span>Ne pas partager à Jérémie !</div>
+<div class="orga"><span class="dot">!</span>Ne pas partager à Jérémie !</div>
 
 <header>
   <div class="hd-eyebrow">Roadbook · 25 → 27 septembre</div>
@@ -170,23 +170,20 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="wxcard" id="wx1">
     <div class="wxday">Ven · Lyon</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
-    <div class="wxtemp">Météo du jour</div>
+    <div class="wxtemp"></div>
     <div class="wxrain">dispo ~10 j avant</div>
-    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Lyon+vendredi+25+septembre" target="_blank">Détail →</a>
   </div>
   <div class="wxcard" id="wx2">
     <div class="wxday">Sam · Canyon</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
-    <div class="wxtemp">Météo du jour</div>
+    <div class="wxtemp"></div>
     <div class="wxrain">dispo ~10 j avant</div>
-    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Chaley+samedi+26+septembre" target="_blank">Détail →</a>
   </div>
   <div class="wxcard" id="wx3">
     <div class="wxday">Dim · Crémieu</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
-    <div class="wxtemp">Météo du jour</div>
+    <div class="wxtemp"></div>
     <div class="wxrain">dispo ~10 j avant</div>
-    <a href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Cr%C3%A9mieu+dimanche+27+septembre" target="_blank">Détail →</a>
   </div>
 </div>
 
@@ -208,7 +205,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
   <div class="road">
     <div class="stop">
-      <span class="time">06:15</span><span class="drive">🚗 ~35 min</span>
+      <span class="time">04:45</span><span class="drive">🚗 ~30 min</span>
       <h3>Départ — Le Plessis-Robinson</h3>
       <span class="fireman-pin" id="fireman-pin" title="On en est là"></span>
       <p>5 rue Claude Nicolas Ledoux. Direction Saint-Michel-sur-Orge. Café thermos conseillé.</p>
@@ -219,7 +216,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop">
-      <span class="time">06:50</span><span class="drive">🚗 ~2h05</span>
+      <span class="time">05:15</span><span class="drive">🚗 ~2h10</span>
       <h3>Récupération de Duncan — St-Michel-sur-Orge</h3>
       <p>Embarquement rapide puis N104 → A10 → A71 direction Bourges.</p>
       <div class="meta">
@@ -228,20 +225,20 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop key">
-      <span class="time">09:00</span>
+      <span class="time">07:30</span>
       <h3>Kidnapping — Sainte-Solange</h3>
-      <p>8 rue des Fauvettes, 18220. Sac de Jérémie préparé en douce par Aude, t-shirt EVG à lui enfiler direct, photo de départ. Décollage 09:45.</p>
+      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, café, photo. Décollage 08:15.</p>
       <div class="meta">
         <button class="food" data-m="m-sac">🎒 Sac de Jérémie (brief Aude)</button>
         <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze → Karting</a>
       </div>
-      <div class="tagrow"><span class="tag">🚗 ~1h00 vers Magny-Cours</span></div>
+      <div class="tagrow"><span class="tag">🚗 ~1h10 vers Magny-Cours</span></div>
     </div>
 
     <div class="stop key">
-      <span class="time">10:45</span>
+      <span class="time">09:30</span>
       <h3>Karting Nevers Magny-Cours</h3>
-      <p>Piste outdoor 1 110 m homologuée FFSA. 2 sessions de 10 min chacun + chrono : le dernier a un gage.</p>
+      <p>Arrivée avant l'ouverture de 10h : café et briefing. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
       <div class="tagrow"><span class="tag euro">~40 €/session</span></div>
       <div class="meta">
         <a class="book" href="https://www.kartingmagnycours.com" target="_blank">Réserver</a>
@@ -250,16 +247,16 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop">
-      <span class="time">12:45</span><span class="drive">🚗 ~45 min</span>
+      <span class="time">12:30</span><span class="drive">🚗 ~45 min</span>
       <h3>Déjeuner — Moulins</h3>
-      <p>Centre-ville ou aire de l'A79 selon l'horaire. Repartir à 14:00 max.</p>
+      <p>Centre-ville ou aire de l'A79 selon l'horaire. Repartir à 13:45 max.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Moulins%2003000&navigate=yes">🧭 Waze → Moulins</a>
       </div>
     </div>
 
     <div class="stop">
-      <span class="time">14:00</span><span class="drive">🚗 ~2h30</span>
+      <span class="time">13:45</span><span class="drive">🚗 ~2h30</span>
       <h3>Route → Panossas</h3>
       <p>A79 → A6 → A43/A432. Pause café vers Mâcon.</p>
       <div class="meta">
@@ -268,7 +265,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop">
-      <span class="time">16:30</span>
+      <span class="time">16:15</span>
       <h3>Check-in Airbnb + courses</h3>
       <p>17 Chemin du Château d'Eau, Panossas. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
       <div class="meta">
@@ -277,7 +274,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop pool">
-      <span class="time">17:15</span>
+      <span class="time">17:00</span>
       <h3>Piscine · jacuzzi · apéro</h3>
       <p>Première session détente : baignade, jacuzzi et apéro au bord de l'eau avant de se changer. Sortie de l'eau 18:15.</p>
       <div class="meta">
@@ -478,10 +475,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
 <!-- ================= ACCES RAPIDE ================= -->
 <div class="quick">
-  <button class="qbtn" data-m="m-courses">🛒 Courses</button>
   <button class="qbtn" data-m="m-resas">✅ Réservations</button>
   <button class="qbtn" data-m="m-budget">💶 Budget</button>
   <button class="qbtn" data-m="m-infos">ℹ️ Infos pratiques</button>
+  <a class="qbtn" href="https://tricount.com/tCnjYyKEXWhIMabwNh" target="_blank" style="display:flex;align-items:center;justify-content:center;text-decoration:none;background:var(--sign);border-top-color:var(--sign)">💶 Tricount</a>
 </div>
 
 <div class="overlay" id="m-resas">
@@ -492,7 +489,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="resa"><input type="checkbox" id="r2"><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
   <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Canyoning — créneau groupe 6 pers. sam. 14:30</strong>JB : <a href="tel:+33624921428">06 24 92 14 28</a> · <a href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">canyoningemotions.fr</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r4"><label class="txt" for="r4"><strong>4 · Paintball BSKS — 6 pers. sam. 10:00</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
-  <div class="resa"><input type="checkbox" id="r5"><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:45</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
+  <div class="resa"><input type="checkbox" id="r5"><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
   <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · Saut à l'élastique dim. matin (chut 🤫)</strong><a href="https://www.saut-elastique.com/place/lyon" target="_blank">comparer les spots</a> · <span class="due">à caler cette semaine</span></label></div>
 </div>
     <button class="close">Fermer</button>
@@ -635,14 +632,11 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
 <div class="overlay" id="m-collation">
   <div class="modal">
-    <h3>🥐 Collation du départ — vendredi 06:15</h3>
-    <h4>À préparer la veille (jeudi soir)</h4>
+    <h3>🥐 Collation de route — départ 04:45</h3>
+    <h4>À préparer la veille</h4>
     <ul><li>Thermos de café + gobelets</li><li>Bouteilles d'eau, bananes, barres de céréales</li></ul>
     <h4>Sur la route</h4>
-    <ul><li>À 6h15, peu de boulangeries ouvertes près de chez Mickaël au Plessis : viser une boulangerie tôt ouverte sur le trajet ou l'aire de Limours-Janvry (A10, ~20 min après St-Michel)</li><li>Viennoiseries : de quoi tenir jusqu'au karting</li><li>Deuxième café à la récupération de Duncan</li></ul>
-    <div class="meta" style="margin-top:.6rem">
-      <a href="https://maps.google.com/?q=boulangerie+Le+Plessis-Robinson" target="_blank">Boulangeries au Plessis</a>
-    </div>
+    <ul><li>Rien n'est ouvert à 4h45 : premier vrai café à l'aire de Limours-Janvry (A10, 24h/24, ~25 min après St-Michel)</li><li>Viennoiseries possibles dès 7h dans une boulangerie de Bourges, à 10 min de Sainte-Solange</li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -661,7 +655,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <li>Pièce d'identité</li>
       <li>Ses médicaments s'il en a</li>
     </ul>
-    <p class="note">Consigne à Aude : motus total, y compris sur le "week-end tranquille". S'il pose des questions, elle ne sait rien.</p>
+    
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -750,7 +744,7 @@ refreshNav();
   // ---- Sprites (1 caractère = 1 pixel) ----
   var PAL={H:"#D0342C",S:"#F2C29B",J:"#1F3A63",Y:"#F2A900",P:"#182B4F",B:"#14161A",
            C:"#2E86C1",W:"#CFE9FF",T:"#111318",V:"#5B6570",G:"#D8A95B",
-           M:"#C9CDD3",D:"#8A93A0",R:"#D0342C",K:"#E85C8A",L:"#C9CDD3"};
+           M:"#C9CDD3",D:"#8A93A0",R:"#D0342C",K:"#E85C8A",L:"#FFE08A",F:"#2A1B3D",N:"#FF4FA3",Q:"#120A1E"};
   var HERO=[
    ["..HHHHH...",".HHHHHHH..",".HSSSSSH..","..SSSSS...","..JJJJJ...",".JJYYYJJ..",".JJJJJJJ..",".JJJJJJJ..",".JYYYYYJ..","..JJJJJ...","..PPPPP...","..PP.PP...","..P...P...","..B...B...",".BB...BB.."],
    ["..HHHHH...",".HHHHHHH..",".HSSSSSH..","..SSSSS...","..JJJJJ...",".JJYYYJJ..",".JJJJJJJ..",".JJJJJJJ..",".JYYYYYJ..","..JJJJJ...","..PPPPP...",".PP...PP..",".P.....P..",".B.....B..","BB.....BB."],
@@ -760,8 +754,26 @@ refreshNav();
   var CAR=[["....................","......CCCCCC........",".....CWWCCWWC.......","....CCCCCCCCCC......","..CCCCCCCCCCCCCC....",".CCCCCCCCCCCCCCCC...",".CCCCCCCCCCCCCCCC...","...TT........TT.....","..TTTT......TTTT....","...TT........TT....."]];
   var VAN=[[".VVVVVVVVVVVVVVVV.....",".VWWVVVVVVVVVVVVVV....",".VWWVVVVVVVVVVVVVVV...",".VVVVVVVVVVVVVVVVVV...",".VVVVVVVVVVVVVVVVVV...",".VVVVVVVVVVVVVVVVVV...","...TT..........TT.....","..TTTT........TTTT....","...TT..........TT....."]];
   var TRUCK=[["....LLLLLLLLLL......",".RRRRRRRRRRRRRRR....",".RWWRRRRRRRRRRRR....",".RWWRRRRRRRRRRRRR...",".RRRRRRRRRRRRRRRR...",".RRRRRYYRRRRRRRRR...",".RRRRRRRRRRRRRRRR...","...TT.........TT....","..TTTT.......TTTT...","...TT.........TT...."]];
-  var BAGUETTE=[["......GG..","...GGGGG..",".GGGGG....",".GG......."]];
-  var DISCO=[["....M....","...MMM...","..MDMDM..",".MDMDMDM.",".MMDMDMM.",".MDMDMDM.","..MDMDM..","...MMM..."]];
+  var BAGUETTE=[
+   [".GGGGGGGGGG.","GGGGGGGGGGGG","GGGGGGGGGGGG",".GGGGGGGGGG."],
+   ["............","......GGGGGG","......GGGGGG",".......GGGG."],
+   ["............","..........GG","..........GG","............"]
+  ];
+  var CLUB=[[
+   "....NN....NN......",
+   "...NNNN..NNNN.....",
+   "...NNNNNNNNNN.....",
+   "....NNNNNNNN......",
+   "......NNNN........",
+   ".FFFFFFFFFFFFFFFF.",
+   ".FFFFFFFFFFFFFFFF.",
+   ".FFFFFQQQQQQFFFFF.",
+   ".FFFFFQQQQQQFFFFF.",
+   ".FFFFFQQLLQQFFFFF.",
+   ".FFFFFQQQQQQFFFFF.",
+   ".FFFFFQQQQQQFFFFF.",
+   ".FFFFFQQQQQQFFFFF.",
+   "NNNNNNNNNNNNNNNNNN"]];
   var HEART=[[".KK.KK.","KKKKKKK","KKKKKKK",".KKKKK.","..KKK..","...K..."]];
   var EXCLAM=[["RR","RR","RR","RR","RR","..","RR","RR"]];
 
@@ -808,9 +820,11 @@ refreshNav();
   // ---- Scènes ----
   function scEat(){
     var hx=parseFloat(hero.style.left);
-    var snack=actor(BAGUETTE,PAL,2.4,Math.min(hx+30,W()-40));
+    var snack=actor(BAGUETTE,PAL,3,Math.min(hx+14,W()-50));
+    snack.style.bottom="12px";
     hero._cls="eating";st(hero,"eating");
-    return wait(2600).then(function(){rm(snack);hero._cls="";st(hero,"");});
+    var fi=0;snack._t=setInterval(function(){fi++;drawFrame(snack._c,Math.min(fi,2));},1000);
+    return wait(3400).then(function(){rm(snack);hero._cls="";st(hero,"");});
   }
   function scFriends(){
     var f=actor(HERO,FRIEND_PAL,2.6,W()+10);
@@ -824,14 +838,14 @@ refreshNav();
     }).then(function(){rm(f);});
   }
   function scCar(){
-    var car=actor(CAR,PAL,2.2,-70);
+    var car=actor(CAR,PAL,3.2,-90);
     return move(car,parseFloat(hero.style.left)-12,1400).then(function(){
       hero.style.opacity="0";return move(car,W()+70,1500);
     }).then(function(){rm(car);return wait(900);}).then(function(){
       setLeft(hero,-50);hero.style.opacity="1";return wait(150);});
   }
   function scKidnap(){
-    var van=actor(VAN,PAL,2.2,W()+30);
+    var van=actor(VAN,PAL,3.2,W()+40);
     return move(van,parseFloat(hero.style.left)+2,1300).then(function(){
       var ex=actor(EXCLAM,PAL,2,parseFloat(hero.style.left)+10);
       ex.style.bottom="34px";st(ex,"floatup");
@@ -841,11 +855,15 @@ refreshNav();
       setLeft(hero,-50);hero.style.opacity="1";return wait(150);});
   }
   function scClub(){
-    var club=actor(DISCO,PAL,2.4,W()-32);
-    return heroWalk(W()-62,0.06).then(function(){
+    var cx=W()-62;
+    var club=actor(CLUB,PAL,2.8,cx);
+    return heroWalk(cx+12,0.06).then(function(){
       hero.style.opacity="0";
-      var h=actor(HEART,PAL,2,W()-56);h.style.bottom="26px";st(h,"floatup");
-      return wait(2600).then(function(){rm(h);});
+      var h=actor(HEART,PAL,2.6,cx+16);h.style.bottom="42px";st(h,"floatup");
+      return wait(1400).then(function(){
+        var h2=actor(HEART,PAL,2.2,cx+30);h2.style.bottom="42px";st(h2,"floatup");
+        return wait(1600).then(function(){rm(h);rm(h2);});
+      });
     }).then(function(){
       hero.style.opacity="1";face(hero,-1);rm(club);return wait(300);});
   }
@@ -865,7 +883,7 @@ refreshNav();
 
   // Camion pixel sur la timeline
   var pin=document.getElementById("fireman-pin");
-  if(pin){pin.textContent="";pin.appendChild(makeCanvas(TRUCK,PAL,2.2));}
+  if(pin){pin.textContent="";pin.appendChild(makeCanvas(TRUCK,PAL,2.6));}
 })();
 
 // Pompier de progression : déplacer avec setProgress(n) — n = index de l'étape (0 = départ)
@@ -915,7 +933,7 @@ spots.forEach(function(s){
   })
   .catch(function(){
     box.querySelector(".wxmain").innerHTML='<span class="sun">☀️</span>';
-    box.querySelector(".wxtemp").textContent="Météo du jour";
+    box.querySelector(".wxtemp").textContent="";
     box.querySelector(".wxrain").textContent="dispo ~10 j avant";
   });
 });
