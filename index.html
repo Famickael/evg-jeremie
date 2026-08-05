@@ -94,6 +94,8 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .time{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;color:#fff;background:var(--ink);display:inline-block;padding:.05rem .5rem;border-radius:3px;border-top:4px solid var(--borne)}
 .drive{display:inline-block;margin-left:.4rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#fff;background:var(--route);padding:.15rem .5rem;border-radius:3px}
+.dur{display:inline-block;margin-left:.4rem;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#fff;background:var(--sign);padding:.15rem .5rem;border-radius:3px}
+.meta .done{display:inline-flex;align-items:center;gap:.3rem;font-weight:700;font-size:.85rem;padding:.45rem .7rem;border-radius:6px;background:var(--sign);color:#fff;border:1.5px solid var(--sign)}
 .stop h3{font-family:'Barlow Condensed';font-weight:700;font-size:1.2rem;text-transform:uppercase;margin:.35rem 0 .15rem;line-height:1.1}
 .stop p{font-size:.92rem;margin:.25rem 0;color:#3a3e46}
 .meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.55rem}
@@ -210,7 +212,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <span class="fireman-pin" id="fireman-pin" title="On en est là"></span>
       <p>5 rue Claude Nicolas Ledoux. Direction Saint-Michel-sur-Orge. Café thermos conseillé.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze → St-Michel-sur-Orge</a>
+        <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze</a>
         <button class="food" data-m="m-collation">🍽 Collation</button>
       </div>
     </div>
@@ -220,25 +222,32 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Récupération de Duncan — St-Michel-sur-Orge</h3>
       <p>Embarquement rapide puis N104 → A10 → A71 direction Bourges.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze → Sainte-Solange</a>
+        <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
     <div class="stop key">
       <span class="time">07:30</span>
       <h3>Kidnapping — Sainte-Solange</h3>
-      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, café, photo. Décollage 08:15.</p>
+      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo.</p>
       <div class="meta">
         <button class="food" data-m="m-sac">🎒 Sac de Jérémie (brief Aude)</button>
-        <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze → Karting</a>
       </div>
-      <div class="tagrow"><span class="tag">🚗 ~1h10 vers Magny-Cours</span></div>
+    </div>
+
+    <div class="stop">
+      <span class="time">07:40</span><span class="drive">🚗 ~1h10</span>
+      <h3>Départ de Sainte-Solange</h3>
+      <p>Direction Magny-Cours par Bourges puis Nevers. Croissants possibles au passage à Bourges (boulangeries ouvertes dès 7h).</p>
+      <div class="meta">
+        <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze</a>
+      </div>
     </div>
 
     <div class="stop key">
-      <span class="time">09:30</span>
+      <span class="time">08:50</span><span class="dur">⏱ 1h30 de piste</span>
       <h3>Karting Nevers Magny-Cours</h3>
-      <p>Arrivée avant l'ouverture de 10h : café et briefing. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
+      <p>Grosse avance sur l'ouverture de 10h : petit-déjeuner tranquille à Nevers ou café au circuit. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
       <div class="tagrow"><span class="tag euro">~40 €/session</span></div>
       <div class="meta">
         <a class="book" href="https://www.kartingmagnycours.com" target="_blank">Réserver</a>
@@ -247,11 +256,11 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop">
-      <span class="time">12:30</span><span class="drive">🚗 ~45 min</span>
+      <span class="time">12:30</span><span class="drive">🚗 ~45 min</span><span class="dur">⏱ 1h15</span>
       <h3>Déjeuner — Moulins</h3>
       <p>Centre-ville ou aire de l'A79 selon l'horaire. Repartir à 13:45 max.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Moulins%2003000&navigate=yes">🧭 Waze → Moulins</a>
+        <a class="waze" href="https://waze.com/ul?q=Moulins%2003000&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -260,7 +269,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Route → Panossas</h3>
       <p>A79 → A6 → A43/A432. Pause café vers Mâcon.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb</a>
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -274,7 +283,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop pool">
-      <span class="time">17:00</span>
+      <span class="time">17:00</span><span class="dur">⏱ 1h15</span>
       <h3>Piscine · jacuzzi · apéro</h3>
       <p>Première session détente : baignade, jacuzzi et apéro au bord de l'eau avant de se changer. Sortie de l'eau 18:15.</p>
       <div class="meta">
@@ -287,29 +296,31 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Départ Lyon — parking Cité Internationale</h3>
       <p>Se garer à la Cité Internationale : le club est sur place, le resto à 10 min.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze → Parking</a>
+        <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
     <div class="stop key">
-      <span class="time">19:45</span>
+      <span class="time">19:45</span><span class="dur">⏱ 2h</span>
       <h3>Dîner — Brasserie des Brotteaux</h3>
       <p>1 place Jules Ferry, Lyon 6ᵉ. Service jusqu'à 22h. Plan B bouchon : L'Antr'Opotes, 118 rue Bossuet.</p>
       <div class="tagrow"><span class="tag euro">~35-50 €/pers</span></div>
       <div class="meta">
-        <a class="book" href="http://www.brasseriedesbrotteaux.com" target="_blank">Réserver</a>
+        <span class="done">✅ Réservé — 19h45</span>
         <a class="call" href="tel:+33472740398">📞 04 72 74 03 98</a>
+        <a href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
 
     <div class="stop key">
-      <span class="time">22:15</span>
+      <span class="time">22:15</span><span class="dur">⏱ ~3h</span>
       <h3>Bus Paradise — cabaret / strip club</h3>
       <p>44 quai Charles de Gaulle (Cité Internationale). Entrée 20 €, verre dès 30 €, show privé 90 €. Pic de soirée 0h-3h.</p>
       <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span><span class="tag euro">80-150 €/pers</span></div>
       <div class="meta">
         <a class="book" href="https://www.bus-paradise.com" target="_blank">Réserver table EVG</a>
         <a class="call" href="tel:+33423400947">📞 04 23 40 09 47</a>
+        <a href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
 
@@ -318,7 +329,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Retour Panossas</h3>
       <p>Retour direct A42/A432. Dodo, grosse journée le lendemain.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb</a>
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
     </div>
   </div>
@@ -340,12 +351,12 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>Mgn, Thierry et Romain rejoignent directement l'Airbnb.</p>
       <div class="meta">
         <button class="food" data-m="m-petitdej">🍽 Petit-déj</button>
-        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze → Airbnb (arrivants)</a>
+        <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
     <div class="stop key">
-      <span class="time">09:30</span><span class="drive">🚗 ~10 min</span>
+      <span class="time">09:30</span><span class="drive">🚗 ~10 min</span><span class="dur">⏱ 2h30 sur place</span>
       <h3>BSKS Paintball — Chamagnieu</h3>
       <p>Lieu-dit St Martin. Arriver 30 min avant le créneau de 10:00. À moins de 8 joueurs, regroupement avec un autre groupe = des adversaires. Archery tag / bubble foot possibles en complément.</p>
       <div class="tagrow"><span class="tag euro">~25-35 €/pers</span></div>
@@ -366,7 +377,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop key">
-      <span class="time">14:30</span><span class="drive">🚗 ~55 min</span>
+      <span class="time">14:30</span><span class="drive">🚗 ~55 min</span><span class="dur">⏱ ~3h</span>
       <h3>Canyoning — Canyon de Chaley (Bugey)</h3>
       <p>Avec Canyoning Emotions : sauts, toboggans naturels et rappels dans les gorges de l'Albarine. Combinaisons fournies ; prévoir maillot, serviette et baskets qui peuvent aller dans l'eau. Départ de l'Airbnb 13:30. Demander à JB un créneau groupe 14:30 (privatisable à 6).</p>
       <div class="tagrow"><span class="tag euro">~45-55 €/pers</span><span class="tag warn">Caler le créneau par téléphone avec JB</span></div>
@@ -378,7 +389,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop pool">
-      <span class="time">19:00</span>
+      <span class="time">19:00</span><span class="dur">⏱ 1h15</span>
       <h3>Piscine &amp; jacuzzi — récup</h3>
       <p>Retour ~18:45 (Waze → Airbnb). Session jacuzzi pour les courbatures du paintball, baignade, premières bières au bord de l'eau pendant que le charbon chauffe.</p>
     </div>
@@ -414,13 +425,13 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop pool">
-      <span class="time">09:45</span>
+      <span class="time">09:45</span><span class="dur">⏱ 1h</span>
       <h3>Dernière session piscine · jacuzzi</h3>
       <p>Une heure de flottaison. Sortie de l'eau 10:45, on plie les affaires.</p>
     </div>
 
     <div class="stop">
-      <span class="time">11:00</span><span class="drive">🚗 ~15 min</span>
+      <span class="time">11:00</span><span class="drive">🚗 ~15 min</span><span class="dur">⏱ 1h</span>
       <h3>Cité médiévale de Crémieu</h3>
       <button class="secret-dot" id="secret-dot" aria-label="infos">···</button>
       <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit. Retour à l'Airbnb 12:15.</p>
@@ -449,7 +460,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Retour 1 — Dépôt de Jérémie à Sainte-Solange</h3>
       <p>A43 → A46 → A6 → A79 → A71. Arrivée estimée 17:05.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze → Sainte-Solange</a>
+        <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -458,7 +469,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Retour 2 — Dépôt de Duncan à St-Michel-sur-Orge</h3>
       <p>A71 → A10 → N104. Arrivée estimée 19:20.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze → St-Michel-sur-Orge</a>
+        <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -467,7 +478,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <h3>Retour 3 — Le Plessis-Robinson</h3>
       <p>Arrivée estimée 20:00. Fin du roadbook, mission accomplie.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=5%20rue%20Claude%20Nicolas%20Ledoux%20Le%20Plessis-Robinson&navigate=yes">🧭 Waze → Plessis-Robinson</a>
+        <a class="waze" href="https://waze.com/ul?q=5%20rue%20Claude%20Nicolas%20Ledoux%20Le%20Plessis-Robinson&navigate=yes">🧭 Waze</a>
       </div>
     </div>
   </div>
@@ -486,7 +497,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="resas" id="resas">
   <h2>Résas — par ordre d'urgence</h2>
   <div class="resa"><input type="checkbox" id="r1"><label class="txt" for="r1"><strong>1 · Bus Paradise — table EVG 3 pers.</strong>vendredi 25 au soir · <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a> · <span class="due">cette semaine</span></label></div>
-  <div class="resa"><input type="checkbox" id="r2"><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
+  <div class="resa"><input type="checkbox" id="r2" checked><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45 ✅ Réservé</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
   <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Canyoning — créneau groupe 6 pers. sam. 14:30</strong>JB : <a href="tel:+33624921428">06 24 92 14 28</a> · <a href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">canyoningemotions.fr</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r4"><label class="txt" for="r4"><strong>4 · Paintball BSKS — 6 pers. sam. 10:00</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r5"><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
@@ -515,13 +526,14 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   </table>
   <h2>Participation estimée par personne</h2>
   <table>
-    <tr><td><b>Mickaël</b> · 3 jours complets, part essence/péages et parking incluse</td><td>≈ 480-680 €</td></tr>
-    <tr><td><b>Duncan</b> · 3 jours complets, part essence/péages et parking incluse</td><td>≈ 480-680 €</td></tr>
-    <tr><td><b>Jérémie</b> · 3 jours complets — si vous lui offrez le week-end : 0 €, et +95 à 135 € pour chacun des 5 autres</td><td>≈ 480-680 €</td></tr>
-    <tr><td><b>Mgn</b> · sam-dim (Airbnb, courses, paintball, canyoning, saut), hors trajet perso</td><td>≈ 250-300 €</td></tr>
-    <tr><td><b>Thierry</b> · sam-dim, même périmètre que Mgn, hors trajet perso</td><td>≈ 250-300 €</td></tr>
-    <tr><td><b>Romain</b> · samedi + nuit (paintball, canyoning, courses, Airbnb 1 nuit ou ÷6 selon la règle choisie), hors trajet perso, sans le saut du dimanche</td><td>≈ 145-220 €</td></tr>
+    <tr><td><b>Jérémie</b> · on lui offre tout 🎁</td><td><b>0 €</b></td></tr>
+    <tr><td><b>Mickaël</b> · 3 jours + part de Jérémie du vendredi (÷2 avec Duncan), du samedi (÷5) et du dimanche (÷4)</td><td>≈ 650-930 €</td></tr>
+    <tr><td><b>Duncan</b> · même périmètre que Mickaël</td><td>≈ 650-930 €</td></tr>
+    <tr><td><b>Mgn</b> · sam-dim + part de Jérémie du samedi (÷5) et du dimanche (÷4), hors trajet perso</td><td>≈ 300-365 €</td></tr>
+    <tr><td><b>Thierry</b> · même périmètre que Mgn</td><td>≈ 300-365 €</td></tr>
+    <tr><td><b>Romain</b> · samedi + nuit + part de Jérémie du samedi (÷5), hors trajet perso</td><td>≈ 185-265 €</td></tr>
   </table>
+  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La part de Jérémie (≈ 480-680 €) est répartie entre les autres au prorata des jours partagés avec lui : ses dépenses du vendredi entre Mickaël et Duncan, celles du samedi entre les 5, le saut du dimanche entre les 4 présents, Airbnb et courses entre les 5.</p>
   <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">Le saut à l'élastique (50-80 €) est compté pour chaque personne présente dimanche : retirez-le pour ceux qui regardent Jérémie tomber sans sauter.</p>
   <div style="padding:10px 14px 14px">
     <a href="https://tricount.com/tCnjYyKEXWhIMabwNh" target="_blank" style="display:block;text-align:center;background:var(--sign);color:#fff;text-decoration:none;border-radius:8px;padding:.75rem;font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.04em">💶 Tricount commun du week-end</a>
