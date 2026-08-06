@@ -47,11 +47,6 @@ header h1{font-family:'Barlow Condensed';font-weight:800;font-size:2.1rem;line-h
 .orga .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--borne);font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(255,255,255,.25)}
 
 /* ---------- Secret ---------- */
-.secret-dot{position:absolute;top:12px;right:58px;background:none;border:none;color:#C9C8C1;font-size:1rem;cursor:pointer;padding:.2rem .4rem}
-.code-in{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:.6rem .7rem;font-size:1rem;margin:.4rem 0}
-.code-err{color:var(--borne);font-weight:700;font-size:.85rem;min-height:1.2em}
-.modal.secret{border-top-color:var(--borne)}
-.btn-unlock{display:block;width:100%;margin-top:.9rem;background:var(--borne);color:#fff;border:none;border-radius:8px;padding:.7rem;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;text-transform:uppercase;cursor:pointer}
 
 /* ---------- Météo ---------- */
 .wx{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 14px;background:#E9E8E1}
@@ -242,7 +237,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <span class="time">04:45</span>
       <h3>Départ — Le Plessis-Robinson</h3>
       <span class="fireman-pin" id="fireman-pin" title="On en est là"></span>
-      <p>5 rue Claude Nicolas Ledoux. Direction Saint-Michel-sur-Orge. Café thermos conseillé.</p>
+      <p>Départ nocturne, direction Saint-Michel-sur-Orge. Café thermos conseillé.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze</a>
         <button class="food" data-m="m-collation">🍽 Collation</button>
@@ -263,9 +258,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h10</div>
 
     <div class="stop key">
-      <span class="time">07:30</span>
+      <span class="time">07:30</span><span class="dur">⏱ 10 min</span>
       <h3>Kidnapping — Sainte-Solange</h3>
-      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo. Décollage 07:40 direction Nevers.</p>
+      <p>Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo. Décollage 07:40 direction Nevers.</p>
       <div class="meta">
         <button class="food" data-m="m-sac">🎒 Sac de Jérémie</button>
         <a class="waze" href="https://waze.com/ul?q=Nevers%20centre&navigate=yes">🧭 Waze</a>
@@ -311,7 +306,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h30 · pause café vers Mâcon</div>
 
     <div class="stop">
-      <span class="time">16:15</span>
+      <span class="time">16:15</span><span class="dur">⏱ 45 min</span>
       <h3>Check-in — gîte Le Lemon Tree + courses</h3>
       <p>17 Chemin du Château d'Eau, Panossas. Arrivée possible dès 16h. Grange individuelle : 2 chambres, jacuzzi privatif sur la terrasse, BBQ fourni. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
       <div class="meta">
@@ -391,7 +386,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
   <div class="road">
     <div class="stop">
-      <span class="time">09:00</span>
+      <span class="time">09:00</span><span class="dur">⏱ 30 min</span>
       <h3>Petit-déj + arrivée des renforts</h3>
       <p>Mgn, Thierry et Romain rejoignent directement l'Airbnb.</p>
       <div class="meta">
@@ -417,7 +412,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~10 min</div>
 
     <div class="stop">
-      <span class="time">12:45</span>
+      <span class="time">12:45</span><span class="dur">⏱ 45 min</span>
       <h3>Déjeuner express Airbnb</h3>
       <p>Sandwichs/wraps préparés avec les courses de la veille. Départ 13:20.</p>
       <div class="meta">
@@ -448,7 +443,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     </div>
 
     <div class="stop">
-      <span class="time">20:15</span>
+      <span class="time">20:15</span><span class="dur">⏱ soirée</span>
       <h3>BBQ + soirée jeux</h3>
       <p>Quiz sur Jérémie, gages, bière-pong. Romain reprend la route dans la soirée (il lève le pied sur les bières). Village paisible et fêtes non admises au gîte : ambiance terrasse, pas boîte de nuit.</p>
       <div class="meta">
@@ -462,8 +457,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <section id="j3">
   <div class="day-sign">
     <div class="etape">Étape 3 · 5 personnes</div>
-    <h2>Dimanche 27 — Crémieu &amp; clôture</h2>
-    <div class="sub">Brunch → check-out → cité médiévale → pique-nique au lac → retours</div>
+    <h2>Dimanche 27 — Vol &amp; clôture</h2>
+    <div class="sub">Brunch → check-out → soufflerie → pique-nique → retours</div>
     <div class="who">👥 Mickaël · Duncan · Jérémie · Mgn · Thierry</div>
   </div>
 
@@ -489,36 +484,38 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>Règle du gîte : départ avant 11h00. Clés rendues, coffres chargés.</p>
     </div>
 
-    <div class="leg">🚗 ~15 min</div>
+    <div class="leg">🚗 ~25 min</div>
 
-    <div class="stop">
-      <span class="time">11:00</span><span class="dur">⏱ 1h15</span>
-      <h3>Cité médiévale de Crémieu</h3>
-      <button class="secret-dot" id="secret-dot" aria-label="infos">···</button>
-      <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit.</p>
+    <div class="stop key">
+      <span class="time">11:15</span><span class="dur">⏱ ~1h45</span>
+      <h3>Soufflerie iFLY Lyon — chute libre indoor</h3>
+      <p>Version officielle pour Jérémie jusqu'au dernier moment : on visite la cité médiévale de Crémieu 🤫. En vrai : 2 vols de chute libre indoor chacun dans la soufflerie de Saint-Priest. Convocation 1h avant le vol (briefing + combinaisons fournies), tenue sport ou jean-baskets.</p>
+      <div class="tagrow"><span class="tag euro">~50-70 €/pers</span><span class="tag warn">Pas de vol en cas d'épaule fragile (luxation)</span></div>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Cr%C3%A9mieu%2038460&navigate=yes">🧭 Waze</a>
+        <a class="book" href="https://booking.iflylyon.fr/adulte" target="_blank">Réserver</a>
+        <a class="waze" href="https://waze.com/ul?q=iFLY%20Lyon%20Saint-Priest&navigate=yes">🧭 Waze</a>
+        <button class="infob" data-m="i-ifly">ℹ️</button>
       </div>
     </div>
 
     <div class="leg">🚗 ~10 min</div>
 
-    <div class="stop key">
-      <span class="time">12:30</span><span class="dur">⏱ 1h15</span>
-      <h3>Pique-nique — lac de Vénérieu</h3>
-      <p>Salade de pâtes du brunch, restes du BBQ froids, chips, fruits. Zéro résa, et un lac pour la dernière photo. Départ des retours 13:45.</p>
+    <div class="stop">
+      <span class="time">13:15</span><span class="dur">⏱ 1h</span>
+      <h3>Pique-nique — parc de Parilly</h3>
+      <p>Salade de pâtes du brunch, restes de la plancha froids, chips, fruits. Grand parc au pied de l'A43, parfait avant de reprendre la route. Départ des retours 14:15.</p>
       <div class="meta">
         <button class="food" data-m="m-dejdim">🍽 Repas</button>
-        <a class="waze" href="https://waze.com/ul?q=Lac%20de%20V%C3%A9n%C3%A9rieu&navigate=yes">🧭 Waze</a>
+        <a class="waze" href="https://waze.com/ul?q=Parc%20de%20Parilly&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
     <div class="leg">🚗 ~2h50</div>
 
     <div class="stop">
-      <span class="time">16:35</span>
+      <span class="time">17:05</span>
       <h3>Dépôt de Jérémie — Sainte-Solange</h3>
-      <p>Départ du lac à 13:45, par A43 → A46 → A6 → A79 → A71.</p>
+      <p>Départ du parc à 14:15, par A46 → A6 → A79 → A71.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
@@ -527,7 +524,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h05</div>
 
     <div class="stop">
-      <span class="time">18:50</span>
+      <span class="time">19:20</span>
       <h3>Dépôt de Duncan — St-Michel-sur-Orge</h3>
       <p>Par A71 → A10 → N104.</p>
       <div class="meta">
@@ -538,7 +535,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~35 min</div>
 
     <div class="stop">
-      <span class="time">19:30</span>
+      <span class="time">20:00</span>
       <h3>Arrivée — Le Plessis-Robinson</h3>
       <p>Fin du roadbook, mission accomplie. 🏁</p>
       <div class="meta">
@@ -565,7 +562,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Canyoning — créneau groupe 6 pers. sam. 14:30</strong>JB : <a href="tel:+33624921428">06 24 92 14 28</a> · <a href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">canyoningemotions.fr</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r4"><label class="txt" for="r4"><strong>4 · Paintball BSKS — 6 pers. sam. 10:00</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r5" checked><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00 ✅ Réservé</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
-  <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · Saut à l'élastique dim. matin (chut 🤫)</strong><a href="https://www.saut-elastique.com/place/lyon" target="_blank">comparer les spots</a> · <span class="due">à caler cette semaine</span></label></div>
+  <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · Soufflerie iFLY Lyon — 5 pers. dim. (chut 🤫)</strong><a href="https://booking.iflylyon.fr/adulte" target="_blank">booking.iflylyon.fr</a> · <span class="due">à caler cette semaine</span></label></div>
 </div>
     <button class="close">Fermer</button>
   </div>
@@ -581,7 +578,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <tr><td>Bus Paradise (entrée + consos)</td><td>80-150 €</td></tr>
     <tr><td>Paintball</td><td>25-35 €</td></tr>
     <tr><td>Canyoning</td><td>45-55 €</td></tr>
-    <tr><td>Saut à l'élastique (surprise dim., par sauteur)</td><td>50-80 €</td></tr>
+    <tr><td>Soufflerie iFLY (surprise dim., 2 vols)</td><td>~50-70 €</td></tr>
     <tr><td>Déjeuner Moulins (ven., trio)</td><td>15-20 €</td></tr>
     <tr><td>Parking Cité Internationale (ven. soir)</td><td>~12 € / voiture</td></tr>
     <tr><td>Essence + péages voiture de Mickaël (~1 300 km)</td><td>~200 € ÷ 3</td></tr>
@@ -597,8 +594,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <tr><td><b>Thierry</b> · même périmètre que Mgn</td><td>≈ 300-365 €</td></tr>
     <tr><td><b>Romain</b> · samedi + nuit + part de Jérémie du samedi (÷5), hors trajet perso</td><td>≈ 185-265 €</td></tr>
   </table>
-  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La part de Jérémie (≈ 480-680 €) est répartie entre les autres au prorata des jours partagés avec lui : ses dépenses du vendredi entre Mickaël et Duncan, celles du samedi entre les 5, le saut du dimanche entre les 4 présents. L'Airbnb (600 €) se partage entre les 5 payeurs, Romain inclus même s'il ne dort pas ; seul Jérémie n'en paie pas.</p>
-  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">Le saut à l'élastique (50-80 €) est compté pour chaque personne présente dimanche : retirez-le pour ceux qui regardent Jérémie tomber sans sauter.</p>
+  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La part de Jérémie (≈ 480-680 €) est répartie entre les autres au prorata des jours partagés avec lui : ses dépenses du vendredi entre Mickaël et Duncan, celles du samedi entre les 5, la soufflerie du dimanche entre les 4 présents. L'Airbnb (600 €) se partage entre les 5 payeurs, Romain inclus même s'il ne dort pas ; seul Jérémie n'en paie pas.</p>
+  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La soufflerie (~50-70 €) est comptée pour chaque personne présente dimanche : retirez-la pour ceux qui regardent Jérémie voler sans voler.</p>
   <div style="padding:10px 14px 14px">
     <a href="https://tricount.com/tCnjYyKEXWhIMabwNh" target="_blank" style="display:block;text-align:center;background:var(--sign);color:#fff;text-decoration:none;border-radius:8px;padding:.75rem;font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.04em">💶 Tricount commun du week-end</a>
     <p style="font-size:.78rem;color:#6a6e76;margin-top:.4rem;text-align:center">Montants estimatifs : chacun saisit ses dépenses réelles dans le Tricount, la répartition (Romain samedi seulement, etc.) s'ajuste là-bas.</p>
@@ -731,8 +728,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="m-dejdim">
   <div class="modal">
     <h3>🍽 Pique-nique du dimanche — 12:30</h3>
-    <ul><li>Salade de pâtes préparée pendant le brunch (pâtes, pesto, tomates cerises, mozzarella)</li><li>Restes du BBQ froids (merguez, poulet)</li><li>Chips, fruits, eau</li><li>Glacière + gobelets + couverts à embarquer au check-out</li></ul>
-    <p class="note">Le lac de Vénérieu est à 10 min de Crémieu, sur la route du retour.</p>
+    <ul><li>Salade de pâtes préparée pendant le brunch (pâtes, pesto, tomates cerises, mozzarella)</li><li>Restes de la plancha froids (merguez, poulet)</li><li>Chips, fruits, eau</li><li>Glacière + gobelets + couverts à embarquer au check-out</li></ul>
+    <p class="note">Le parc de Parilly est à 10 min d'iFLY, au pied de l'A43 pour le retour.</p>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -741,6 +738,14 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="modal">
     <h3>🏡 Gîte Le Lemon Tree — Panossas</h3>
     <ul><li>📍 <a href="https://maps.google.com/?q=17+Chemin+du+Ch%C3%A2teau+d%27Eau+38460+Panossas" target="_blank">17 Chemin du Château d’Eau, 38460 Panossas</a> · hôte : Karine</li><li>🕓 Arrivée après 16h · départ avant 11h</li><li>🛏 2 chambres (lit double + queen) + canapé 120×190 = 5 couchages, pile le compte (Romain ne dort pas sur place)</li><li>♨️ Jacuzzi privatif sur la terrasse, 10h-22h · peignoirs fournis</li><li>🏊 Piscine partagée à 50 m, 10h-19h (ouverte jusqu'à fin septembre)</li><li>🍖 BBQ + ustensiles fournis · cuisine équipée, lave-vaisselle, wifi, clim</li><li>🧺 Linge de lit et de toilette fourni · lave-linge</li><li>🚲 Vélos sur demande · ViaRhôna à 10 min (Crémieu)</li><li>🅿️ 1 seule place de parking : les voitures de samedi se garent dans le village</li><li>🤫 Village paisible, fêtes non admises</li><li>🔗 <a href="https://www.airbnb.com/l/fitvtZcG?s=67&unique_share_id=edc59a81-16b0-40b8-9325-750bb5b304de" target="_blank">Voir l’annonce Airbnb</a></li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-ifly">
+  <div class="modal">
+    <h3>🌀 iFLY Lyon — chute libre indoor</h3>
+    <ul><li>📍 <a href="https://maps.google.com/?q=iFLY+Lyon+48+Ancienne+Route+de+Grenoble+Saint-Priest" target="_blank">48 Ancienne Route de Grenoble, 69800 Saint-Priest</a></li><li>🚗 A43 sortie 4B Bron Aviation · ~25 min du gîte</li><li>🕚 Convocation 1h avant l'heure de vol · briefing 20 min · 2 vols chacun</li><li>👕 Tenue sport ou jean + baskets · combinaison, casque et lunettes fournis</li><li>⚠️ Interdit en cas de luxation d'épaule (même ancienne) · moins de 115 kg si moins d'1m85</li><li>💶 Baptême dès ~49,90 €</li><li>🌐 <a href="https://booking.iflylyon.fr/adulte" target="_blank">booking.iflylyon.fr</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -785,32 +790,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   </div>
 </div>
 
-<div class="overlay" id="m-code">
-  <div class="modal secret">
-    <h3>🔒 Zone organisateurs</h3>
-    <p>Code d'accès :</p>
-    <input class="code-in" id="code-in" type="password" placeholder="••••••••••••••••" autocomplete="off">
-    <div class="code-err" id="code-err"></div>
-    <button class="btn-unlock" id="code-go">Déverrouiller</button>
-    <button class="close">Annuler</button>
-  </div>
-</div>
 
-<div class="overlay" id="m-secret">
-  <div class="modal secret">
-    <h3>🤫 La vraie activité du dimanche</h3>
-    <p><strong>Pas de vieilles pierres : Jérémie saute à l'élastique.</strong> Le créneau "Crémieu" est la couverture, gardez le mot jusqu'au dernier moment.</p>
-    <h4>Spot pressenti</h4>
-    <ul><li>Viaduc de Pélussin (Loire) : 65 m, ~1h05 de l'Airbnb, sauts le week-end de mars à novembre</li><li>Alternative XL : pont de Ponsonnas (103 m), mais ~1h50 de route</li></ul>
-    <h4>À faire</h4>
-    <ul><li>Réserver le créneau du dimanche matin et décaler déjeuner + retours en conséquence</li><li>Si Pélussin : le trajet vers Sainte-Solange partira de là-bas</li></ul>
-    <div class="meta" style="margin-top:.6rem">
-      <a class="book" href="https://www.sport-decouverte.com/saut-elastique-proche-lyon.html" target="_blank">Réserver Pélussin</a>
-      <a class="book" href="https://www.vertige38.com/saut-elastique-lyon/" target="_blank">Réserver Ponsonnas</a>
-    </div>
-    <button class="close">Fermer</button>
-  </div>
-</div>
+
+
 
 <div class="overlay" id="m-brunch">
   <div class="modal">
@@ -1014,8 +996,8 @@ var STOP_TIMES=[
  "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T19:15","2026-09-25T19:45",
  "2026-09-25T22:15","2026-09-26T01:30",
  "2026-09-26T09:00","2026-09-26T09:30","2026-09-26T12:45","2026-09-26T14:30","2026-09-26T19:00","2026-09-26T20:15",
- "2026-09-27T08:30","2026-09-27T09:30","2026-09-27T10:45","2026-09-27T11:00","2026-09-27T12:30",
- "2026-09-27T16:35","2026-09-27T18:50","2026-09-27T19:30"
+ "2026-09-27T08:30","2026-09-27T09:30","2026-09-27T10:45","2026-09-27T11:15","2026-09-27T13:15",
+ "2026-09-27T17:05","2026-09-27T19:20","2026-09-27T20:00"
 ].map(function(t){return new Date(t+":00+02:00").getTime();});
 function updateTruck(){
   var pin=document.getElementById("fireman-pin");
@@ -1038,23 +1020,6 @@ setInterval(updateTruck,60000);
 window.addEventListener("resize",updateTruck);
 window.addEventListener("load",updateTruck);
 setTimeout(updateTruck,300);
-
-// Zone secrète
-var SECRET="jeremieestunfifou";
-var sd=document.getElementById("secret-dot");
-if(sd){sd.addEventListener("click",function(e){e.stopPropagation();document.getElementById("m-code").classList.add("open");});}
-document.getElementById("code-go").addEventListener("click",function(e){
-  e.stopPropagation();
-  var v=document.getElementById("code-in").value.trim().toLowerCase();
-  if(v===SECRET){
-    document.getElementById("m-code").classList.remove("open");
-    document.getElementById("code-err").textContent="";
-    document.getElementById("code-in").value="";
-    document.getElementById("m-secret").classList.add("open");
-  }else{
-    document.getElementById("code-err").textContent="Mauvais code.";
-  }
-});
 
 // Météo dynamique — prévisions avant l'EVG, archives réelles après (rétrospective figée)
 var WXI={0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",48:"🌫",51:"🌦",53:"🌦",55:"🌧",56:"🌧",57:"🌧",61:"🌧",63:"🌧",65:"🌧",66:"🌧",67:"🌧",71:"🌨",73:"🌨",75:"🌨",80:"🌦",81:"🌧",82:"⛈",95:"⛈",96:"⛈",99:"⛈"};
