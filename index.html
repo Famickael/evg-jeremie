@@ -107,7 +107,7 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 .meta a.book{background:var(--borne);border-color:var(--borne);color:#fff}
 .meta a.waze{background:#33CCFF;border:none;color:#062A3A}
 .meta button.food{background:var(--amber);border-color:var(--amber);color:#231a00}
-.meta .infob{background:#ECEBE4;border:none;color:var(--ink);padding:.45rem .6rem;border-radius:6px;font-size:.9rem;cursor:pointer;line-height:1}
+.meta .infob{background:#33CCFF;border:none;color:#062A3A;padding:.45rem .6rem;border-radius:6px;font-size:.9rem;font-weight:700;cursor:pointer;line-height:1}
 .leg{margin:-2px 0 12px 2px;display:inline-block;background:#fff;border:1.5px dashed var(--route);color:var(--route);font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.15rem .6rem;border-radius:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
 .tag{font-family:'Barlow Condensed';font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;background:#ECEBE4;color:#4a4e56}
@@ -312,18 +312,19 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
     <div class="stop">
       <span class="time">16:15</span>
-      <h3>Check-in Airbnb + courses</h3>
-      <p>17 Chemin du Château d'Eau, Panossas. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
+      <h3>Check-in — gîte Le Lemon Tree + courses</h3>
+      <p>17 Chemin du Château d'Eau, Panossas. Arrivée possible dès 16h. Grange individuelle : 2 chambres, jacuzzi privatif sur la terrasse, BBQ fourni. Courses à Tignieu-Jameyzieu (10 min) : tout est dans la liste.</p>
       <div class="meta">
         <button class="food" data-m="m-courses">🛒 Courses</button>
         <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
+        <button class="infob" data-m="i-airbnb">ℹ️</button>
       </div>
     </div>
 
     <div class="stop pool">
       <span class="time">17:00</span><span class="dur">⏱ 1h15</span>
       <h3>Piscine · jacuzzi · apéro</h3>
-      <p>Première session détente : baignade, jacuzzi et apéro au bord de l'eau avant de se changer. Sortie de l'eau 18:15.</p>
+      <p>Première session détente : jacuzzi privatif sur la terrasse (dispo jusqu'à 22h) et piscine partagée à 50 m (ferme à 19h), apéro en peignoir fourni par la maison. Sortie 18:15 pour se changer.</p>
       <div class="meta">
         <button class="food" data-m="m-apero">🍹 Apéro</button>
       </div>
@@ -451,7 +452,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop">
       <span class="time">20:15</span>
       <h3>BBQ + soirée jeux</h3>
-      <p>Quiz sur Jérémie, gages, bière-pong. Personne ne conduit ce soir.</p>
+      <p>Quiz sur Jérémie, gages, bière-pong. Personne ne conduit ce soir. Village paisible et fêtes non admises au gîte : ambiance terrasse, pas boîte de nuit.</p>
       <div class="meta">
         <button class="food" data-m="m-bbq">🍽 Repas</button>
       </div>
@@ -464,61 +465,62 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="day-sign">
     <div class="etape">Étape 3 · 5 personnes</div>
     <h2>Dimanche 27 — Crémieu &amp; clôture</h2>
-    <div class="sub">Brunch → baignade → cité médiévale → déjeuner Airbnb → retours</div>
+    <div class="sub">Brunch → check-out → cité médiévale → pique-nique au lac → retours</div>
     <div class="who">👥 Mickaël · Duncan · Jérémie · Mgn · Thierry <span style="opacity:.75">(Romain part après le café)</span></div>
   </div>
 
   <div class="road">
     <div class="stop">
-      <span class="time">09:00</span>
+      <span class="time">08:30</span><span class="dur">⏱ 1h</span>
       <h3>Brunch + départ de Romain</h3>
-      <p>Brunch collectif, Romain reprend la route après le café.</p>
+      <p>Brunch collectif et préparation de la salade de pâtes du pique-nique. Romain reprend la route après le café.</p>
       <div class="meta">
         <button class="food" data-m="m-brunch">🍽 Repas</button>
       </div>
     </div>
 
-    <div class="stop pool">
-      <span class="time">09:45</span><span class="dur">⏱ 1h</span>
-      <h3>Dernière session piscine · jacuzzi</h3>
-      <p>Une heure de flottaison. Sortie de l'eau 10:45, on plie les affaires.</p>
+    <div class="stop">
+      <span class="time">09:30</span><span class="dur">⏱ 1h</span>
+      <h3>Ménage &amp; sacs</h3>
+      <p>Vaisselle, poubelles, glacière du pique-nique, photo de famille devant la grange, remise du diplôme d'enterré à Jérémie.</p>
+    </div>
+
+    <div class="stop">
+      <span class="time">10:45</span>
+      <h3>Check-out — avant 11h</h3>
+      <p>Règle du gîte : départ avant 11h00. Clés rendues, coffres chargés.</p>
     </div>
 
     <div class="leg">🚗 ~15 min</div>
 
     <div class="stop">
-      <span class="time">11:00</span><span class="dur">⏱ 1h</span>
+      <span class="time">11:00</span><span class="dur">⏱ 1h15</span>
       <h3>Cité médiévale de Crémieu</h3>
       <button class="secret-dot" id="secret-dot" aria-label="infos">···</button>
-      <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit. Retour à l'Airbnb 12:15.</p>
+      <p>Halles du XVᵉ, remparts, montée au couvent pour LA photo de groupe. Gratuit.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Cr%C3%A9mieu%2038460&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
-    <div class="leg">🚗 ~15 min</div>
+    <div class="leg">🚗 ~10 min</div>
 
     <div class="stop key">
-      <span class="time">12:30</span>
-      <h3>Déjeuner de clôture — Airbnb</h3>
-      <p>Grande pasta party avec les restes du BBQ, tout est dans les courses de vendredi. Zéro résa, zéro contrainte d'horaire.</p>
+      <span class="time">12:30</span><span class="dur">⏱ 1h15</span>
+      <h3>Pique-nique — lac de Vénérieu</h3>
+      <p>Salade de pâtes du brunch, restes du BBQ froids, chips, fruits. Zéro résa, et un lac pour la dernière photo. Départ des retours 13:45.</p>
       <div class="meta">
         <button class="food" data-m="m-dejdim">🍽 Repas</button>
+        <a class="waze" href="https://waze.com/ul?q=Lac%20de%20V%C3%A9n%C3%A9rieu&navigate=yes">🧭 Waze</a>
       </div>
-    </div>
-
-    <div class="stop">
-      <span class="time">13:45</span>
-      <h3>Ménage &amp; check-out</h3>
-      <p>Vaisselle, poubelles, photo de famille devant la maison, remise du diplôme d'enterré à Jérémie.</p>
     </div>
 
     <div class="leg">🚗 ~2h50</div>
 
     <div class="stop">
-      <span class="time">17:05</span>
+      <span class="time">16:35</span>
       <h3>Dépôt de Jérémie — Sainte-Solange</h3>
-      <p>Départ de l'Airbnb à 14:15, par A43 → A46 → A6 → A79 → A71.</p>
+      <p>Départ du lac à 13:45, par A43 → A46 → A6 → A79 → A71.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
@@ -527,7 +529,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h05</div>
 
     <div class="stop">
-      <span class="time">19:20</span>
+      <span class="time">18:50</span>
       <h3>Dépôt de Duncan — St-Michel-sur-Orge</h3>
       <p>Par A71 → A10 → N104.</p>
       <div class="meta">
@@ -538,7 +540,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~35 min</div>
 
     <div class="stop">
-      <span class="time">20:00</span>
+      <span class="time">19:30</span>
       <h3>Arrivée — Le Plessis-Robinson</h3>
       <p>Fin du roadbook, mission accomplie. 🏁</p>
       <div class="meta">
@@ -643,15 +645,15 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <h4>Apéros (ven + sam)</h4>
     <ul><li>Chips, olives, saucisson, houmous + carottes</li><li>Bières (2 packs) + softs et eau pétillante</li><li>Glaçons</li></ul>
     <h4>BBQ samedi soir (6 pers.)</h4>
-    <ul><li>Merguez + chipolatas (12-14 pièces)</li><li>Poulet mariné ou côtes (6 parts)</li><li>Halloumi + épis de maïs</li><li>Salade verte, tomates, pain, sauces</li><li>Charbon + allume-feu (vérifier si le BBQ de l'Airbnb en a)</li></ul>
+    <ul><li>Merguez + chipolatas (12-14 pièces)</li><li>Poulet mariné ou côtes (6 parts)</li><li>Halloumi + épis de maïs</li><li>Salade verte, tomates, pain, sauces</li><li>Allume-feu + petit sac de charbon de secours (BBQ et ustensiles fournis au gîte)</li></ul>
     <h4>Midi samedi (sandwichs)</h4>
     <ul><li>Pain de mie ou wraps, jambon, poulet, fromage, crudités</li></ul>
     <h4>Petits-déj + brunch (jusqu'à 6 pers. dimanche)</h4>
     <ul><li>Œufs (x12), bacon</li><li>Pain, beurre, confiture, café, lait, jus d'orange</li><li>Viennoiseries : boulangerie dimanche matin</li></ul>
-    <h4>Déjeuner dimanche — pasta party (5 pers.)</h4>
-    <ul><li>Pâtes (1 kg), pesto + sauce tomate</li><li>Mozzarella (x2), parmesan</li><li>Salade, fruits pour finir</li></ul>
+    <h4>Pique-nique dimanche (5 pers.)</h4>
+    <ul><li>Pâtes (500 g) + pesto pour la salade de pâtes</li><li>Tomates cerises, mozzarella (x2)</li><li>Chips, fruits, gobelets</li></ul>
     <h4>Divers</h4>
-    <ul><li>Eau (pack), sacs poubelle, sopalin, produit vaisselle</li><li>Doliprane (lendemains difficiles)</li></ul>
+    <ul><li>Eau (pack), sacs poubelle, sopalin, produit vaisselle</li><li>Matelas gonflable + duvet : 5 vrais couchages pour 6 dormeurs samedi soir</li><li>Glacière pour le pique-nique du dimanche</li><li>Doliprane (lendemains difficiles)</li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -717,7 +719,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <ul>
       <li>Vêtements 3 jours + un pull pour les soirées</li>
       <li>Tenue club pour vendredi soir : pantalon + chemise ou polo + chaussures propres (exigé à l'entrée, pas de baskets de sport)</li>
-      <li>Maillot de bain x2 (piscine/jacuzzi + canyon) + 2 serviettes</li>
+      <li>Maillot de bain x2 (jacuzzi/piscine + canyon) + 1 serviette pour le canyon — le linge de toilette est fourni au gîte</li>
       <li>Vieilles baskets qui peuvent aller dans l'eau (canyoning)</li>
       <li>Trousse de toilette, chargeur de téléphone, lunettes de soleil</li>
       <li>Pièce d'identité</li>
@@ -730,9 +732,17 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
 <div class="overlay" id="m-dejdim">
   <div class="modal">
-    <h3>🍽 Déjeuner dimanche — 12:30</h3>
-    <ul><li>Pasta party : pâtes au pesto ou tomate-mozza, parmesan</li><li>Restes du BBQ réchauffés (merguez, poulet)</li><li>Salade verte, fruits</li><li>On vide le frigo : rien ne part à la poubelle</li></ul>
-    <p class="note">Lancer l'eau des pâtes en revenant de "Crémieu", pendant que Jérémie encaisse ses émotions.</p>
+    <h3>🍽 Pique-nique du dimanche — 12:30</h3>
+    <ul><li>Salade de pâtes préparée pendant le brunch (pâtes, pesto, tomates cerises, mozzarella)</li><li>Restes du BBQ froids (merguez, poulet)</li><li>Chips, fruits, eau</li><li>Glacière + gobelets + couverts à embarquer au check-out</li></ul>
+    <p class="note">Le lac de Vénérieu est à 10 min de Crémieu, sur la route du retour.</p>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-airbnb">
+  <div class="modal">
+    <h3>🏡 Gîte Le Lemon Tree — Panossas</h3>
+    <ul><li>📍 17 Chemin du Château d'Eau, 38460 Panossas · hôte : Karine</li><li>🕓 Arrivée après 16h · départ avant 11h</li><li>🛏 2 chambres (lit double + queen) + canapé 120×190 = 5 couchages</li><li>♨️ Jacuzzi privatif sur la terrasse, 10h-22h · peignoirs fournis</li><li>🏊 Piscine partagée à 50 m, 10h-19h (ouverte jusqu'à fin septembre)</li><li>🍖 BBQ + ustensiles fournis · cuisine équipée, lave-vaisselle, wifi, clim</li><li>🧺 Linge de lit et de toilette fourni · lave-linge</li><li>🚲 Vélos sur demande · ViaRhôna à 10 min (Crémieu)</li><li>🅿️ 1 seule place de parking : les voitures de samedi se garent dans le village</li><li>🤫 Village paisible, fêtes non admises</li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -1006,8 +1016,8 @@ var STOP_TIMES=[
  "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T19:15","2026-09-25T19:45",
  "2026-09-25T22:15","2026-09-26T01:30",
  "2026-09-26T09:00","2026-09-26T09:30","2026-09-26T12:45","2026-09-26T14:30","2026-09-26T19:00","2026-09-26T20:15",
- "2026-09-27T09:00","2026-09-27T09:45","2026-09-27T11:00","2026-09-27T12:30","2026-09-27T13:45",
- "2026-09-27T17:05","2026-09-27T19:20","2026-09-27T20:00"
+ "2026-09-27T08:30","2026-09-27T09:30","2026-09-27T10:45","2026-09-27T11:00","2026-09-27T12:30",
+ "2026-09-27T16:35","2026-09-27T18:50","2026-09-27T19:30"
 ].map(function(t){return new Date(t+":00+02:00").getTime();});
 function updateTruck(){
   var pin=document.getElementById("fireman-pin");
