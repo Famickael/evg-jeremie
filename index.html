@@ -107,6 +107,7 @@ section{padding:0 0 8px;scroll-margin-top:52px}
 .meta a.book{background:var(--borne);border-color:var(--borne);color:#fff}
 .meta a.waze{background:#33CCFF;border:none;color:#062A3A}
 .meta button.food{background:var(--amber);border-color:var(--amber);color:#231a00}
+.meta .infob{background:#ECEBE4;border:none;color:var(--ink);padding:.45rem .6rem;border-radius:6px;font-size:.9rem;cursor:pointer;line-height:1}
 .leg{margin:-2px 0 12px 2px;display:inline-block;background:#fff;border:1.5px dashed var(--route);color:var(--route);font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.15rem .6rem;border-radius:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
 .tag{font-family:'Barlow Condensed';font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;background:#ECEBE4;color:#4a4e56}
@@ -264,31 +265,35 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop key">
       <span class="time">07:30</span>
       <h3>Kidnapping — Sainte-Solange</h3>
-      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo.</p>
+      <p>8 rue des Fauvettes, 18220. Jérémie se réveille d'habitude à 8h : on arrive avant, réveil surprise. Sac préparé en douce par Aude, t-shirt EVG, photo. Décollage 07:40 direction Nevers.</p>
       <div class="meta">
         <button class="food" data-m="m-sac">🎒 Sac de Jérémie</button>
+        <a class="waze" href="https://waze.com/ul?q=Nevers%20centre&navigate=yes">🧭 Waze</a>
       </div>
     </div>
+
+
+    <div class="leg">🚗 ~1h05</div>
 
     <div class="stop">
-      <span class="time">07:40</span>
-      <h3>Départ de Sainte-Solange</h3>
-      <p>Direction Magny-Cours par Bourges puis Nevers. Croissants possibles au passage à Bourges (boulangeries ouvertes dès 7h).</p>
+      <span class="time">08:45</span><span class="dur">⏱ 45 min</span>
+      <h3>Petit-déjeuner — Nevers</h3>
+      <p>Boulangerie-café du centre de Nevers, à 15 min du circuit. Croissants, vrais cafés, point stratégique avant la piste.</p>
       <div class="meta">
-        <a class="waze" href="https://waze.com/ul?q=Karting%20de%20Nevers%20Magny-Cours&navigate=yes">🧭 Waze</a>
+        <a class="waze" href="https://waze.com/ul?q=Nevers%20centre&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
-    <div class="leg">🚗 ~1h10</div>
+    <div class="leg">🚗 ~15 min</div>
 
     <div class="stop key">
-      <span class="time">08:50</span><span class="dur">⏱ 1h30 de piste</span>
+      <span class="time">09:45</span><span class="dur">⏱ 1h30 de piste</span>
       <h3>Karting Nevers Magny-Cours</h3>
-      <p>Grosse avance sur l'ouverture de 10h : petit-déjeuner tranquille à Nevers ou café au circuit. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
+      <p>Arrivée 15 min avant l'ouverture. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
       <div class="tagrow"><span class="tag euro">~40 €/session</span></div>
       <div class="meta">
-        <a class="book" href="https://www.kartingmagnycours.com" target="_blank">Réserver</a>
-        <a class="call" href="tel:+33386218043">📞 03 86 21 80 43</a>
+        <span class="done">✅ Réservé — 10h00</span>
+        <button class="infob" data-m="i-karting">ℹ️</button>
       </div>
     </div>
 
@@ -324,16 +329,18 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       </div>
     </div>
 
+    <div class="leg">🚗 ~30 min</div>
+
     <div class="stop">
-      <span class="time">18:45</span>
-      <h3>Départ Lyon — parking Cité Internationale</h3>
-      <p>Se garer à la Cité Internationale : le club est sur place, le resto à 10 min.</p>
+      <span class="time">19:15</span>
+      <h3>Parking Cité Internationale</h3>
+      <p>Départ de l'Airbnb à 18:45. Le club est sur place, le resto à 10 min à pied.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
-    <div class="leg">🚗 ~30 min</div>
+    <div class="leg">🚶 10 min à pied</div>
 
     <div class="stop key">
       <span class="time">19:45</span><span class="dur">⏱ 2h</span>
@@ -342,7 +349,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="tagrow"><span class="tag euro">~35-50 €/pers</span></div>
       <div class="meta">
         <span class="done">✅ Réservé — 19h45</span>
-        <a class="call" href="tel:+33472740398">📞 04 72 74 03 98</a>
+        <button class="infob" data-m="i-brotteaux">ℹ️</button>
         <a class="waze" href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
@@ -356,7 +363,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span><span class="tag euro">80-150 €/pers</span></div>
       <div class="meta">
         <a class="book" href="https://www.bus-paradise.com" target="_blank">Réserver table EVG</a>
-        <a class="call" href="tel:+33423400947">📞 04 23 40 09 47</a>
+        <button class="infob" data-m="i-bus">ℹ️</button>
         <a class="waze" href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">🗺 Maps</a>
       </div>
     </div>
@@ -365,8 +372,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
     <div class="stop">
       <span class="time">01:30</span>
-      <h3>Retour Panossas</h3>
-      <p>Retour direct A42/A432. Dodo, grosse journée le lendemain.</p>
+      <h3>Retour à l'Airbnb — dodo</h3>
+      <p>Départ du club vers 1h00, retour direct A42/A432. Grosse journée le lendemain.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=17%20Chemin%20du%20Ch%C3%A2teau%20d%27Eau%20Panossas&navigate=yes">🧭 Waze</a>
       </div>
@@ -403,7 +410,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="tagrow"><span class="tag euro">~25-35 €/pers</span></div>
       <div class="meta">
         <a class="book" href="https://bsks-paintball.com" target="_blank">Réserver</a>
-        <a class="call" href="tel:+33634023646">📞 06 34 02 36 46</a>
+        <button class="infob" data-m="i-bsks">ℹ️</button>
         <a class="waze" href="https://waze.com/ul?q=BSKS%20Paintball%20Chamagnieu&navigate=yes">🧭 Waze</a>
       </div>
     </div>
@@ -428,7 +435,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <div class="tagrow"><span class="tag euro">~45-55 €/pers</span><span class="tag warn">Caler le créneau par téléphone avec JB</span></div>
       <div class="meta">
         <a class="book" href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">Réserver</a>
-        <a class="call" href="tel:+33624921428">📞 06 24 92 14 28</a>
+        <button class="infob" data-m="i-cany">ℹ️</button>
         <a class="waze" href="https://waze.com/ul?q=Chaley%2001230&navigate=yes">🧭 Waze</a>
       </div>
     </div>
@@ -509,9 +516,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h50</div>
 
     <div class="stop">
-      <span class="time">14:15</span>
-      <h3>Retour 1 — Dépôt de Jérémie à Sainte-Solange</h3>
-      <p>A43 → A46 → A6 → A79 → A71. Arrivée estimée 17:05.</p>
+      <span class="time">17:05</span>
+      <h3>Dépôt de Jérémie — Sainte-Solange</h3>
+      <p>Départ de l'Airbnb à 14:15, par A43 → A46 → A6 → A79 → A71.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
@@ -520,9 +527,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~2h05</div>
 
     <div class="stop">
-      <span class="time">17:15</span>
-      <h3>Retour 2 — Dépôt de Duncan à St-Michel-sur-Orge</h3>
-      <p>A71 → A10 → N104. Arrivée estimée 19:20.</p>
+      <span class="time">19:20</span>
+      <h3>Dépôt de Duncan — St-Michel-sur-Orge</h3>
+      <p>Par A71 → A10 → N104.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Saint-Michel-sur-Orge&navigate=yes">🧭 Waze</a>
       </div>
@@ -531,9 +538,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~35 min</div>
 
     <div class="stop">
-      <span class="time">19:25</span>
-      <h3>Retour 3 — Le Plessis-Robinson</h3>
-      <p>Arrivée estimée 20:00. Fin du roadbook, mission accomplie.</p>
+      <span class="time">20:00</span>
+      <h3>Arrivée — Le Plessis-Robinson</h3>
+      <p>Fin du roadbook, mission accomplie. 🏁</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=5%20rue%20Claude%20Nicolas%20Ledoux%20Le%20Plessis-Robinson&navigate=yes">🧭 Waze</a>
       </div>
@@ -557,7 +564,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="resa"><input type="checkbox" id="r2" checked><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45 ✅ Réservé</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
   <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Canyoning — créneau groupe 6 pers. sam. 14:30</strong>JB : <a href="tel:+33624921428">06 24 92 14 28</a> · <a href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">canyoningemotions.fr</a> · <span class="due">sous 15 jours</span></label></div>
   <div class="resa"><input type="checkbox" id="r4"><label class="txt" for="r4"><strong>4 · Paintball BSKS — 6 pers. sam. 10:00</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
-  <div class="resa"><input type="checkbox" id="r5"><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
+  <div class="resa"><input type="checkbox" id="r5" checked><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00 ✅ Réservé</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
   <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · Saut à l'élastique dim. matin (chut 🤫)</strong><a href="https://www.saut-elastique.com/place/lyon" target="_blank">comparer les spots</a> · <span class="due">à caler cette semaine</span></label></div>
 </div>
     <button class="close">Fermer</button>
@@ -726,6 +733,46 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <h3>🍽 Déjeuner dimanche — 12:30</h3>
     <ul><li>Pasta party : pâtes au pesto ou tomate-mozza, parmesan</li><li>Restes du BBQ réchauffés (merguez, poulet)</li><li>Salade verte, fruits</li><li>On vide le frigo : rien ne part à la poubelle</li></ul>
     <p class="note">Lancer l'eau des pâtes en revenant de "Crémieu", pendant que Jérémie encaisse ses émotions.</p>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-karting">
+  <div class="modal">
+    <h3>🏎 Karting de Nevers Magny-Cours</h3>
+    <ul><li>📍 Technopôle du circuit, 58470 Magny-Cours</li><li>🕙 Ouvert dès 10h · résa confirmée 10h00</li><li>📞 <a href="tel:+33386218043">03 86 21 80 43</a></li><li>🌐 <a href="https://www.kartingmagnycours.com" target="_blank">kartingmagnycours.com</a></li><li>Piste outdoor 1 110 m homologuée FFSA</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-brotteaux">
+  <div class="modal">
+    <h3>🍽 Brasserie des Brotteaux</h3>
+    <ul><li>📍 1 place Jules Ferry, 69006 Lyon</li><li>🕖 Service 19h30-22h · résa confirmée 19h45 (3 couverts)</li><li>📞 <a href="tel:+33472740398">04 72 74 03 98</a></li><li>🌐 <a href="http://www.brasseriedesbrotteaux.com" target="_blank">brasseriedesbrotteaux.com</a></li><li>Plan B bouchon : L'Antr'Opotes, 118 rue Bossuet</li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-bus">
+  <div class="modal">
+    <h3>🪩 Bus Paradise</h3>
+    <ul><li>📍 44 quai Charles de Gaulle, 69006 Lyon (Cité Internationale)</li><li>🕙 Jusqu'à l'aube · pic de soirée 0h-3h</li><li>👔 Pantalon + chemise/polo exigés, pas de baskets sport ni casquette</li><li>💶 Entrée 20 €, verre dès 30 €, show privé 90 €</li><li>📞 <a href="tel:+33423400947">04 23 40 09 47</a></li><li>🌐 <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a></li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-bsks">
+  <div class="modal">
+    <h3>🎯 BSKS Paintball</h3>
+    <ul><li>📍 Lieu-dit St Martin, 38460 Chamagnieu</li><li>🕘 Arriver 30 min avant le créneau (9:30 pour 10:00)</li><li>💶 ~25-35 €/pers · à moins de 8 joueurs, regroupement avec un autre groupe</li><li>📞 <a href="tel:+33634023646">06 34 02 36 46</a></li><li>🌐 <a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a></li></ul>
+    <button class="close">Fermer</button>
+  </div>
+</div>
+
+<div class="overlay" id="i-cany">
+  <div class="modal">
+    <h3>🌊 Canyoning Emotions — canyon de Chaley</h3>
+    <ul><li>📍 01230 Chaley, gorges de l'Albarine (Bugey)</li><li>🕜 Sessions habituelles 9h30 / 13h30 · créneau groupe 14h30 à caler avec JB</li><li>💶 ~45-55 €/pers · combinaisons fournies</li><li>🎒 Maillot, serviette, baskets qui peuvent aller dans l'eau</li><li>📞 JB : <a href="tel:+33624921428">06 24 92 14 28</a></li><li>🌐 <a href="https://canyoningemotions.fr" target="_blank">canyoningemotions.fr</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -955,12 +1002,12 @@ window.addEventListener("resize",fixTops);fixTops();
 // Camion de progression automatique : suit le programme en temps réel
 // (entre deux étapes pendant les trajets, sur l'étape à l'heure dite ; figé au terminus après l'EVG)
 var STOP_TIMES=[
- "2026-09-25T04:45","2026-09-25T05:15","2026-09-25T07:30","2026-09-25T07:40","2026-09-25T08:50",
- "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T18:45","2026-09-25T19:45",
+ "2026-09-25T04:45","2026-09-25T05:15","2026-09-25T07:30","2026-09-25T08:45","2026-09-25T09:45",
+ "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T19:15","2026-09-25T19:45",
  "2026-09-25T22:15","2026-09-26T01:30",
  "2026-09-26T09:00","2026-09-26T09:30","2026-09-26T12:45","2026-09-26T14:30","2026-09-26T19:00","2026-09-26T20:15",
  "2026-09-27T09:00","2026-09-27T09:45","2026-09-27T11:00","2026-09-27T12:30","2026-09-27T13:45",
- "2026-09-27T14:15","2026-09-27T17:15","2026-09-27T19:25"
+ "2026-09-27T17:05","2026-09-27T19:20","2026-09-27T20:00"
 ].map(function(t){return new Date(t+":00+02:00").getTime();});
 function updateTruck(){
   var pin=document.getElementById("fireman-pin");
