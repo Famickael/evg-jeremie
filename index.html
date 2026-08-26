@@ -160,8 +160,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 #gcount{text-align:center;font-family:'Barlow Condensed';font-weight:700;font-size:.9rem;color:#6a6e76;margin:.4rem 0 0}
 .gbtns{display:flex;gap:8px;margin:10px 0 2px;justify-content:center}
 .gbtns a,.gbtns button{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;padding:.35rem .6rem;border-radius:6px;border:none;cursor:pointer;text-decoration:none}
-.gbtns a{background:#33CCFF;color:#062A3A}
-.gbtns button{background:#ECEBE4;color:var(--borne)}
+#gdl{background:#33CCFF;color:#062A3A}
+#gdel{background:#ECEBE4;color:var(--borne)}
 .srcbtn{display:block;width:100%;margin:.45rem 0;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:.8rem;font-family:'Barlow Condensed';font-weight:700;font-size:1.05rem;text-transform:uppercase;cursor:pointer}
 #m-gal h4{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--sign);margin:.9rem 0 .2rem}
 .retro{margin:26px 14px 8px;background:var(--sign);color:#fff;border-radius:10px;padding:16px 14px;box-shadow:inset 0 0 0 3px var(--sign),inset 0 0 0 5px #fff;text-align:center;cursor:pointer}
@@ -1128,7 +1128,7 @@ spots.forEach(function(sp){
     st.appendChild(b);
   });
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
-  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><a id="gdl">⬇ Télécharger</a><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
+  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><button id="gdl">⬇ Enregistrer</button><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
   gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;}});
   var slides=[],gi=0;
@@ -1154,11 +1154,28 @@ spots.forEach(function(sp){
     cap.textContent=sl.label;img.src=sl.ph.d;img.style.minHeight="";
     cnt.textContent=(gi+1)+" / "+slides.length;
     dl.style.display="";del.style.display="";
-    dl.href=sl.ph.d;dl.download="evg-jeremie-"+sl.ph.id+".jpg";
     pv.disabled=(gi===0);nx.disabled=(gi===slides.length-1);
   }
   document.getElementById("gprev").addEventListener("click",function(){gi--;showSlide();});
   document.getElementById("gnext").addEventListener("click",function(){gi++;showSlide();});
+  function dataToFile(d,name){
+    var arr=d.split(","),mime=arr[0].match(/:(.*?);/)[1],bstr=atob(arr[1]),n=bstr.length,u8=new Uint8Array(n);
+    while(n--){u8[n]=bstr.charCodeAt(n);}
+    return new File([u8],name,{type:mime});
+  }
+  document.getElementById("gdl").addEventListener("click",function(){
+    if(!slides.length){return;}
+    var ph=slides[gi].ph;
+    var f=dataToFile(ph.d,"evg-jeremie-"+ph.id+".jpg");
+    if(navigator.canShare&&navigator.canShare({files:[f]})){
+      navigator.share({files:[f],title:"Photo EVG Jérémie"}).catch(function(){});
+    }else{
+      var url=URL.createObjectURL(f);
+      var a=document.createElement("a");a.href=url;a.download=f.name;
+      document.body.appendChild(a);a.click();a.remove();
+      setTimeout(function(){URL.revokeObjectURL(url);},4000);
+    }
+  });
   document.getElementById("gdel").addEventListener("click",function(){
     if(!slides.length){return;}
     var ph=slides[gi].ph;
