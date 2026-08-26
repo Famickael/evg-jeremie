@@ -1055,6 +1055,7 @@ spots.forEach(function(sp){
 (function(){
   var SB_URL="https://pryrofztqabprfsbauvo.supabase.co";
   var SB_KEY="sb_publishable_1T3y9KiP4jzeAVF7xQkYKw_l35iOg0l";
+  var KEY="evgPhotos";
   var API=SB_URL+"/rest/v1/evg_photos";
   var HDR={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};
   var PASS="jeremieestunfifou";
@@ -1162,12 +1163,11 @@ spots.forEach(function(sp){
   document.getElementById("gdel").addEventListener("click",function(){
     if(!slides.length){return;}
     var ph=slides[gi].ph;
-    var mp=prompt("Mot de passe pour supprimer :");
-    if(mp&&mp.trim().toLowerCase()===PASS){
+    if(confirm("Supprimer cette photo pour tout le monde ?")){
       fetch(API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR})
         .then(function(r){if(!r.ok){throw new Error("hs");}return fetchPhotos();})
         .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
-    }else if(mp!==null){alert("Mauvais mot de passe.");}
+    }
   });
   // glisser du doigt pour changer de photo
   (function(){
