@@ -170,6 +170,15 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .retro-truck{display:flex;justify-content:center;margin-bottom:8px}
 .retro-truck canvas{image-rendering:pixelated}
 
+/* ---------- Messages vidéo ---------- */
+.vbtn{position:absolute;top:52px;right:10px;font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:none;background:var(--borne);color:#fff;cursor:pointer;line-height:1}
+.vchip{display:none;margin-top:.5rem;justify-content:flex-end}
+.vchip span{background:var(--borne);color:#fff;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.25rem .6rem;border-radius:14px;cursor:pointer}
+#m-vid video{width:100%;border-radius:10px;background:#111318;display:block}
+#m-vid .vmeta{display:flex;justify-content:space-between;align-items:center;margin:.3rem 0 1rem;font-size:.85rem;color:#4a4e56}
+#m-vid .vdel{background:#ECEBE4;color:var(--borne);border:none;border-radius:6px;padding:.3rem .55rem;font-weight:700;font-size:.8rem;cursor:pointer}
+#m-vid h4{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--borne);margin:.2rem 0 .6rem}
+
 /* ---------- Popups ---------- */
 .overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
 .overlay.open{display:block}
@@ -1214,6 +1223,102 @@ spots.forEach(function(sp){
   retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
   fetchPhotos();
   setInterval(fetchPhotos,60000);
+})();
+
+// Messages vidéo des proches, par étape (Supabase Storage + table evg_videos)
+(function(){
+  var SB_URL="https://pryrofztqabprfsbauvo.supabase.co";
+  var SB_KEY="sb_publishable_1T3y9KiP4jzeAVF7xQkYKw_l35iOg0l";
+  var TAB=SB_URL+"/rest/v1/evg_videos";
+  var STO=SB_URL+"/storage/v1/object";
+  var HDR={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY};
+  var HDRJ={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};
+  var vids=[];
+  var stops=[].slice.call(document.querySelectorAll(".stop"));
+  var cur=0,curBtn=null;
+  function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
+  function pubUrl(path){return SB_URL+"/storage/v1/object/public/evg-videos/"+path;}
+  function render(){
+    stops.forEach(function(st,i){
+      var mine=vids.filter(function(v){return v.stop_i===i;});
+      var chip=st.querySelector(".vchip");
+      if(!chip){chip=document.createElement("div");chip.className="vchip";
+        var sp=document.createElement("span");chip.appendChild(sp);st.appendChild(chip);
+        (function(idx){chip.addEventListener("click",function(){openVids(idx);});})(i);}
+      chip.querySelector("span").textContent="🎬 "+mine.length+" message"+(mine.length>1?"s":"");
+      chip.style.display=mine.length?"flex":"none";
+    });
+  }
+  function fetchVids(){
+    return fetch(TAB+"?select=id,stop_i,path,author,created_at&order=created_at.asc",{headers:HDRJ})
+      .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
+      .then(function(rows){vids=rows;render();})
+      .catch(function(){});
+  }
+  function getAuthor(){
+    var a=localStorage.getItem("evgAuthor");
+    if(!a){a=prompt("Ton prénom (affiché avec le message) :")||"";if(a){localStorage.setItem("evgAuthor",a);}}
+    return a;
+  }
+  function upload(file){
+    if(!file){return;}
+    if(file.size>45*1024*1024){alert("Vidéo trop lourde (max ~45 Mo) : filme en 720p ou raccourcis le message.");return;}
+    var author=getAuthor();
+    var ext=(file.name.split(".").pop()||"mp4").toLowerCase();
+    var path="etape"+cur+"-"+Date.now()+"."+ext;
+    if(curBtn){curBtn.textContent="⏳";}
+    fetch(STO+"/evg-videos/"+path,{method:"POST",headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":file.type||"video/mp4"},body:file})
+      .then(function(r){if(!r.ok){throw new Error("sto");}
+        return fetch(TAB,{method:"POST",headers:HDRJ,body:JSON.stringify({stop_i:cur,path:path,author:author})});})
+      .then(function(r){if(!r.ok){throw new Error("tab");}return fetchVids();})
+      .catch(function(){alert("Envoi impossible : vérifie la connexion (le message n’a pas été partagé).");})
+      .then(function(){if(curBtn){curBtn.textContent="🎬";}});
+  }
+  var inpVCam=document.createElement("input");inpVCam.type="file";inpVCam.accept="video/*";inpVCam.setAttribute("capture","user");inpVCam.style.display="none";
+  var inpVLib=document.createElement("input");inpVLib.type="file";inpVLib.accept="video/*";inpVLib.style.display="none";
+  document.body.appendChild(inpVCam);document.body.appendChild(inpVLib);
+  inpVCam.addEventListener("change",function(){upload(inpVCam.files[0]);inpVCam.value="";vSrc.classList.remove("open");});
+  inpVLib.addEventListener("change",function(){upload(inpVLib.files[0]);inpVLib.value="";vSrc.classList.remove("open");});
+  var vSrc=document.createElement("div");vSrc.className="overlay";vSrc.id="m-vidsrc";
+  vSrc.innerHTML='<div class="modal"><h3>🎬 Message vidéo pour Jérémie</h3><p style="font-size:.88rem;color:#4a4e46;margin-bottom:.4rem">Il sera visionné à cette étape du parcours. Format court conseillé (moins d’une minute).</p><button class="srcbtn" id="vsrc-cam">🎥 Filmer maintenant</button><button class="srcbtn" id="vsrc-lib">📁 Choisir une vidéo</button><button class="close">Annuler</button></div>';
+  document.body.appendChild(vSrc);
+  vSrc.addEventListener("click",function(e){if(e.target===vSrc||e.target.classList.contains("close")){vSrc.classList.remove("open");}});
+  document.getElementById("vsrc-cam").addEventListener("click",function(){inpVCam.click();});
+  document.getElementById("vsrc-lib").addEventListener("click",function(){inpVLib.click();});
+  stops.forEach(function(st,i){
+    var b=document.createElement("button");b.className="vbtn";b.textContent="🎬";b.title="Laisser un message vidéo";
+    b.addEventListener("click",function(){cur=i;curBtn=b;vSrc.classList.add("open");});
+    st.appendChild(b);
+  });
+  var vGal=document.createElement("div");vGal.className="overlay";vGal.id="m-vid";
+  vGal.innerHTML='<div class="modal"><h4 id="vcap"></h4><div id="vbody"></div><button class="close">Fermer</button></div>';
+  document.body.appendChild(vGal);
+  vGal.addEventListener("click",function(e){if(e.target===vGal||e.target.classList.contains("close")){vGal.classList.remove("open");
+    [].slice.call(vGal.querySelectorAll("video")).forEach(function(v){v.pause();});}});
+  function openVids(i){
+    document.getElementById("vcap").textContent="🎬 Messages · "+stopName(stops[i]);
+    var body=document.getElementById("vbody");body.innerHTML="";
+    vids.filter(function(v){return v.stop_i===i;}).forEach(function(v){
+      var vid=document.createElement("video");vid.controls=true;vid.playsInline=true;vid.preload="metadata";vid.src=pubUrl(v.path);
+      body.appendChild(vid);
+      var m=document.createElement("div");m.className="vmeta";
+      var who=document.createElement("span");who.textContent=(v.author?("De "+v.author+" · "):"")+new Date(v.created_at).toLocaleDateString("fr-FR");
+      var del=document.createElement("button");del.className="vdel";del.textContent="🗑";
+      del.addEventListener("click",function(){
+        if(confirm("Supprimer ce message vidéo pour tout le monde ?")){
+          fetch(STO+"/evg-videos/"+v.path,{method:"DELETE",headers:HDR})
+            .then(function(){return fetch(TAB+"?id=eq."+v.id,{method:"DELETE",headers:HDRJ});})
+            .then(function(){return fetchVids();})
+            .then(function(){openVids(i);})
+            .catch(function(){alert("Suppression impossible.");});
+        }
+      });
+      m.appendChild(who);m.appendChild(del);body.appendChild(m);
+    });
+    vGal.classList.add("open");
+  }
+  fetchVids();
+  setInterval(fetchVids,60000);
 })();
 </script>
 
