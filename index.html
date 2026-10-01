@@ -145,11 +145,13 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
 /* ---------- Photos ---------- */
 .pbtn{position:absolute;top:10px;right:10px;font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:none;background:var(--ink);color:#fff;cursor:pointer;line-height:1}
-.pstack{display:none;margin-top:.6rem;align-items:center;justify-content:flex-end;cursor:pointer}
-.pstack img{width:48px;height:48px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);margin-left:-16px;transform:rotate(-4deg)}
+.pstack{display:none;position:absolute;top:48px;right:10px;flex-direction:column;align-items:flex-end;cursor:pointer;z-index:2}
+.pstack img{width:74px;height:74px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transform:rotate(-4deg)}
+.pstack img+img{margin-top:-38px}
+.stop.has-photos h3,.stop.has-photos p,.stop.has-photos .tagrow,.stop.has-photos .meta{padding-right:96px}
 .pstack img:nth-child(2){transform:rotate(3deg)}
 .pstack img:nth-child(3){transform:rotate(-1deg)}
-.pmore{margin-left:24px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
+.pmore{margin-top:4px;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;color:#4a4e56}
 .slide-wrap{position:relative;background:#111318;border-radius:10px;overflow:hidden}
 #gimg{width:100%;max-height:58vh;object-fit:contain;display:block}
 .gnavbtn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--ink);font-size:1.5rem;font-weight:700;cursor:pointer;line-height:1;box-shadow:0 1px 4px rgba(0,0,0,.4)}
@@ -355,7 +357,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>44 quai Charles de Gaulle (Cité Internationale). Entrée 20 €, verre dès 30 €, show privé 90 €. Pic de soirée 0h-3h.</p>
       <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span></div>
       <div class="meta">
-        <span class="done">✅ Réservé — table EVG</span>
+        <span class="done">✅ Réservé — 22h15</span>
         <button class="infob" data-m="i-bus">ℹ️</button>
       </div>
     </div>
@@ -409,9 +411,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~10 min</div>
 
     <div class="stop">
-      <span class="time">12:45</span><span class="dur">⏱ 45 min</span>
+      <span class="time">12:15</span><span class="dur">⏱ 45 min</span>
       <h3>Déjeuner express Airbnb</h3>
-      <p>Sandwichs/wraps préparés avec les courses de la veille. Départ 13:20.</p>
+      <p>Sandwichs/wraps préparés avec les courses de la veille. Départ 12:45.</p>
       <div class="meta">
         <button class="food" data-m="m-sandwich">🍽 Repas</button>
       </div>
@@ -420,11 +422,11 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="leg">🚗 ~55 min</div>
 
     <div class="stop key">
-      <span class="time">14:30</span><span class="dur">⏱ ~3h</span>
+      <span class="time">13:30</span><span class="dur">⏱ ~3h</span>
       <h3>Canyoning — Canyon de Chaley (Bugey)</h3>
-      <p>Avec Canyoning Emotions : sauts, toboggans naturels et rappels dans les gorges de l'Albarine. Combinaisons fournies ; prévoir maillot, serviette et baskets qui peuvent aller dans l'eau. Départ de l'Airbnb 13:30. Demander à JB un créneau groupe 14:30 (privatisable à 6).</p>
+      <p>Avec Canyoning Emotions : sauts, toboggans naturels et rappels dans les gorges de l'Albarine. Combinaisons fournies ; prévoir maillot, serviette et baskets qui peuvent aller dans l'eau. Départ de l'Airbnb 12:45.</p>
       <div class="meta">
-        <span class="done">✅ Réservé — 14h30</span>
+        <span class="done">✅ Réservé — 13h30</span>
         <button class="infob" data-m="i-cany">ℹ️</button>
         <a class="waze" href="https://waze.com/ul?q=Chaley%2001230&navigate=yes">🧭 Waze</a>
       </div>
@@ -441,7 +443,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop">
       <span class="time">20:15</span><span class="dur">⏱ soirée</span>
       <h3>BBQ + soirée jeux</h3>
-      <p>Quiz sur Jérémie, gages, bière-pong. Romain reprend la route dans la soirée (il lève le pied sur les bières). Village paisible et fêtes non admises au gîte : ambiance terrasse, pas boîte de nuit.</p>
+      <p>Ambiance terrasse entre saucisses et bières.</p>
       <div class="meta">
         <button class="food" data-m="m-bbq">🍽 Repas</button>
       </div>
@@ -485,7 +487,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <p>Deux vols de chute libre indoor chacun dans la soufflerie de Saint-Priest. Convocation 1h avant le vol, briefing et combinaisons fournies.</p>
       <div class="tagrow"><span class="tag warn">Pas de vol en cas d'épaule fragile (luxation)</span></div>
       <div class="meta">
-        <span class="done">✅ Réservé</span>
+        <span class="done">✅ Réservé — 12h</span>
         <a class="waze" href="https://waze.com/ul?q=iFLY%20Lyon%20Saint-Priest&navigate=yes">🧭 Waze</a>
         <button class="infob" data-m="i-ifly">ℹ️</button>
       </div>
@@ -537,18 +539,6 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   </div>
 </section>
 
-<!-- ================= ACCES RAPIDE ================= -->
-</div>
-
-
-    <button class="close">Fermer</button>
-  </div>
-</div>
-
-
-    <button class="close">Fermer</button>
-  </div>
-</div>
 
 
 
@@ -697,7 +687,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="i-cany">
   <div class="modal">
     <h3>🌊 Canyoning Emotions — canyon de Chaley</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=Chaley+01230" target="_blank">01230 Chaley</a>, gorges de l’Albarine (Bugey)</li><li>✅ Créneau groupe 14h30</li><li>🎒 Maillot, serviette, baskets qui peuvent aller dans l'eau</li><li>📞 JB : <a href="tel:+33624921428">06 24 92 14 28</a></li><li>🌐 <a href="https://canyoningemotions.fr" target="_blank">canyoningemotions.fr</a></li></ul>
+    <ul><li>📍 <a href="https://maps.google.com/?q=Chaley+01230" target="_blank">01230 Chaley</a>, gorges de l’Albarine (Bugey)</li><li>✅ Créneau groupe 13h30</li><li>🎒 Maillot, serviette, baskets qui peuvent aller dans l'eau</li><li>📞 JB : <a href="tel:+33624921428">06 24 92 14 28</a></li><li>🌐 <a href="https://canyoningemotions.fr" target="_blank">canyoningemotions.fr</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -945,6 +935,7 @@ window.addEventListener("resize",fixTops);fixTops();
       if(!stack){stack=document.createElement("div");stack.className="pstack";st.appendChild(stack);
         (function(idx){stack.addEventListener("click",function(){openGal([idx]);});})(i);}
       stack.innerHTML="";
+      st.classList.toggle("has-photos",mine.length>0);
       mine.slice(0,3).forEach(function(ph){var im=document.createElement("img");im.src=ph.d;stack.appendChild(im);});
       if(mine.length>3){var m=document.createElement("span");m.className="pmore";m.textContent="+"+(mine.length-3)+" photos";stack.appendChild(m);}
       stack.style.display=mine.length?"flex":"none";
