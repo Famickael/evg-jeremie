@@ -170,15 +170,6 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .retro-truck{display:flex;justify-content:center;margin-bottom:8px}
 .retro-truck canvas{image-rendering:pixelated}
 
-/* ---------- Messages vidéo ---------- */
-.vbtn{position:absolute;top:52px;right:10px;font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:none;background:var(--borne);color:#fff;cursor:pointer;line-height:1}
-.vchip{display:none;margin-top:.5rem;justify-content:flex-end}
-.vchip span{background:var(--borne);color:#fff;font-family:'Barlow Condensed';font-weight:700;font-size:.85rem;padding:.25rem .6rem;border-radius:14px;cursor:pointer}
-#m-vid video{width:100%;border-radius:10px;background:#111318;display:block}
-#m-vid .vmeta{display:flex;justify-content:space-between;align-items:center;margin:.3rem 0 1rem;font-size:.85rem;color:#4a4e56}
-#m-vid .vdel{background:#ECEBE4;color:var(--borne);border:none;border-radius:6px;padding:.3rem .55rem;font-weight:700;font-size:.8rem;cursor:pointer}
-#m-vid h4{font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--borne);margin:.2rem 0 .6rem}
-
 /* ---------- Popups ---------- */
 .overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
 .overlay.open{display:block}
@@ -209,19 +200,19 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="wxday">Ven · Lyon</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
     <div class="wxtemp"></div>
-    <div class="wxrain">dispo ~10 j avant</div>
+    <div class="wxrain">Plein soleil</div>
   </div>
   <div class="wxcard" id="wx2">
     <div class="wxday">Sam · Canyon</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
     <div class="wxtemp"></div>
-    <div class="wxrain">dispo ~10 j avant</div>
+    <div class="wxrain">Plein soleil</div>
   </div>
   <div class="wxcard" id="wx3">
     <div class="wxday">Dim · Crémieu</div>
     <div class="wxmain"><span class="sun">☀️</span></div>
     <div class="wxtemp"></div>
-    <div class="wxrain">dispo ~10 j avant</div>
+    <div class="wxrain">Plein soleil</div>
   </div>
 </div>
 
@@ -293,8 +284,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop key">
       <span class="time">09:45</span><span class="dur">⏱ 1h30 de piste</span>
       <h3>Karting Nevers Magny-Cours</h3>
-      <p>Arrivée 15 min avant l'ouverture. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 2 sessions de 10 min chacun + chrono, le dernier a un gage. Départ 11:45.</p>
-      <div class="tagrow"><span class="tag euro">~40 €/session</span></div>
+      <p>Arrivée 15 min avant l'ouverture. Sessions 10:00-11:30 sur la piste outdoor de 1 110 m homologuée FFSA, 3 sessions de 10 min + pauses. Départ 11:45.</p>
       <div class="meta">
         <span class="done">✅ Réservé — 10h00</span>
         <button class="infob" data-m="i-karting">ℹ️</button>
@@ -339,34 +329,33 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop">
       <span class="time">19:15</span>
       <h3>Parking Cité Internationale</h3>
-      <p>Départ de l'Airbnb à 18:45. Le club est sur place, le resto à 10 min à pied.</p>
+      <p>Départ de l'Airbnb à 18:45. Club et brasserie sont sur place : plus besoin de la voiture jusqu'au retour.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=Parking%20Cit%C3%A9%20Internationale%20Lyon&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
-    <div class="leg">🚶 10 min à pied</div>
+    <div class="leg">🚶 5 min à pied</div>
 
     <div class="stop key">
       <span class="time">19:45</span><span class="dur">⏱ 2h</span>
-      <h3>Dîner — Brasserie des Brotteaux</h3>
-      <p>1 place Jules Ferry, Lyon 6ᵉ. Service jusqu'à 22h. Plan B bouchon : L'Antr'Opotes, 118 rue Bossuet.</p>
-      <div class="tagrow"><span class="tag euro">~35-50 €/pers</span></div>
+      <h3>Dîner — La Grande Brasserie Tête d'Or</h3>
+      <p>Face au parc de la Tête d'Or, à la Cité Internationale : le resto est à deux pas du parking et du club, tout se fait à pied.</p>
       <div class="meta">
         <span class="done">✅ Réservé — 19h45</span>
         <button class="infob" data-m="i-brotteaux">ℹ️</button>
       </div>
     </div>
 
-    <div class="leg">🚶 10 min à pied</div>
+    <div class="leg">🚶 2 min à pied</div>
 
     <div class="stop key">
       <span class="time">22:15</span><span class="dur">⏱ ~3h</span>
       <h3>Bus Paradise — cabaret / strip club</h3>
       <p>44 quai Charles de Gaulle (Cité Internationale). Entrée 20 €, verre dès 30 €, show privé 90 €. Pic de soirée 0h-3h.</p>
-      <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span><span class="tag euro">80-150 €/pers</span></div>
+      <div class="tagrow"><span class="tag warn">Tenue exigée : pantalon + chemise/polo. Pas de baskets sport ni casquette</span></div>
       <div class="meta">
-        <a class="book" href="https://www.bus-paradise.com" target="_blank">Réserver table EVG</a>
+        <span class="done">✅ Réservé — table EVG</span>
         <button class="infob" data-m="i-bus">ℹ️</button>
       </div>
     </div>
@@ -409,23 +398,11 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop key">
       <span class="time">09:30</span><span class="dur">⏱ 2h de jeu</span>
       <h3>BSKS Paintball — Chamagnieu</h3>
-      <p>Arriver 30 min avant le créneau de 10:00. Forfait 500 billes payé (225 €, virement de Mickaël, à répartir via le Tricount) — la place de Jérémie est offerte par BSKS 🎁. ⚠️ Facture établie pour 5 payants : prévenir BSKS du passage à 4 (avoir ou ajustement). À moins de 8 joueurs, regroupement avec un autre groupe = des adversaires.</p>
-      <div class="tagrow"><span class="tag euro">45 €/pers · 500 billes</span></div>
+      <p>Arrivée 30 min avant le créneau de 10:00. Forfait 500 billes chacun, et un autre groupe en face pour servir d'adversaires.</p>
       <div class="meta">
-        <span class="done">✅ Réservé &amp; payé — 10h00</span>
-        <a class="waze" href="facture-bsks.pdf" target="_blank">🧾 Facture</a>
+        <span class="done">✅ Réservé — 10h00</span>
         <button class="infob" data-m="i-bsks">ℹ️</button>
         <a class="waze" href="https://waze.com/ul?q=BSKS%20Paintball%20Chamagnieu&navigate=yes">🧭 Waze</a>
-      </div>
-    </div>
-
-    <div class="stop key">
-      <span class="time">12:00</span><span class="dur">⏱ 30 min</span>
-      <h3>Babyfoot humain — sur place</h3>
-      <p>Dans la foulée du paintball, chez le même prestataire : deux équipes accrochées aux barres, fous rires garantis. La place de Jérémie est offerte par le prestataire 🎁.</p>
-      <div class="tagrow"><span class="tag euro">15 €/pers</span></div>
-      <div class="meta">
-        <button class="infob" data-m="i-bsks">ℹ️</button>
       </div>
     </div>
 
@@ -446,9 +423,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
       <span class="time">14:30</span><span class="dur">⏱ ~3h</span>
       <h3>Canyoning — Canyon de Chaley (Bugey)</h3>
       <p>Avec Canyoning Emotions : sauts, toboggans naturels et rappels dans les gorges de l'Albarine. Combinaisons fournies ; prévoir maillot, serviette et baskets qui peuvent aller dans l'eau. Départ de l'Airbnb 13:30. Demander à JB un créneau groupe 14:30 (privatisable à 6).</p>
-      <div class="tagrow"><span class="tag euro">~45-55 €/pers</span><span class="tag warn">Caler le créneau par téléphone avec JB</span></div>
       <div class="meta">
-        <a class="book" href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">Réserver</a>
+        <span class="done">✅ Réservé — 14h30</span>
         <button class="infob" data-m="i-cany">ℹ️</button>
         <a class="waze" href="https://waze.com/ul?q=Chaley%2001230&navigate=yes">🧭 Waze</a>
       </div>
@@ -470,6 +446,12 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
         <button class="food" data-m="m-bbq">🍽 Repas</button>
       </div>
     </div>
+
+    <div class="stop">
+      <span class="time">22:30</span><span class="dur">⏱ jusqu'à 1h</span>
+      <h3>Itinéraire Bis — à la demande de Jérémie</h3>
+      <p>Prolongation de la soirée jusqu'à 1h du matin.</p>
+    </div>
   </div>
 </section>
 
@@ -478,7 +460,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   <div class="day-sign">
     <div class="etape">Étape 3 · 4 personnes</div>
     <h2>Dimanche 27 — Vol &amp; clôture</h2>
-    <div class="sub">Check-out → soufflerie → pique-nique → retours</div>
+    <div class="sub">Check-out → soufflerie → McDo → retours</div>
     <div class="who">👥 Mickaël · Duncan · Jérémie · Thierry</div>
   </div>
 
@@ -500,24 +482,23 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop key">
       <span class="time">11:15</span><span class="dur">⏱ ~1h45</span>
       <h3>Soufflerie iFLY Lyon — chute libre indoor</h3>
-      <p>Version officielle pour Jérémie jusqu'au dernier moment : on visite la cité médiévale de Crémieu 🤫. En vrai : 2 vols de chute libre indoor chacun dans la soufflerie de Saint-Priest. Convocation 1h avant le vol (briefing + combinaisons fournies), tenue sport ou jean-baskets.</p>
-      <div class="tagrow"><span class="tag euro">~50-70 €/pers</span><span class="tag warn">Pas de vol en cas d'épaule fragile (luxation)</span></div>
+      <p>Deux vols de chute libre indoor chacun dans la soufflerie de Saint-Priest. Convocation 1h avant le vol, briefing et combinaisons fournies.</p>
+      <div class="tagrow"><span class="tag warn">Pas de vol en cas d'épaule fragile (luxation)</span></div>
       <div class="meta">
-        <a class="book" href="https://booking.iflylyon.fr/adulte" target="_blank">Réserver</a>
+        <span class="done">✅ Réservé</span>
         <a class="waze" href="https://waze.com/ul?q=iFLY%20Lyon%20Saint-Priest&navigate=yes">🧭 Waze</a>
         <button class="infob" data-m="i-ifly">ℹ️</button>
       </div>
     </div>
 
-    <div class="leg">🚗 ~10 min</div>
+    <div class="leg">🚗 ~5 min</div>
 
     <div class="stop">
       <span class="time">13:15</span><span class="dur">⏱ 1h</span>
-      <h3>Pique-nique — parc de Parilly</h3>
-      <p>Salade de pâtes du brunch, restes de la plancha froids, chips, fruits. Grand parc au pied de l'A43, parfait avant de reprendre la route. Départ des retours 14:15.</p>
+      <h3>Déjeuner — McDo de Saint-Priest</h3>
+      <p>Le McDonald's du rond-point Normandie-Niemen, à 5 min de la soufflerie. Débrief des vols autour des nuggets avant de reprendre la route. Départ des retours 14:15.</p>
       <div class="meta">
-        <button class="food" data-m="m-dejdim">🍽 Repas</button>
-        <a class="waze" href="https://waze.com/ul?q=Parc%20de%20Parilly&navigate=yes">🧭 Waze</a>
+        <a class="waze" href="https://waze.com/ul?q=McDonald%27s%20Normandie%20Niemen%20Saint-Priest&navigate=yes">🧭 Waze</a>
       </div>
     </div>
 
@@ -526,7 +507,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <div class="stop">
       <span class="time">17:05</span>
       <h3>Dépôt de Jérémie — Sainte-Solange</h3>
-      <p>Départ du parc à 14:15, par A46 → A6 → A79 → A71.</p>
+      <p>Départ du McDo à 14:15, par A46 → A6 → A79 → A71.</p>
       <div class="meta">
         <a class="waze" href="https://waze.com/ul?q=8%20rue%20des%20Fauvettes%2018220%20Sainte-Solange&navigate=yes">🧭 Waze</a>
       </div>
@@ -557,92 +538,19 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 </section>
 
 <!-- ================= ACCES RAPIDE ================= -->
-<div class="quick">
-  <button class="qbtn" data-m="m-resas">✅ Réservations</button>
-  <button class="qbtn" data-m="m-budget">💶 Budget</button>
-  <button class="qbtn" data-m="m-infos">ℹ️ Infos pratiques</button>
-  <a class="qbtn" href="https://tricount.com/tCnjYyKEXWhIMabwNh" target="_blank" style="display:flex;align-items:center;justify-content:center;text-decoration:none;background:var(--sign);border-top-color:var(--sign)">💶 Tricount</a>
 </div>
 
-<div class="overlay" id="m-resas">
-  <div class="modal">
-<div class="resas" id="resas">
-  <h2>Résas — par ordre d'urgence</h2>
-  <div class="resa"><input type="checkbox" id="r1"><label class="txt" for="r1"><strong>1 · Bus Paradise — table EVG 3 pers.</strong>vendredi 25 au soir · <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a> · <span class="due">cette semaine</span></label></div>
-  <div class="resa"><input type="checkbox" id="r2" checked><label class="txt" for="r2"><strong>2 · Brasserie des Brotteaux — 3 couverts 19:45 ✅ Réservé</strong><a href="tel:+33472740398">04 72 74 03 98</a> · <span class="due">cette semaine</span></label></div>
-  <div class="resa"><input type="checkbox" id="r3"><label class="txt" for="r3"><strong>3 · Canyoning — créneau groupe 5 pers. sam. 14:30</strong>JB : <a href="tel:+33624921428">06 24 92 14 28</a> · <a href="https://canyoningemotions.fr/contact-et-reservation-canyoning-emotions" target="_blank">canyoningemotions.fr</a> · <span class="due">sous 15 jours</span></label></div>
-  <div class="resa"><input type="checkbox" id="r4" checked><label class="txt" for="r4"><strong>4 · Paintball BSKS — sam. 10:00 ✅ Réservé &amp; payé (225 €)</strong><a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a> · <span class="due">sous 15 jours</span></label></div>
-  <div class="resa"><input type="checkbox" id="r5" checked><label class="txt" for="r5"><strong>5 · Karting Magny-Cours — ven. 10:00 ✅ Réservé</strong><a href="tel:+33386218043">03 86 21 80 43</a> · <span class="due">semaine du 14/09</span></label></div>
-  <div class="resa"><input type="checkbox" id="r7"><label class="txt" for="r7"><strong>7 · Babyfoot humain — sam. 12:00</strong>à confirmer avec BSKS en même temps que le regroupement paintball</label></div>
-  <div class="resa"><input type="checkbox" id="r6"><label class="txt" for="r6"><strong>6 · Soufflerie iFLY Lyon — 4 pers. dim. (chut 🤫)</strong><a href="https://booking.iflylyon.fr/adulte" target="_blank">booking.iflylyon.fr</a> · <span class="due">à caler cette semaine</span></label></div>
-</div>
+
     <button class="close">Fermer</button>
   </div>
 </div>
 
-<div class="overlay" id="m-budget">
-  <div class="modal">
-<div class="budget">
-  <h2>Budget / pers.</h2>
-  <p style="font-size:.78rem;color:#6a6e76;padding:0 14px 6px">💶 payé · ✅ réservé (montant estimé) · ⏳ à confirmer / estimation</p>
-  <table>
-    <tr><td>✅ Karting (réservé · 2 sessions, selon kart)</td><td>30-80 €</td></tr>
-    <tr><td>✅ Dîner Brotteaux (réservé)</td><td>35-50 €</td></tr>
-    <tr><td>⏳ Bus Paradise (à réserver · entrée + consos)</td><td>80-150 €</td></tr>
-    <tr><td>💶 Paintball (payé · 500 billes)</td><td>45 €</td></tr>
-    <tr><td>⏳ Babyfoot humain (à confirmer)</td><td>15 €</td></tr>
-    <tr><td>⏳ Canyoning (à réserver)</td><td>45-55 €</td></tr>
-    <tr><td>⏳ Soufflerie iFLY (à réserver · surprise dim., 2 vols)</td><td>~50-70 €</td></tr>
-    <tr><td>⏳ Déjeuner Moulins (estimation)</td><td>15-20 €</td></tr>
-    <tr><td>⏳ Parking Cité Internationale (estimation)</td><td>~12 € / voiture</td></tr>
-    <tr><td>⏳ Essence + péages voiture de Mickaël (estimation, ~1 300 km)</td><td>~200 € ÷ 3</td></tr>
-    <tr><td>💶 Airbnb (payé · 2 nuits, 600 €) : 6 parts de 100 €, celle de Jérémie portée par les 4 dormeurs</td><td>125 € dormeurs · 100 € Romain</td></tr>
-    <tr><td>⏳ Courses communes (estimation ~160-190 € : apéros, plancha, midis, petits-déj, divers)</td><td>~28-32 €/pers</td></tr>
-  </table>
-  <h2>Participation estimée par personne</h2>
-  <table>
-    <tr><td><b>Jérémie</b> · on lui offre tout 🎁</td><td><b>0 €</b></td></tr>
-    <tr><td><b>Mickaël</b> · 3 jours + part de Jérémie du vendredi (÷2 avec Duncan), du samedi (÷4) et du dimanche (÷3)</td><td>≈ 720-980 €</td></tr>
-    <tr><td><b>Duncan</b> · même périmètre que Mickaël</td><td>≈ 720-980 €</td></tr>
-    <tr><td><b>Thierry</b> · sam-dim + part de Jérémie du samedi (÷4) et du dimanche (÷3), hors trajet perso</td><td>≈ 415-460 €</td></tr>
-    <tr><td><b>Romain</b> · journée du samedi (paintball, babyfoot, canyoning, courses) + part de Jérémie du samedi (÷4), sans Airbnb ni trajet perso</td><td>≈ 135-150 €</td></tr>
-  </table>
-  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La part de Jérémie est répartie au prorata des jours partagés avec lui : ses dépenses du vendredi entre Mickaël et Duncan, son canyoning du samedi entre les 4 (paintball et babyfoot lui sont offerts par les prestataires), sa soufflerie du dimanche entre les 3 présents. L'Airbnb (600 €) se partage entre les 3 dormeurs payeurs (Mickaël, Duncan, Thierry) ; Jérémie et Romain n'en paient pas.</p>
-  <p style="font-size:.78rem;color:#6a6e76;padding:6px 14px 0">La soufflerie (~50-70 €) est comptée pour chaque personne présente dimanche : retirez-la pour ceux qui regardent Jérémie voler sans voler.</p>
-  <div style="padding:10px 14px 14px">
-    <a href="https://tricount.com/tCnjYyKEXWhIMabwNh" target="_blank" style="display:block;text-align:center;background:var(--sign);color:#fff;text-decoration:none;border-radius:8px;padding:.75rem;font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.04em">💶 Tricount commun du week-end</a>
-    <p style="font-size:.78rem;color:#6a6e76;margin-top:.4rem;text-align:center">Montants estimatifs : chacun saisit ses dépenses réelles dans le Tricount, la répartition (Romain samedi seulement, etc.) s'ajuste là-bas.</p>
-  </div>
-</div>
+
     <button class="close">Fermer</button>
   </div>
 </div>
 
-<div class="overlay" id="m-infos">
-  <div class="modal">
-    <h3>ℹ️ Infos pratiques</h3>
-    <h4>Airbnb</h4>
-    <ul><li>17 Chemin du Château d'Eau, 38460 Panossas</li></ul>
-    <h4>Karting de Nevers Magny-Cours</h4>
-    <ul><li>Technopôle du circuit, 58470 Magny-Cours · <a href="tel:+33386218043">03 86 21 80 43</a></li></ul>
-    <h4>Brasserie des Brotteaux</h4>
-    <ul><li>1 place Jules Ferry, 69006 Lyon · <a href="tel:+33472740398">04 72 74 03 98</a></li></ul>
-    <h4>Bus Paradise</h4>
-    <ul><li>44 quai Charles de Gaulle, 69006 Lyon (Cité Internationale) · <a href="tel:+33423400947">04 23 40 09 47</a></li></ul>
-    <h4>BSKS Paintball</h4>
-    <ul><li>Lieu-dit St Martin, 38460 Chamagnieu · <a href="tel:+33634023646">06 34 02 36 46</a></li></ul>
-    <h4>Canyoning Emotions</h4>
-    <ul><li>Canyon de Chaley, 01230 Chaley · JB : <a href="tel:+33624921428">06 24 92 14 28</a></li></ul>
-<div class="phones">
-  <a href="tel:+33386218043"><b>Karting Magny-Cours</b><span>03 86 21 80 43</span></a>
-  <a href="tel:+33472740398"><b>Brasserie Brotteaux</b><span>04 72 74 03 98</span></a>
-  <a href="tel:+33423400947"><b>Bus Paradise</b><span>04 23 40 09 47</span></a>
-  <a href="tel:+33634023646"><b>BSKS Paintball</b><span>06 34 02 36 46</span></a>
-  <a href="tel:+33624921428"><b>Canyoning (JB)</b><span>06 24 92 14 28</span></a>
-</div>
-    <button class="close">Fermer</button>
-  </div>
-</div>
+
 
 
 
@@ -658,8 +566,6 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
     <ul><li>Pain de mie ou wraps, jambon, poulet, fromage, crudités</li></ul>
     <h4>Petits-déj + brunch (jusqu'à 6 pers. dimanche)</h4>
     <ul><li>Œufs (x12), bacon</li><li>Pain, beurre, confiture, café, lait, jus d'orange</li><li>Viennoiseries : boulangerie dimanche matin</li></ul>
-    <h4>Pique-nique dimanche (4 pers.)</h4>
-    <ul><li>Pâtes (500 g) + pesto pour la salade de pâtes</li><li>Tomates cerises, mozzarella (x2)</li><li>Chips, fruits, gobelets</li></ul>
     <h4>Divers</h4>
     <ul><li>Eau (pack), sacs poubelle, sopalin, produit vaisselle</li><li>Glacière pour le pique-nique du dimanche</li><li>Doliprane (lendemains difficiles)</li></ul>
     <button class="close">Fermer</button>
@@ -738,14 +644,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
   </div>
 </div>
 
-<div class="overlay" id="m-dejdim">
-  <div class="modal">
-    <h3>🍽 Pique-nique du dimanche — 12:30</h3>
-    <ul><li>Salade de pâtes préparée pendant le brunch (pâtes, pesto, tomates cerises, mozzarella)</li><li>Restes de la plancha froids (merguez, poulet)</li><li>Chips, fruits, eau</li><li>Glacière + gobelets + couverts à embarquer au check-out</li></ul>
-    <p class="note">Le parc de Parilly est à 10 min d'iFLY, au pied de l'A43 pour le retour.</p>
-    <button class="close">Fermer</button>
-  </div>
-</div>
+
 
 <div class="overlay" id="i-airbnb">
   <div class="modal">
@@ -758,7 +657,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="i-ifly">
   <div class="modal">
     <h3>🌀 iFLY Lyon — chute libre indoor</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=iFLY+Lyon+48+Ancienne+Route+de+Grenoble+Saint-Priest" target="_blank">48 Ancienne Route de Grenoble, 69800 Saint-Priest</a></li><li>🚗 A43 sortie 4B Bron Aviation · ~25 min du gîte</li><li>🕚 Convocation 1h avant l'heure de vol · briefing 20 min · 2 vols chacun</li><li>👕 Tenue sport ou jean + baskets · combinaison, casque et lunettes fournis</li><li>⚠️ Interdit en cas de luxation d'épaule (même ancienne) · moins de 115 kg si moins d'1m85</li><li>💶 Baptême dès ~49,90 €</li><li>🌐 <a href="https://booking.iflylyon.fr/adulte" target="_blank">booking.iflylyon.fr</a></li></ul>
+    <ul><li>📍 <a href="https://maps.google.com/?q=iFLY+Lyon+48+Ancienne+Route+de+Grenoble+Saint-Priest" target="_blank">48 Ancienne Route de Grenoble, 69800 Saint-Priest</a></li><li>🚗 A43 sortie 4B Bron Aviation · ~25 min du gîte</li><li>🕚 Convocation 1h avant l'heure de vol · briefing 20 min · 2 vols chacun</li><li>👕 Tenue sport ou jean + baskets · combinaison, casque et lunettes fournis</li><li>⚠️ Interdit en cas de luxation d'épaule (même ancienne) · moins de 115 kg si moins d'1m85</li><li>🌐 <a href="https://booking.iflylyon.fr/adulte" target="_blank">booking.iflylyon.fr</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -773,8 +672,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 
 <div class="overlay" id="i-brotteaux">
   <div class="modal">
-    <h3>🍽 Brasserie des Brotteaux</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=Brasserie+des+Brotteaux+1+place+Jules+Ferry+Lyon" target="_blank">1 place Jules Ferry, 69006 Lyon</a></li><li>🕖 Service 19h30-22h · résa confirmée 19h45 (3 couverts)</li><li>📞 <a href="tel:+33472740398">04 72 74 03 98</a></li><li>🌐 <a href="http://www.brasseriedesbrotteaux.com" target="_blank">brasseriedesbrotteaux.com</a></li><li>Plan B bouchon : L'Antr'Opotes, 118 rue Bossuet</li></ul>
+    <h3>🍽 La Grande Brasserie Tête d'Or</h3>
+    <ul><li>📍 <a href="https://maps.google.com/?q=Grande+Brasserie+T%C3%AAte+d%27Or+Cit%C3%A9+Internationale+Lyon" target="_blank">Cité Internationale, quai Charles de Gaulle, 69006 Lyon</a> — face au parc de la Tête d'Or</li><li>✅ Réservé — 19h45, 3 couverts</li><li>À deux pas du parking et du Bus Paradise</li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -782,7 +681,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="i-bus">
   <div class="modal">
     <h3>🪩 Bus Paradise</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">44 quai Charles de Gaulle, 69006 Lyon</a> (Cité Internationale)</li><li>🕙 Jusqu'à l'aube · pic de soirée 0h-3h</li><li>👔 Pantalon + chemise/polo exigés, pas de baskets sport ni casquette</li><li>💶 Entrée 20 €, verre dès 30 €, show privé 90 €</li><li>📞 <a href="tel:+33423400947">04 23 40 09 47</a></li><li>🌐 <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a></li></ul>
+    <ul><li>📍 <a href="https://maps.google.com/?q=Bus+Paradise+44+Quai+Charles+de+Gaulle+Lyon" target="_blank">44 quai Charles de Gaulle, 69006 Lyon</a> (Cité Internationale)</li><li>🕙 Jusqu'à l'aube · pic de soirée 0h-3h</li><li>👔 Pantalon + chemise/polo exigés, pas de baskets sport ni casquette</li><li>📞 <a href="tel:+33423400947">04 23 40 09 47</a></li><li>🌐 <a href="https://www.bus-paradise.com" target="_blank">bus-paradise.com</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -790,7 +689,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="i-bsks">
   <div class="modal">
     <h3>🎯 BSKS Paintball</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=BSKS+Paintball+Chamagnieu" target="_blank">Lieu-dit St Martin, 38460 Chamagnieu</a></li><li>🕘 Arriver 30 min avant le créneau (9:30 pour 10:00)</li><li>💶 45 €/pers (forfait 500 billes) · payé, facture #2026-1156 · place de Jérémie offerte par BSKS</li><li>👥 À moins de 8 joueurs, regroupement avec un autre groupe</li><li>⚽ Babyfoot humain sur place à 12h00 (30 min, 15 €/pers, place de Jérémie offerte)</li><li>📞 <a href="tel:+33634023646">06 34 02 36 46</a></li><li>🌐 <a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a></li></ul>
+    <ul><li>📍 <a href="https://maps.google.com/?q=BSKS+Paintball+Chamagnieu" target="_blank">Lieu-dit St Martin, 38460 Chamagnieu</a></li><li>🕘 Arriver 30 min avant le créneau (9:30 pour 10:00)</li><li>👥 À moins de 8 joueurs, regroupement avec un autre groupe</li><li>📞 <a href="tel:+33634023646">06 34 02 36 46</a></li><li>🌐 <a href="https://bsks-paintball.com" target="_blank">bsks-paintball.com</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -798,7 +697,7 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 <div class="overlay" id="i-cany">
   <div class="modal">
     <h3>🌊 Canyoning Emotions — canyon de Chaley</h3>
-    <ul><li>📍 <a href="https://maps.google.com/?q=Chaley+01230" target="_blank">01230 Chaley</a>, gorges de l’Albarine (Bugey)</li><li>🕜 Sessions habituelles 9h30 / 13h30 · créneau groupe 14h30 à caler avec JB</li><li>💶 ~45-55 €/pers · combinaisons fournies</li><li>🎒 Maillot, serviette, baskets qui peuvent aller dans l'eau</li><li>📞 JB : <a href="tel:+33624921428">06 24 92 14 28</a></li><li>🌐 <a href="https://canyoningemotions.fr" target="_blank">canyoningemotions.fr</a></li></ul>
+    <ul><li>📍 <a href="https://maps.google.com/?q=Chaley+01230" target="_blank">01230 Chaley</a>, gorges de l’Albarine (Bugey)</li><li>✅ Créneau groupe 14h30</li><li>🎒 Maillot, serviette, baskets qui peuvent aller dans l'eau</li><li>📞 JB : <a href="tel:+33624921428">06 24 92 14 28</a></li><li>🌐 <a href="https://canyoningemotions.fr" target="_blank">canyoningemotions.fr</a></li></ul>
     <button class="close">Fermer</button>
   </div>
 </div>
@@ -996,68 +895,36 @@ window.addEventListener("resize",fixTops);fixTops();
   window._truckCanvas=function(sc){return makeCanvas(TRUCK,PAL,sc);};
 })();
 
-// Camion de progression automatique : suit le programme en temps réel
-// (entre deux étapes pendant les trajets, sur l'étape à l'heure dite ; figé au terminus après l'EVG)
-var STOP_TIMES=[
- "2026-09-25T04:45","2026-09-25T05:15","2026-09-25T07:30","2026-09-25T08:45","2026-09-25T09:45",
- "2026-09-25T12:30","2026-09-25T16:15","2026-09-25T17:00","2026-09-25T19:15","2026-09-25T19:45",
- "2026-09-25T22:15","2026-09-26T01:30",
- "2026-09-26T09:00","2026-09-26T09:30","2026-09-26T12:00","2026-09-26T12:45","2026-09-26T14:30","2026-09-26T19:00","2026-09-26T20:15",
- "2026-09-27T09:30","2026-09-27T10:45","2026-09-27T11:15","2026-09-27T13:15",
- "2026-09-27T17:05","2026-09-27T19:20","2026-09-27T20:00"
-].map(function(t){return new Date(t+":00+02:00").getTime();});
-function updateTruck(){
-  var pin=document.getElementById("fireman-pin");
-  var stops=document.querySelectorAll(".stop");
-  if(!pin||!stops.length){return;}
-  if(pin.parentNode!==document.body){pin.style.position="absolute";document.body.appendChild(pin);}
-  var now=Date.now(),i=0,frac=0,n=STOP_TIMES.length;
-  if(now>=STOP_TIMES[n-1]){i=n-1;frac=0;}
-  else if(now>STOP_TIMES[0]){
-    for(var k=0;k<n-1;k++){if(now>=STOP_TIMES[k]&&now<STOP_TIMES[k+1]){i=k;frac=(now-STOP_TIMES[k])/(STOP_TIMES[k+1]-STOP_TIMES[k]);break;}}
+// Camion pixel : suit le lecteur le long de la timeline
+(function(){
+  function updateTruck(){
+    var pin=document.getElementById("fireman-pin");
+    var stops=[].slice.call(document.querySelectorAll(".stop"));
+    if(!pin||!stops.length){return;}
+    if(pin.parentNode!==document.body){pin.style.position="absolute";document.body.appendChild(pin);}
+    var marker=window.scrollY+window.innerHeight*0.38;
+    var pts=stops.map(function(st){var r=st.getBoundingClientRect();return {top:r.top+window.scrollY+10,left:r.left+window.scrollX-54};});
+    var top=pts[0].top,left=pts[0].left,last=pts[pts.length-1];
+    if(marker>=last.top){top=last.top;left=last.left;}
+    else if(marker>pts[0].top){
+      for(var k=0;k<pts.length-1;k++){
+        if(marker>=pts[k].top&&marker<pts[k+1].top){
+          var f=(marker-pts[k].top)/(pts[k+1].top-pts[k].top);
+          top=pts[k].top+(pts[k+1].top-pts[k].top)*f;
+          left=pts[k].left;break;
+        }
+      }
+    }
+    pin.style.top=top+"px";pin.style.left=left+"px";
   }
-  i=Math.min(i,stops.length-1);
-  var a=stops[i],b=stops[Math.min(i+1,stops.length-1)];
-  function pos(el){var r=el.getBoundingClientRect();return {top:r.top+window.scrollY+10,left:r.left+window.scrollX-54};}
-  var pa=pos(a),pb=pos(b);
-  pin.style.top=(pa.top+(pb.top-pa.top)*frac)+"px";
-  pin.style.left=pa.left+"px";
-}
-setInterval(updateTruck,60000);
-window.addEventListener("resize",updateTruck);
-window.addEventListener("load",updateTruck);
-setTimeout(updateTruck,300);
+  var raf=null;
+  window.addEventListener("scroll",function(){if(raf){return;}raf=requestAnimationFrame(function(){raf=null;updateTruck();});},{passive:true});
+  window.addEventListener("resize",updateTruck);
+  window.addEventListener("load",updateTruck);
+  setTimeout(updateTruck,300);
+})();
 
-// Météo dynamique — prévisions avant l'EVG, archives réelles après (rétrospective figée)
-var WXI={0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",48:"🌫",51:"🌦",53:"🌦",55:"🌧",56:"🌧",57:"🌧",61:"🌧",63:"🌧",65:"🌧",66:"🌧",67:"🌧",71:"🌨",73:"🌨",75:"🌨",80:"🌦",81:"🌧",82:"⛈",95:"⛈",96:"⛈",99:"⛈"};
-var spots=[
- {el:"wx1",date:"2026-09-25",lat:45.77,lon:4.84},
- {el:"wx2",date:"2026-09-26",lat:45.95,lon:5.43},
- {el:"wx3",date:"2026-09-27",lat:45.72,lon:5.25}
-];
-spots.forEach(function(sp){
-  var box=document.getElementById(sp.el);
-  var past=(new Date(sp.date+"T23:59:00+02:00")).getTime() < (Date.now()-2*86400000);
-  var base=past?"https://archive-api.open-meteo.com/v1/archive":"https://api.open-meteo.com/v1/forecast";
-  var daily=past?"weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max":"weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max";
-  fetch(base+"?latitude="+sp.lat+"&longitude="+sp.lon+"&daily="+daily+"&timezone=Europe%2FParis&start_date="+sp.date+"&end_date="+sp.date)
-  .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
-  .then(function(d){
-    if(!d.daily||d.daily.weather_code[0]===null||d.daily.weather_code[0]===undefined){throw new Error("vide");}
-    box.querySelector(".wxmain").innerHTML='<span class="wxi'+(past?" frozen":"")+'">'+(WXI[d.daily.weather_code[0]]||"🌡")+'</span>';
-    box.querySelector(".wxtemp").textContent=Math.round(d.daily.temperature_2m_min[0])+"° / "+Math.round(d.daily.temperature_2m_max[0])+"°";
-    var bits=[];
-    if(past){if(d.daily.precipitation_sum&&d.daily.precipitation_sum[0]!==null){bits.push("💧 "+Math.round(d.daily.precipitation_sum[0])+" mm");}}
-    else{if(d.daily.precipitation_probability_max&&d.daily.precipitation_probability_max[0]!==null){bits.push("💧 "+d.daily.precipitation_probability_max[0]+" %");}}
-    if(d.daily.wind_speed_10m_max&&d.daily.wind_speed_10m_max[0]!==null){bits.push("💨 "+Math.round(d.daily.wind_speed_10m_max[0])+" km/h");}
-    box.querySelector(".wxrain").textContent=bits.join("  ");
-  })
-  .catch(function(){
-    box.querySelector(".wxmain").innerHTML='<span class="sun">☀️</span>';
-    box.querySelector(".wxtemp").textContent="";
-    box.querySelector(".wxrain").textContent="dispo ~10 j avant";
-  });
-});
+
 
 // Photos partagées entre tous les participants (Supabase)
 (function(){
@@ -1222,102 +1089,6 @@ spots.forEach(function(sp){
   retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
   fetchPhotos();
   setInterval(fetchPhotos,60000);
-})();
-
-// Messages vidéo des proches, par étape (Supabase Storage + table evg_videos)
-(function(){
-  var SB_URL="https://pryrofztqabprfsbauvo.supabase.co";
-  var SB_KEY="sb_publishable_1T3y9KiP4jzeAVF7xQkYKw_l35iOg0l";
-  var TAB=SB_URL+"/rest/v1/evg_videos";
-  var STO=SB_URL+"/storage/v1/object";
-  var HDR={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY};
-  var HDRJ={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};
-  var vids=[];
-  var stops=[].slice.call(document.querySelectorAll(".stop"));
-  var cur=0,curBtn=null;
-  function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
-  function pubUrl(path){return SB_URL+"/storage/v1/object/public/evg-videos/"+path;}
-  function render(){
-    stops.forEach(function(st,i){
-      var mine=vids.filter(function(v){return v.stop_i===i;});
-      var chip=st.querySelector(".vchip");
-      if(!chip){chip=document.createElement("div");chip.className="vchip";
-        var sp=document.createElement("span");chip.appendChild(sp);st.appendChild(chip);
-        (function(idx){chip.addEventListener("click",function(){openVids(idx);});})(i);}
-      chip.querySelector("span").textContent="🎬 "+mine.length+" message"+(mine.length>1?"s":"");
-      chip.style.display=mine.length?"flex":"none";
-    });
-  }
-  function fetchVids(){
-    return fetch(TAB+"?select=id,stop_i,path,author,created_at&order=created_at.asc",{headers:HDRJ})
-      .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
-      .then(function(rows){vids=rows;render();})
-      .catch(function(){});
-  }
-  function getAuthor(){
-    var a=localStorage.getItem("evgAuthor");
-    if(!a){a=prompt("Ton prénom (affiché avec le message) :")||"";if(a){localStorage.setItem("evgAuthor",a);}}
-    return a;
-  }
-  function upload(file){
-    if(!file){return;}
-    if(file.size>45*1024*1024){alert("Vidéo trop lourde (max ~45 Mo) : filme en 720p ou raccourcis le message.");return;}
-    var author=getAuthor();
-    var ext=(file.name.split(".").pop()||"mp4").toLowerCase();
-    var path="etape"+cur+"-"+Date.now()+"."+ext;
-    if(curBtn){curBtn.textContent="⏳";}
-    fetch(STO+"/evg-videos/"+path,{method:"POST",headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":file.type||"video/mp4"},body:file})
-      .then(function(r){if(!r.ok){throw new Error("sto");}
-        return fetch(TAB,{method:"POST",headers:HDRJ,body:JSON.stringify({stop_i:cur,path:path,author:author})});})
-      .then(function(r){if(!r.ok){throw new Error("tab");}return fetchVids();})
-      .catch(function(){alert("Envoi impossible : vérifie la connexion (le message n’a pas été partagé).");})
-      .then(function(){if(curBtn){curBtn.textContent="🎬";}});
-  }
-  var inpVCam=document.createElement("input");inpVCam.type="file";inpVCam.accept="video/*";inpVCam.setAttribute("capture","user");inpVCam.style.display="none";
-  var inpVLib=document.createElement("input");inpVLib.type="file";inpVLib.accept="video/*";inpVLib.style.display="none";
-  document.body.appendChild(inpVCam);document.body.appendChild(inpVLib);
-  inpVCam.addEventListener("change",function(){upload(inpVCam.files[0]);inpVCam.value="";vSrc.classList.remove("open");});
-  inpVLib.addEventListener("change",function(){upload(inpVLib.files[0]);inpVLib.value="";vSrc.classList.remove("open");});
-  var vSrc=document.createElement("div");vSrc.className="overlay";vSrc.id="m-vidsrc";
-  vSrc.innerHTML='<div class="modal"><h3>🎬 Message vidéo pour Jérémie</h3><p style="font-size:.88rem;color:#4a4e46;margin-bottom:.4rem">Il sera visionné à cette étape du parcours. Format court conseillé (moins d’une minute).</p><button class="srcbtn" id="vsrc-cam">🎥 Filmer maintenant</button><button class="srcbtn" id="vsrc-lib">📁 Choisir une vidéo</button><button class="close">Annuler</button></div>';
-  document.body.appendChild(vSrc);
-  vSrc.addEventListener("click",function(e){if(e.target===vSrc||e.target.classList.contains("close")){vSrc.classList.remove("open");}});
-  document.getElementById("vsrc-cam").addEventListener("click",function(){inpVCam.click();});
-  document.getElementById("vsrc-lib").addEventListener("click",function(){inpVLib.click();});
-  stops.forEach(function(st,i){
-    var b=document.createElement("button");b.className="vbtn";b.textContent="🎬";b.title="Laisser un message vidéo";
-    b.addEventListener("click",function(){cur=i;curBtn=b;vSrc.classList.add("open");});
-    st.appendChild(b);
-  });
-  var vGal=document.createElement("div");vGal.className="overlay";vGal.id="m-vid";
-  vGal.innerHTML='<div class="modal"><h4 id="vcap"></h4><div id="vbody"></div><button class="close">Fermer</button></div>';
-  document.body.appendChild(vGal);
-  vGal.addEventListener("click",function(e){if(e.target===vGal||e.target.classList.contains("close")){vGal.classList.remove("open");
-    [].slice.call(vGal.querySelectorAll("video")).forEach(function(v){v.pause();});}});
-  function openVids(i){
-    document.getElementById("vcap").textContent="🎬 Messages · "+stopName(stops[i]);
-    var body=document.getElementById("vbody");body.innerHTML="";
-    vids.filter(function(v){return v.stop_i===i;}).forEach(function(v){
-      var vid=document.createElement("video");vid.controls=true;vid.playsInline=true;vid.preload="metadata";vid.src=pubUrl(v.path);
-      body.appendChild(vid);
-      var m=document.createElement("div");m.className="vmeta";
-      var who=document.createElement("span");who.textContent=(v.author?("De "+v.author+" · "):"")+new Date(v.created_at).toLocaleDateString("fr-FR");
-      var del=document.createElement("button");del.className="vdel";del.textContent="🗑";
-      del.addEventListener("click",function(){
-        if(confirm("Supprimer ce message vidéo pour tout le monde ?")){
-          fetch(STO+"/evg-videos/"+v.path,{method:"DELETE",headers:HDR})
-            .then(function(){return fetch(TAB+"?id=eq."+v.id,{method:"DELETE",headers:HDRJ});})
-            .then(function(){return fetchVids();})
-            .then(function(){openVids(i);})
-            .catch(function(){alert("Suppression impossible.");});
-        }
-      });
-      m.appendChild(who);m.appendChild(del);body.appendChild(m);
-    });
-    vGal.classList.add("open");
-  }
-  fetchVids();
-  setInterval(fetchVids,60000);
 })();
 </script>
 
