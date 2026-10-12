@@ -147,7 +147,9 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .pbtn{position:absolute;top:10px;right:10px;font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:none;background:var(--ink);color:#fff;cursor:pointer;line-height:1}
 .pstack{display:none;position:absolute;top:48px;right:10px;flex-direction:column;align-items:flex-end;cursor:pointer;z-index:2}
 .pstack img{width:74px;height:74px;object-fit:cover;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transform:rotate(-4deg)}
-.pstack img+img{margin-top:-38px}
+.pstack>*+*{margin-top:-38px}
+.vtile{width:74px;height:74px;border-radius:6px;border:2px solid #fff;background:#111318;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.3);transform:rotate(3deg)}
+#gvid{width:100%;max-height:58vh;display:none;background:#000}
 .stop.has-photos h3,.stop.has-photos p,.stop.has-photos .tagrow,.stop.has-photos .meta{padding-right:96px}
 .pstack img:nth-child(2){transform:rotate(3deg)}
 .pstack img:nth-child(3){transform:rotate(-1deg)}
@@ -903,18 +905,24 @@ window.addEventListener("resize",fixTops);fixTops();
 
 
 
-// Photos : socle gelé dans le site (photos/) + ajouts en direct (Supabase, id > 164)
+// Souvenirs : socle gelé (photos/) masquable + photos et vidéos ajoutées en direct (Supabase)
 (function(){
   var SB_URL="https://pryrofztqabprfsbauvo.supabase.co";
   var SB_KEY="sb_publishable_1T3y9KiP4jzeAVF7xQkYKw_l35iOg0l";
-  var API=SB_URL+"/rest/v1/evg_photos";
+  var P_API=SB_URL+"/rest/v1/evg_photos";
+  var V_API=SB_URL+"/rest/v1/evg_videos";
+  var H_API=SB_URL+"/rest/v1/evg_hidden";
+  var STO=SB_URL+"/storage/v1/object";
   var HDR={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};
-  var figees=[],live=[],photos=[];
+  var figees=[],livePhotos=[],liveVideos=[],hidden={},photos=[];
   var stops=[].slice.call(document.querySelectorAll(".stop"));
   var cur=0,curBtn=null,lastIdxs=null,galOpen=false;
   function stopName(st){var h=st.querySelector("h3");return h?h.textContent.trim():"Étape";}
   function dayOf(st){var sec=st.closest("section");var h=sec?sec.querySelector("h2"):null;return h?h.textContent.split("—")[0].trim():"";}
-  function merge(){photos=figees.concat(live);}
+  function merge(){
+    photos=figees.filter(function(ph){return !hidden[ph.id];}).concat(livePhotos).concat(liveVideos);
+    photos.sort(function(x,y){return new Date(x.t)-new Date(y.t);});
+  }
   function render(){
     stops.forEach(function(st,i){
       var mine=photos.filter(function(ph){return ph.i===i;});
@@ -924,9 +932,10 @@ window.addEventListener("resize",fixTops);fixTops();
       stack.innerHTML="";
       st.classList.toggle("has-photos",mine.length>0);
       mine.slice(0,3).forEach(function(ph){
-        var im=document.createElement("img");im.loading="lazy";im.src=ph.d;stack.appendChild(im);
+        if(ph.vid){var v=document.createElement("div");v.className="vtile";v.textContent="▶";stack.appendChild(v);}
+        else{var im=document.createElement("img");im.loading="lazy";im.src=ph.d;stack.appendChild(im);}
       });
-      if(mine.length>3){var m=document.createElement("span");m.className="pmore";m.textContent="+"+(mine.length-3)+" photos";stack.appendChild(m);}
+      if(mine.length>3){var m=document.createElement("span");m.className="pmore";m.textContent="+"+(mine.length-3);stack.appendChild(m);}
       stack.style.display=mine.length?"flex":"none";
     });
   }
@@ -938,13 +947,17 @@ window.addEventListener("resize",fixTops);fixTops();
     })
     .catch(function(){});
   function fetchLive(){
-    return fetch(API+"?select=id,stop_i,data,created_at&order=created_at.asc&id=gt.164",{headers:HDR})
+    var fp=fetch(P_API+"?select=id,stop_i,data,taken_at,created_at&order=created_at.asc&id=gt.164",{headers:HDR})
       .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
-      .then(function(rows){
-        live=rows.map(function(r){return {id:r.id,i:r.stop_i,d:r.data,t:r.created_at,live:true};});
-        merge();render();
-        if(galOpen&&lastIdxs){openGal(lastIdxs,true);}
-      })
+      .then(function(rows){livePhotos=rows.map(function(r){return {id:r.id,i:r.stop_i,d:r.data,t:r.taken_at||r.created_at,live:true};});});
+    var fv=fetch(V_API+"?select=id,stop_i,path,taken_at,created_at&order=created_at.asc",{headers:HDR})
+      .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
+      .then(function(rows){liveVideos=rows.map(function(r){return {id:r.id,i:r.stop_i,d:SB_URL+"/storage/v1/object/public/evg-videos/"+r.path,path:r.path,t:r.taken_at||r.created_at,live:true,vid:true};});});
+    var fh=fetch(H_API+"?select=photo_id",{headers:HDR})
+      .then(function(r){if(!r.ok){throw new Error("hs");}return r.json();})
+      .then(function(rows){hidden={};rows.forEach(function(r){hidden[r.photo_id]=true;});});
+    return Promise.all([fp,fv,fh])
+      .then(function(){merge();render();if(galOpen&&lastIdxs){openGal(lastIdxs,true);}})
       .catch(function(){});
   }
   function shrink(file,cb){
@@ -961,37 +974,61 @@ window.addEventListener("resize",fixTops);fixTops();
     };
     r.readAsDataURL(file);
   }
-  function upload(d){
-    if(curBtn){curBtn.textContent="⏳";}
-    fetch(API,{method:"POST",headers:HDR,body:JSON.stringify({stop_i:cur,data:d})})
-      .then(function(r){if(!r.ok){throw new Error("hs");}return fetchLive();})
-      .catch(function(){alert("Envoi impossible : vérifie la connexion (la photo n’a pas été partagée).");})
-      .then(function(){if(curBtn){curBtn.textContent="📸";}});
+  function takenAt(f){
+    try{return new Date(f.lastModified).toISOString();}catch(e){return new Date().toISOString();}
+  }
+  function busy(on){if(curBtn){curBtn.textContent=on?"⏳":"📸";}}
+  function uploadPhoto(f){
+    shrink(f,function(d){
+      busy(true);
+      fetch(P_API,{method:"POST",headers:HDR,body:JSON.stringify({stop_i:cur,data:d,taken_at:takenAt(f)})})
+        .then(function(r){if(!r.ok){throw new Error("hs");}return fetchLive();})
+        .catch(function(){alert("Envoi impossible : vérifie la connexion (la photo n’a pas été partagée).");})
+        .then(function(){busy(false);});
+    });
+  }
+  function uploadVideo(f){
+    if(f.size>48*1024*1024){alert("Vidéo trop lourde (max ~48 Mo) : filme plus court ou en 720p.");return;}
+    var ext=(f.name.split(".").pop()||"mp4").toLowerCase();
+    var path="etape"+cur+"-"+Date.now()+"."+ext;
+    busy(true);
+    fetch(STO+"/evg-videos/"+path,{method:"POST",headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":f.type||"video/mp4"},body:f})
+      .then(function(r){if(!r.ok){throw new Error("sto");}
+        return fetch(V_API,{method:"POST",headers:HDR,body:JSON.stringify({stop_i:cur,path:path,taken_at:takenAt(f)})});})
+      .then(function(r){if(!r.ok){throw new Error("tab");}return fetchLive();})
+      .catch(function(){alert("Envoi impossible : vérifie la connexion (la vidéo n’a pas été partagée).");})
+      .then(function(){busy(false);});
   }
   var inpCam=document.createElement("input");inpCam.type="file";inpCam.accept="image/*";inpCam.setAttribute("capture","environment");inpCam.style.display="none";
-  var inpLib=document.createElement("input");inpLib.type="file";inpLib.accept="image/*";inpLib.multiple=true;inpLib.style.display="none";
-  document.body.appendChild(inpCam);document.body.appendChild(inpLib);
+  var inpVid=document.createElement("input");inpVid.type="file";inpVid.accept="video/*";inpVid.setAttribute("capture","environment");inpVid.style.display="none";
+  var inpLib=document.createElement("input");inpLib.type="file";inpLib.accept="image/*,video/*";inpLib.multiple=true;inpLib.style.display="none";
+  document.body.appendChild(inpCam);document.body.appendChild(inpVid);document.body.appendChild(inpLib);
   function onFiles(inp){
-    [].slice.call(inp.files).forEach(function(f){shrink(f,function(d){upload(d);});});
+    [].slice.call(inp.files).forEach(function(f){
+      if((f.type||"").indexOf("video")===0){uploadVideo(f);}else{uploadPhoto(f);}
+    });
     inp.value="";
   }
   inpCam.addEventListener("change",function(){onFiles(inpCam);srcModal.classList.remove("open");});
+  inpVid.addEventListener("change",function(){onFiles(inpVid);srcModal.classList.remove("open");});
   inpLib.addEventListener("change",function(){onFiles(inpLib);srcModal.classList.remove("open");});
   var srcModal=document.createElement("div");srcModal.className="overlay";srcModal.id="m-photosrc";
-  srcModal.innerHTML='<div class="modal"><h3>📸 Ajouter une photo</h3><button class="srcbtn" id="src-cam">📷 Prendre une photo</button><button class="srcbtn" id="src-lib">🖼 Choisir dans la galerie</button><button class="close">Annuler</button></div>';
+  srcModal.innerHTML='<div class="modal"><h3>📸 Ajouter un souvenir</h3><button class="srcbtn" id="src-cam">📷 Prendre une photo</button><button class="srcbtn" id="src-vid">🎥 Filmer une vidéo</button><button class="srcbtn" id="src-lib">🖼 Choisir dans la galerie</button><button class="close">Annuler</button></div>';
   document.body.appendChild(srcModal);
   srcModal.addEventListener("click",function(e){if(e.target===srcModal||e.target.classList.contains("close")){srcModal.classList.remove("open");}});
   document.getElementById("src-cam").addEventListener("click",function(){inpCam.click();});
+  document.getElementById("src-vid").addEventListener("click",function(){inpVid.click();});
   document.getElementById("src-lib").addEventListener("click",function(){inpLib.click();});
   stops.forEach(function(st,i){
-    var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter une photo";
+    var b=document.createElement("button");b.className="pbtn";b.textContent="📸";b.title="Ajouter photo ou vidéo";
     b.addEventListener("click",function(){cur=i;curBtn=b;srcModal.classList.add("open");});
     st.appendChild(b);
   });
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
-  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><button id="gdl">⬇ Enregistrer</button><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
+  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><video id="gvid" controls playsinline preload="metadata"></video><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><button id="gdl">⬇ Enregistrer</button><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
-  gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;}});
+  function pauseVid(){var v=document.getElementById("gvid");if(v){v.pause();}}
+  gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;pauseVid();}});
   var slides=[],gi=0;
   function buildSlides(idxs){
     slides=[];
@@ -1002,20 +1039,27 @@ window.addEventListener("resize",fixTops);fixTops();
     });
   }
   function showSlide(){
-    var cap=document.getElementById("gcap"),img=document.getElementById("gimg"),
+    pauseVid();
+    var cap=document.getElementById("gcap"),img=document.getElementById("gimg"),vid=document.getElementById("gvid"),
         cnt=document.getElementById("gcount"),dl=document.getElementById("gdl"),
         del=document.getElementById("gdel"),pv=document.getElementById("gprev"),nx=document.getElementById("gnext");
     if(!slides.length){
-      cap.textContent="Pas de photo pour cette étape";img.removeAttribute("src");img.style.minHeight="120px";
+      cap.textContent="Pas encore de souvenir ici";img.removeAttribute("src");img.style.display="block";img.style.minHeight="120px";vid.style.display="none";
       cnt.textContent="Le bouton 📸 de chaque étape permet d’en ajouter";
       dl.style.display="none";del.style.display="none";pv.disabled=true;nx.disabled=true;return;
     }
     gi=Math.max(0,Math.min(gi,slides.length-1));
     var sl=slides[gi];
-    cap.textContent=sl.label;img.src=sl.ph.d;img.style.minHeight="";
+    cap.textContent=sl.label;
+    if(sl.ph.vid){
+      img.style.display="none";img.removeAttribute("src");
+      vid.style.display="block";vid.src=sl.ph.d;
+    }else{
+      vid.style.display="none";vid.removeAttribute("src");
+      img.style.display="block";img.src=sl.ph.d;img.style.minHeight="";
+    }
     cnt.textContent=(gi+1)+" / "+slides.length;
-    dl.style.display="";
-    del.style.display=sl.ph.live?"":"none";
+    dl.style.display="";del.style.display="";
     pv.disabled=(gi===0);nx.disabled=(gi===slides.length-1);
   }
   document.getElementById("gprev").addEventListener("click",function(){gi--;showSlide();});
@@ -1024,9 +1068,10 @@ window.addEventListener("resize",fixTops);fixTops();
     if(!slides.length){return;}
     var ph=slides[gi].ph;
     fetch(ph.d).then(function(r){return r.blob();}).then(function(b){
-      var f=new File([b],"evg-jeremie-"+ph.id+".jpg",{type:b.type||"image/jpeg"});
+      var ext=ph.vid?"mp4":"jpg";
+      var f=new File([b],"evg-jeremie-"+(ph.vid?"video-":"")+ph.id+"."+ext,{type:b.type||(ph.vid?"video/mp4":"image/jpeg")});
       if(navigator.canShare&&navigator.canShare({files:[f]})){
-        navigator.share({files:[f],title:"Photo EVG Jérémie"}).catch(function(){});
+        navigator.share({files:[f],title:"Souvenir EVG Jérémie"}).catch(function(){});
       }else{
         var url=URL.createObjectURL(f);
         var a=document.createElement("a");a.href=url;a.download=f.name;
@@ -1038,12 +1083,18 @@ window.addEventListener("resize",fixTops);fixTops();
   document.getElementById("gdel").addEventListener("click",function(){
     if(!slides.length){return;}
     var ph=slides[gi].ph;
-    if(!ph.live){return;}
-    if(confirm("Supprimer cette photo pour tout le monde ?")){
-      fetch(API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR})
-        .then(function(r){if(!r.ok){throw new Error("hs");}return fetchLive();})
-        .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
+    if(!confirm(ph.vid?"Supprimer cette vidéo pour tout le monde ?":"Supprimer cette photo pour tout le monde ?")){return;}
+    var op;
+    if(ph.vid){
+      op=fetch(STO+"/evg-videos/"+ph.path,{method:"DELETE",headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY}})
+        .then(function(){return fetch(V_API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR});});
+    }else if(ph.live){
+      op=fetch(P_API+"?id=eq."+ph.id,{method:"DELETE",headers:HDR});
+    }else{
+      op=fetch(H_API,{method:"POST",headers:HDR,body:JSON.stringify({photo_id:ph.id})});
     }
+    op.then(function(r){if(r&&!r.ok){throw new Error("hs");}return fetchLive();})
+      .catch(function(){alert("Suppression impossible : vérifie la connexion.");});
   });
   (function(){
     var x0=null;
@@ -1056,12 +1107,13 @@ window.addEventListener("resize",fixTops);fixTops();
   })();
   function openGal(idxs,keepPos){
     lastIdxs=idxs;galOpen=true;
-    var keep=(keepPos&&slides[gi]&&slides[gi].ph)?slides[gi].ph.id:null;
+    var keep=null;
+    if(keepPos&&slides[gi]&&slides[gi].ph){keep=(slides[gi].ph.vid?"v":"p")+slides[gi].ph.id;}
     buildSlides(idxs);
     if(keep!==null){
       var f=-1;
-      slides.forEach(function(sl,k){if(sl.ph.id===keep){f=k;}});
-      gi=(f>=0)?f:0;
+      slides.forEach(function(sl,k){if(((sl.ph.vid?"v":"p")+sl.ph.id)===keep){f=k;}});
+      gi=(f>=0)?f:Math.min(gi,slides.length-1);
     }else{gi=0;}
     showSlide();
     gal.classList.add("open");
