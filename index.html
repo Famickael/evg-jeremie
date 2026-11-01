@@ -173,8 +173,10 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .retro p{font-size:.85rem;opacity:.95;margin-top:.2rem}
 .retro-truck{display:flex;justify-content:center;margin-bottom:8px}
 .retro-truck canvas{image-rendering:pixelated}
-.retro-dl{margin-top:12px;background:#fff;color:var(--sign);border:0;border-radius:8px;padding:10px 16px;font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.25)}
-.retro-dl:disabled{opacity:.75;cursor:wait}
+#gall{background:#062A3A;color:#33CCFF}
+.gbtns button{white-space:nowrap}
+@media (max-width:420px){.gbtns{gap:5px}.gbtns a,.gbtns button{padding:.35rem .45rem;font-size:.76rem}}
+#gall:disabled{opacity:.75;cursor:wait}
 
 /* ---------- Popups ---------- */
 .overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
@@ -1078,7 +1080,7 @@ window.addEventListener("resize",fixTops);fixTops();
     st.appendChild(b);
   });
   var gal=document.createElement("div");gal.className="overlay";gal.id="m-gal";
-  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><video id="gvid" controls playsinline preload="metadata"></video><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><button id="gdl">⬇ Enregistrer</button><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
+  gal.innerHTML='<div class="modal"><div id="gcap"></div><div class="slide-wrap"><img id="gimg" alt=""><video id="gvid" controls playsinline preload="metadata"></video><button class="gnavbtn" id="gprev">‹</button><button class="gnavbtn" id="gnext">›</button></div><div class="gbtns"><button id="gdl">⬇ Enregistrer</button><button id="gall">⬇ Tout télécharger</button><button id="gdel">🗑 Supprimer</button></div><div id="gcount"></div><button class="close">Fermer</button></div>';
   document.body.appendChild(gal);
   function pauseVid(){var v=document.getElementById("gvid");if(v){v.pause();}}
   gal.addEventListener("click",function(e){if(e.target===gal||e.target.classList.contains("close")){gal.classList.remove("open");galOpen=false;pauseVid();}});
@@ -1160,6 +1162,7 @@ window.addEventListener("resize",fixTops);fixTops();
   })();
   function openGal(idxs,keepPos){
     lastIdxs=idxs;galOpen=true;
+    document.getElementById("gall").style.display=(idxs.length===stops.length)?"":"none";
     var keep=null;
     if(keepPos&&slides[gi]&&slides[gi].ph){keep=(slides[gi].ph.vid?"v":"p")+slides[gi].ph.id;}
     buildSlides(idxs);
@@ -1172,13 +1175,13 @@ window.addEventListener("resize",fixTops);fixTops();
     gal.classList.add("open");
   }
   var retro=document.createElement("div");retro.className="retro";
-  retro.innerHTML='<div class="retro-truck"></div><h2>🏁 Terminus — la rétrospective</h2><p>Toutes les photos du week-end, étape par étape, à garder pour Jérémie.</p><button type="button" class="retro-dl">⬇ Télécharger toutes les photos</button>';
+  retro.innerHTML='<div class="retro-truck"></div><h2>🏁 Terminus — la rétrospective</h2><p>Toutes les photos du week-end, étape par étape, à garder pour Jérémie.</p>';
   var quick=document.querySelector(".quick");
   if(quick){quick.parentNode.insertBefore(retro,quick);}else{document.body.appendChild(retro);}
   if(window._truckCanvas){retro.querySelector(".retro-truck").appendChild(window._truckCanvas(3.4));}
   retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
   // Téléchargement de toutes les photos et vidéos en un zip, dans l'ordre chronologique
-  var dlBtn=retro.querySelector(".retro-dl"),dlLabel=dlBtn.textContent,dlBusy=false;
+  var dlBtn=document.getElementById("gall"),dlLabel=dlBtn.textContent,dlBusy=false;
   function loadZip(){
     if(window.JSZip){return Promise.resolve(window.JSZip);}
     return new Promise(function(ok,ko){
