@@ -173,6 +173,8 @@ footer{padding:0 18px 34px;font-size:.78rem;color:#6a6e76;text-align:center}
 .retro p{font-size:.85rem;opacity:.95;margin-top:.2rem}
 .retro-truck{display:flex;justify-content:center;margin-bottom:8px}
 .retro-truck canvas{image-rendering:pixelated}
+.retro-dl{margin-top:12px;background:#fff;color:var(--sign);border:0;border-radius:8px;padding:10px 16px;font-family:'Barlow Condensed';font-weight:800;font-size:1.05rem;text-transform:uppercase;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.retro-dl:disabled{opacity:.75;cursor:wait}
 
 /* ---------- Popups ---------- */
 .overlay{display:none;position:fixed;inset:0;background:rgba(21,24,30,.72);z-index:100;padding:20px 14px;overflow-y:auto}
@@ -1170,11 +1172,58 @@ window.addEventListener("resize",fixTops);fixTops();
     gal.classList.add("open");
   }
   var retro=document.createElement("div");retro.className="retro";
-  retro.innerHTML='<div class="retro-truck"></div><h2>🏁 Terminus — la rétrospective</h2><p>Toutes les photos du week-end, étape par étape, à garder pour Jérémie.</p>';
+  retro.innerHTML='<div class="retro-truck"></div><h2>🏁 Terminus — la rétrospective</h2><p>Toutes les photos du week-end, étape par étape, à garder pour Jérémie.</p><button type="button" class="retro-dl">⬇ Télécharger toutes les photos</button>';
   var quick=document.querySelector(".quick");
   if(quick){quick.parentNode.insertBefore(retro,quick);}else{document.body.appendChild(retro);}
   if(window._truckCanvas){retro.querySelector(".retro-truck").appendChild(window._truckCanvas(3.4));}
   retro.addEventListener("click",function(){openGal(stops.map(function(_,i){return i;}));});
+  // Téléchargement de toutes les photos et vidéos en un zip, dans l'ordre chronologique
+  var dlBtn=retro.querySelector(".retro-dl"),dlLabel=dlBtn.textContent,dlBusy=false;
+  function loadZip(){
+    if(window.JSZip){return Promise.resolve(window.JSZip);}
+    return new Promise(function(ok,ko){
+      var sc=document.createElement("script");
+      sc.src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+      sc.onload=function(){ok(window.JSZip);};sc.onerror=ko;
+      document.head.appendChild(sc);
+    });
+  }
+  function slug(t){return t.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,60)||"etape";}
+  function pad(n,k){n=String(n);while(n.length<k){n="0"+n;}return n;}
+  function horo(t){var d=new Date(t);if(isNaN(d)){return "";}return pad(d.getDate(),2)+"-"+pad(d.getMonth()+1,2)+"_"+pad(d.getHours(),2)+"h"+pad(d.getMinutes(),2);}
+  dlBtn.addEventListener("click",function(ev){
+    ev.stopPropagation();
+    if(dlBusy){return;}
+    var liste=photos.slice();
+    if(!liste.length){alert("Les photos sont encore en cours de chargement, réessaie dans quelques secondes.");return;}
+    dlBusy=true;dlBtn.disabled=true;dlBtn.textContent="Préparation…";
+    var w=Math.max(3,String(liste.length).length),faits=0,rates=0;
+    loadZip().then(function(JSZip){
+      var zip=new JSZip(),dossier=zip.folder("EVG Jeremie - photos");
+      var file=liste.map(function(ph,k){return function(){
+        var st=stops[ph.i],nom=st?slug(stopName(st)):"etape";
+        var ext=ph.vid?((ph.path||ph.d).split("?")[0].split(".").pop().toLowerCase()||"mp4"):"jpg";
+        var fname=pad(k+1,w)+"_"+horo(ph.t)+"_"+nom+"."+ext;
+        return fetch(ph.d).then(function(r){if(!r.ok){throw new Error("hs");}return r.blob();})
+          .then(function(b){dossier.file(fname,b,{binary:true});})
+          .catch(function(){rates++;})
+          .then(function(){faits++;dlBtn.textContent="Récupération "+faits+" / "+liste.length;});
+      };});
+      var lanes=[],n=0;
+      function suivant(){if(n>=file.length){return Promise.resolve();}var f=file[n++];return f().then(suivant);}
+      for(var j=0;j<4;j++){lanes.push(suivant());}
+      return Promise.all(lanes).then(function(){
+        dlBtn.textContent="Création du zip…";
+        return zip.generateAsync({type:"blob",compression:"STORE"});
+      }).then(function(blob){
+        var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="EVG-Jeremie-photos.zip";
+        document.body.appendChild(a);a.click();
+        setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},4000);
+        if(rates){alert(rates+" fichier(s) n'ont pas pu être récupérés, les autres sont dans le zip.");}
+      });
+    }).catch(function(){alert("Le téléchargement n'a pas pu aboutir. Vérifie la connexion et réessaie.");})
+    .then(function(){dlBusy=false;dlBtn.disabled=false;dlBtn.textContent=dlLabel;});
+  });
   fetchLive();
   setInterval(fetchLive,60000);
 })();
